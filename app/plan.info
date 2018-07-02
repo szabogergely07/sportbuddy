@@ -1,0 +1,20 @@
+*DONE Create validations for user registration form
+*DONE Redirect registration page after successfull reg
+*DONE Namespaces
+*DONE Basic autoload works but without htaccess set
+*DONE Composer Autoload
+*DONE Create Sportbuddy navbar-brand
+
+* Set controllers
+
+* Find frontend template
+
+* Create notice messages for login/register 
+
+* Login / Authentication / Sessions
+
+* Create event CRUD pages
+
+* Validation for create event form
+
+* Frontend files to move: app/bootstrap,css,icons,images,js (then change links)

@@ -1,0 +1,15 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.0"
+    },
+
+    "autoload": {
+    	"psr-4": {
+      	"app\\":"app",
+        "Pecee\\":"src/Pecee/",
+      	"myclass\\":"src/",
+      	"users\\":"app/views/users/"
+    	}
+  	}
+
+}
