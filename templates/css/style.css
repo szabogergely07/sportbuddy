@@ -959,6 +959,8 @@ h6 {
   text-transform: uppercase;
   border: 1px solid;
   border-color: transparent;
+  background-color: transparent;
+  outline: none;
 }
 .main-navbar-top ul li .btn-nav:focus {
   background-color: transparent !important;

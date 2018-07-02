@@ -1,9 +1,12 @@
 <?php
 
-
 use app\Router;
 
-Router::group(['namespace' => '\app\controllers'], function () {
+// Home page
+Router::get('sportbuddy', 'indexController@home');
+
+// User pages
+Router::group([], function () {
 	
 	Router::get('sportbuddy/register', 'userController@register');
 
@@ -12,6 +15,16 @@ Router::group(['namespace' => '\app\controllers'], function () {
 	Router::get('sportbuddy/user/{id}', 'userController@show');
 
 	Router::post('sportbuddy/createuser', 'userController@store');
+
+
+});
+
+//Event pages
+Router::group([], function () {
+	
+	Router::get('sportbuddy/events', 'eventController@index');
+
+	
 
 
 });

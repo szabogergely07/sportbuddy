@@ -1,18 +1,4 @@
-<?php
-
-
-//require('../../../vendor/rb.php');
-
-//use vendor\rbn;
-//R::setup('mysql:host=localhost;dbname=mydb', 'root', '');
-//$names = R::getAll("SELECT id, first_name, last_name, email, birthday FROM user;");
-
-// $db = new \mysqli('localhost', 'root', '', 'mydb');
-//   $names = $db->query('SELECT id, first_name, last_name, email, birthday FROM user')->fetch_all(MYSQLI_ASSOC);
-//   $db->close();
-
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -34,9 +20,9 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-<a href="../../index.php"><h2>Home</h2></a>
-<a href="register.php"><h2>Register</h2></a>
-<a href="../events/events.php"><h2>Events</h2></a>
+<a href="/sportbuddy"><h2>Home</h2></a>
+<a href="register"><h2>Register</h2></a>
+<a href="events"><h2>Events</h2></a>
 
 
 <h2>Users</h2>

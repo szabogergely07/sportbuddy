@@ -1,12 +1,4 @@
-<?php
-require_once('../../config.php');
-
-
-$events = R::getAll("SELECT name, description, date, start, size, first_name FROM event 
-    JOIN user_has_event ON user_has_event.event_id = event.id
-    JOIN user ON user.id = user_has_event.user_id;");
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -29,9 +21,9 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<a href="../../index.php"><h2>Home</h2></a>
-<a href="../users/register.php"><h2>Register</h2></a>
-<a href="../users/users.php"><h2>Users</h2></a>
+<a href="/sportbuddy"><h2>Home</h2></a>
+<a href="register"><h2>Register</h2></a>
+<a href="users"><h2>Users</h2></a>
 <h2>Events</h2>
 
 

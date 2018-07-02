@@ -12,7 +12,7 @@ class userController {
   		$names = $db->query('SELECT id, first_name, last_name, email, birthday FROM user')->fetch_all(MYSQLI_ASSOC);
   		// $db->close();
 		
-		$view = new view('views/users/users');
+		$view = new view('users/users');
 		$view->assign('names', $names);
 	}
 
@@ -72,7 +72,7 @@ class userController {
 
 		$db = new \mysqli('localhost', 'root', '', 'mydb');
         	$sql = $db->query("SELECT * from user WHERE id = '$id'")->fetch_all(MYSQLI_ASSOC);
-        	$view = new view('views/users/show');
+        	$view = new view('users/show');
 			$view->assign('sql', $sql);
         //	$db->close();
 	}

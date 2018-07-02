@@ -10,7 +10,7 @@ private $render = FALSE;
 public function __construct($template)
 {
     try {
-        $file = 'app/' . strtolower($template) . '.php';
+        $file = 'app/views/' . strtolower($template) . '.php';
 
         if (file_exists($file)) {
             $this->render = $file;
