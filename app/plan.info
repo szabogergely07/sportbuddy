@@ -6,9 +6,8 @@
 *DONE Create Sportbuddy navbar-brand
 
 
-* Set controllers
 
-* Find frontend template
+* Build in layout
 
 * Create notice messages for login/register 
 
@@ -17,5 +16,3 @@
 * Create event CRUD pages
 
 * Validation for create event form
-
-* Frontend files to move: app/bootstrap,css,icons,images,js (then change links)

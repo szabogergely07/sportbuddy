@@ -35,12 +35,12 @@
         <link rel="stylesheet" href="/sportbuddy/templates/icons/toicons/css/styles.css">
 
         <!--   COUSTOM CSS link  -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/style.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/responsive.css">
         
         <style>
             body {
-                background-color: grey;
+                background-color: #cccccc;
             }
 
             #sign-up-form {
@@ -48,6 +48,22 @@
             }
             .fields {
                 display: block;
+            }
+
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
             }
         </style>
 
@@ -68,8 +84,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="/sportbuddy">
-                            <img src="/sportbuddy/app/images/sport-white.png" alt="" class="logo-1 img-responsive">
-                            <img src="/sportbuddy/app/images/sport-dark.png" alt="" class="logo-2 img-responsive">
+                            <img src="/sportbuddy/templates/images/sport-white.png" alt="" class="logo-1 img-responsive">
+                            <img src="/sportbuddy/templates/images/sport-dark.png" alt="" class="logo-2 img-responsive">
                         </a>
 
                     </div> <!-- End: .col-xs-3 -->
@@ -77,11 +93,11 @@
 
                         <nav role="navigation" class="okayNav pull-right" id="js-navbar-menu">
                             <ul id="navbar-nav" class="navbar-nav">
-                                <li><a class="btn-nav" href="users">Users</a></li>
-                                <li><a class="btn-nav" href="events">Events</a></li>
-                                <li><a class="btn-nav" href="#reviews">Login</a></li>
-                                <li><a class="btn-nav" href="register" data-toggle="" data-target="#sign-in-form">Register</a></li>
-                                <li><a class="btn-nav btn-border" href="#" data-toggle="" data-target="#sign-up-form">Logout</a></li>
+                                <li><button class="btn-nav" onclick="location.href='users';">Users</button></li>
+                                <li><button class="btn-nav" onclick="location.href='events';">Events</button></li>
+                                <li><button class="btn-nav" onclick="location.href='login';">Login</button></li>
+                                <li><button class="btn-nav" onclick="location.href='register';">Register</button></li>
+                                <li><button class="btn-nav btn-border" onclick="location.href='logout';">Logout</button></li>
                             </ul>
                         </nav>
 
@@ -92,6 +108,7 @@
         <!-- End: Navbar Area
         ==================================== -->
 
+<div class="section-separator">
 
 
 
@@ -105,9 +122,7 @@
 
 
 
-
-
-
+</div> <!-- END section separator -->
 
 
         <!-- ================================== -->

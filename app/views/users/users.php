@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-</head>
-<body>
-<a href="/sportbuddy"><h2>Home</h2></a>
-<a href="register"><h2>Register</h2></a>
-<a href="events"><h2>Events</h2></a>
-
+<?= HTML_START ?>
 
 <h2>Users</h2>
 
@@ -46,5 +21,4 @@ tr:nth-child(even) {
 <?php } ?>
 </table>
 
-</body>
-</html>
+<?= HTML_END ?>
