@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 use myclass\Val;
 use app\Router;
 
-
+// Save a layout in a constant
 ob_start();
 require 'app/views/layout/layout_start.php';
 define ('HTML_START', ob_get_contents());
