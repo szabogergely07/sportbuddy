@@ -10,6 +10,9 @@ class indexController {
 		$view = new view('index');
 	}
 
+	public function notFound() {
+		$view = new view('404');
+	}
 
 
 }

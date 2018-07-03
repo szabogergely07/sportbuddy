@@ -1,6 +1,20 @@
 <?php
 
 use app\Router;
+use Pecee\Http\Request;
+use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
+
+Router::get('sportbuddy/not-found', 'indexController@notFound');
+
+Router::error(function(Request $request, \Exception $exception) {
+
+    if($exception instanceof NotFoundHttpException && $exception->getCode() === 404) {
+        self::response()->redirect('not-found');
+    }
+    
+});
+
+
 
 // Home page
 Router::get('sportbuddy', 'indexController@home');

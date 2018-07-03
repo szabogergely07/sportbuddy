@@ -84,8 +84,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                         <a class="okayNav-header__logo navbar-brand" href="/sportbuddy">
-                            <img src="/sportbuddy/app/images/sport-white.png" alt="" class="logo-1 img-responsive">
-                            <img src="/sportbuddy/app/images/sport-dark.png" alt="" class="logo-2 img-responsive">
+                            <img src="/sportbuddy/templates/images/sport-white.png" alt="" class="logo-1 img-responsive">
+                            <img src="/sportbuddy/templates/images/sport-dark.png" alt="" class="logo-2 img-responsive">
                         </a>
 
                     </div> <!-- End: .col-xs-3 -->
@@ -94,10 +94,10 @@
                         <nav role="navigation" class="okayNav pull-right" id="js-navbar-menu">
                             <ul id="navbar-nav" class="navbar-nav">
                                 <li><button class="btn-nav" onclick="location.href='users';" href="users">Users</button></li>
-                                <li><a class="btn-nav" href="events">Events</a></li>
-                                <li><a class="btn-nav" href="#reviews">Login</a></li>
-                                <li><a class="btn-nav" href="register">Register</a></li>
-                                <li><a class="btn-nav btn-border" href="#">Logout</a></li>
+                                <li><button class="btn-nav" onclick="location.href='events';" href="users">Events</button></li>
+                                <li><button class="btn-nav" onclick="location.href='login';" href="users">Login</button></li>
+                                <li><button class="btn-nav" onclick="location.href='register';" href="users">Register</button></li>
+                                <li><button class="btn-nav btn-border" onclick="location.href='logout';" href="users">Logout</button></li>
                             </ul>
                         </nav>
 
