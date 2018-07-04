@@ -17,7 +17,7 @@ class userController {
 
 	public function register() {
 		
-		$view = new view('r1');
+		$view = new view('users/register');
 	}
 
 	public function store() {
@@ -48,9 +48,14 @@ class userController {
 
 		             $conn = new user;
 		             $data = $conn->store();
-		        
-		        $view = new view('r1');
-		        $view->assign('data', $data);
+		        if($data) {
+		        	$view = new view('users/register');
+		        	$view->assign('data', $data);
+		    	} else {
+		    		$success = "You have registered successfully!";
+		    		$view = new view('index');
+		    		$view->assign('success', $success);
+		        }
 
 		//     } elseif( !Val::valEmailValid($f_email) ) {
 		//         $error['email'] = "Email is not valid!";

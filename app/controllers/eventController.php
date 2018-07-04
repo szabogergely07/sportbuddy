@@ -12,7 +12,7 @@ class eventController {
     		JOIN user_has_event ON user_has_event.event_id = event.id
     		JOIN user ON user.id = user_has_event.user_id;")->fetch_all(MYSQLI_ASSOC);
 
-		$view = new view('events/events1');
+		$view = new view('events/events');
 		$view->assign('events', $events);
 	}
 

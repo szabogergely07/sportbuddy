@@ -306,8 +306,8 @@ h6 {
  */
 .section-separator {
   display: block;
-  padding-top: 110px;
-  padding-bottom: 110px;
+  padding-top: 140px;
+  padding-bottom: 80px;
 }
 .section-separator.sp-top {
   padding-bottom: 0px;
@@ -614,7 +614,7 @@ h6 {
   display: inline-table;
 }
 .single-form .form-control {
-  height: 58px;
+  height: 40px;
   font-size: 16px;
   line-height: 30px;
   font-weight: 300;
@@ -622,7 +622,7 @@ h6 {
   border-color: rgba(115, 115, 115, 0.2);
   box-shadow: 0 0 0 0 #fff;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 7px;
   padding: 0 10px ;
   background-color: #f2f4f3;
   color: #737373;

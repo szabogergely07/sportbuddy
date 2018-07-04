@@ -8,7 +8,7 @@ class indexController {
 
 	// Homepage
 	public function home() {
-		$view = new view('index');
+		$view = new view('home');
 	}
 
 	// 404 page

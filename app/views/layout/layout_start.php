@@ -40,11 +40,12 @@
         
         <style>
             body {
-                background-color: #cccccc;
+                background-color: #330000;
             }
 
-            #sign-up-form {
-                width: 40%;
+            #signup-form {
+                width: 100%;
+                margin: auto;
             }
             .fields {
                 display: block;
@@ -64,6 +65,11 @@
 
             tr:nth-child(even) {
                 background-color: #dddddd;
+            }
+
+            .alert {
+                padding: 1px;
+                padding-left: 5px;
             }
         </style>
 
@@ -122,22 +128,3 @@
 
 
 
-</div> <!-- END section separator -->
-
-
-        <!-- ================================== -->
-
-         <!-- SCRIPTS 
-        ========================================-->
-        <script src="/sportbuddy/templates/js/plagin-js/jquery-1.11.3.js"></script>
-        <script src="/sportbuddy/templates/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/sportbuddy/templates/js/plagin-js/plagin.js"></script>
-
-        <!-- Custom Script 
-        ==========================================-->
-        <script src="/sportbuddy/templates/js/custom-scripts.js"></script>
-
-
-    </body>
-
-</html>
