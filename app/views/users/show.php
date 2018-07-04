@@ -1,44 +1,9 @@
-<?php
-    //require_once('../../functions.php');
+<?= HTML_START ?>
 
-
-
-
-    // $id = null;
-    // if ( !empty($_GET['id'])) {
-    //     $id = $_REQUEST['id'];
-    // }
-    
-    // if ( null == $id ) {
-    //     header("Location: users.php");
-    // } else {
-    //     //$sql = R::getAll("SELECT * from user WHERE id = '$id'");
-    //     $db = new \mysqli('localhost', 'root', '', 'mydb');
-    //     $sql = $db->query("SELECT * from user WHERE id = '$id'")->fetch_all(MYSQLI_ASSOC);
-    //     $db->close();
-    // }
-
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Read</title>
-    
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <style>
-     
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Bootstrap core JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-</head>
-<body>
     <div class="container">
      
 <div class="span10 offset1">
-    <?php foreach ($sql as $unit) { ?>
+    <?php foreach ($user as $unit) { ?>
     <div class="row">
         <h2><?= $unit['first_name'] ?></h2>
     </div>
@@ -78,5 +43,5 @@
 </div>
  
     </div> <!-- /container -->
-  </body>
-  </html>
+ 
+<?= HTML_END ?>

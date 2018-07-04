@@ -8,7 +8,7 @@
     <th>LastName</th>
     <th>Email</th>
     <th>Birthday</th>
-    <th>Event</th>
+    <th></th>
   </tr>
 <?php foreach ($names as $unit) { ?>
   <tr>
@@ -16,7 +16,11 @@
     <td><?= $unit['last_name'] ?></td>
     <td><?= $unit['email'] ?></td>
     <td><?= $unit['birthday'] ?></td>
-    <td><a class="btn" href="user/<?= $unit['id'] ?>">Read</a></td>
+    <td>
+      <a class="btn" href="user/<?= $unit['id'] ?>">Show</a>
+      <a class="btn" href="user/update-index/<?= $unit['id'] ?>">Update</a>
+      <a class="btn" href="user/delete/<?= $unit['id'] ?>">Delete</a>
+    </td>
   </tr>
 <?php } ?>
 </table>

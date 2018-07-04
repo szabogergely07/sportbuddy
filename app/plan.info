@@ -6,10 +6,8 @@
 *DONE Create Sportbuddy navbar-brand
 
 
-
-* Build in layout
-
-* Create notice messages for login/register 
+* Password must be the same when update
+* Setup Password confirm
 
 * Login / Authentication / Sessions
 

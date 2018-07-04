@@ -99,11 +99,11 @@
 
                         <nav role="navigation" class="okayNav pull-right" id="js-navbar-menu">
                             <ul id="navbar-nav" class="navbar-nav">
-                                <li><button class="btn-nav" onclick="location.href='users';">Users</button></li>
-                                <li><button class="btn-nav" onclick="location.href='events';">Events</button></li>
-                                <li><button class="btn-nav" onclick="location.href='login';">Login</button></li>
-                                <li><button class="btn-nav" onclick="location.href='register';">Register</button></li>
-                                <li><button class="btn-nav btn-border" onclick="location.href='logout';">Logout</button></li>
+                                <li><button class="btn-nav" onclick="location.href='/sportbuddy/users';">Users</button></li>
+                                <li><button class="btn-nav" onclick="location.href='/sportbuddy/events';">Events</button></li>
+                                <li><button class="btn-nav" onclick="location.href='/sportbuddy/login';">Login</button></li>
+                                <li><button class="btn-nav" onclick="location.href='/sportbuddy/register';">Register</button></li>
+                                <li><button class="btn-nav btn-border" onclick="location.href='/sportbuddy/logout';">Logout</button></li>
                             </ul>
                         </nav>
 
