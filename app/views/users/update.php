@@ -6,6 +6,7 @@
 <div id="signup-form">
     <form method="post" class="single-form" id="" action="/sportbuddy/user/update/<?= $unit['id'] ?>">
     <input type="hidden" name="submit" value="submit">
+    <input type="hidden" name="_method" value="PATCH">
 
     <div class="col-xs-12 text-center">
         <h2 class="section-heading p-b-30">Update <?= $unit['first_name'].' '.$unit['last_name'].'\'s' ?> details</h2>

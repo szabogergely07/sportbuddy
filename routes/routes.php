@@ -39,7 +39,7 @@ Router::group([], function () {
 	Router::get('sportbuddy/user/update-index/{id}', 'userController@updateIndex');
 
 	// Updates user
-	Router::match(['post', 'patch'], 'sportbuddy/user/update/{id}', 'userController@update');
+	Router::match(['patch'], 'sportbuddy/user/update/{id}', 'userController@update');
 
 	// Deletes user
 	Router::delete('sportbuddy/user/delete/{id}', 'userController@delete');
