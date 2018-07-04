@@ -1,0 +1,3 @@
+$ cat .gitattributes
+app/templates/* linguist-vendored
+app/views/* linguist-vendored
