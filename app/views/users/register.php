@@ -32,8 +32,8 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Email -->
             <input name="email" class="contact-email form-control" type="email" placeholder="Email*" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required="">
-            <div class="<?= isset($data) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
-                <?= isset($data) ? '<strong> '.$data['email'].'</strong>' : '' ?>
+            <div class="<?= isset($data['email']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+                <?= isset($data['email']) ? '<strong> '.$data['email'].'</strong>' : '' ?>
             </div>
         </div>
     </div>
@@ -41,9 +41,9 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Subject -->
-            <input name="password" class="contact-password form-control " type="pass" placeholder="Password">
-            <div class="<?= isset($data) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
-                <?= isset($data) ? '<strong> '.$data['password'].'</strong>' : '' ?>
+            <input name="password" class="contact-password form-control " type="password" placeholder="Password">
+            <div class="<?= isset($data['password']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+                <?= isset($data['password']) ? '<strong> '.$data['password'].'</strong>' : '' ?>
             </div>
         </div>
     </div>
@@ -51,7 +51,10 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Subject -->
-            <input name="password2" class="contact-cmp-password form-control" type="pass" placeholder="Confirm Password">
+            <input name="password2" class="contact-cmp-password form-control" type="password" placeholder="Confirm Password">
+            <div class="<?= isset($data['password2']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+                <?= isset($data['password2']) ? '<strong> '.$data['password2'].'</strong>' : '' ?>
+            </div>
         </div>
     </div>
 
@@ -59,8 +62,8 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Email -->
             <input name="birthday" type="date" class="contact-first-name form-control " placeholder="Birthday*" value="<?= isset($_POST['birthday']) ? $_POST['birthday'] : '' ?>" required="">
-            <div class="<?= isset($data) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
-                <?= isset($data) ? '<strong> '.$data['birthday'].'</strong>' : '' ?>
+            <div class="<?= isset($data['birthday']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+                <?= isset($data['birthday']) ? '<strong> '.$data['birthday'].'</strong>' : '' ?>
             </div>
         </div>
     </div>

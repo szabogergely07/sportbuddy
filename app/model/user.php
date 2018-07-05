@@ -34,7 +34,11 @@ class user {
 		$last_name = $f_last_name;
 		$email = $f_email;
 		$birthday = $f_birthday;
-		    
+		$password = $f_password;
+		
+		
+		$pass = $this->db->query("SELECT password FROM user WHERE id = '$id'")->fetch_row();
+
 	    if( Val::valName($f_first_name) && Val::valName($f_last_name) ) {
 
 	    	if(!Val::valEmailValid($f_email)) {
@@ -45,6 +49,10 @@ class user {
 	    	}
 	    	if(!Val::valPassword($f_password)) {
 	    		$this->error['password'] = "Password must be at least 6 characters!";
+	    	} elseif (($id == 0) && ($f_password != $f_password2)) {
+	    		$this->error['password2'] = "Passwords do not match, please retype!";
+	    	} elseif ($id != 0 && !password_verify($f_password, $pass[0])) {
+	    		$this->error['password'] = "Password is not correct, please try again!";
 	    	} else {
 	    		$f_password = password_hash($f_password, PASSWORD_BCRYPT);	
 	    	}

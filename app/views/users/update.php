@@ -1,6 +1,5 @@
 <?= HTML_START ?>
-            
-                
+
 <?php foreach ($user as $unit) { ?>                    
     <!-- Modal Close Button -->
 <div id="signup-form">
@@ -41,17 +40,10 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Subject -->
-            <input name="password" class="contact-password form-control " type="pass" placeholder="Password">
+            <input name="password" class="contact-password form-control " type="password" placeholder="Password">
             <div class="<?= isset($data['password']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['password']) ? '<strong> '.$data['password'].'</strong>' : '' ?>
             </div>
-        </div>
-    </div>
-
-    <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
-            <!-- Subject -->
-            <input name="password2" class="contact-cmp-password form-control" type="pass" placeholder="Confirm Password">
         </div>
     </div>
 
