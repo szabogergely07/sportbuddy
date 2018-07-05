@@ -16,21 +16,29 @@ class user {
 		$this->db = new \mysqli('localhost', 'root', '', 'mydb');
 	}
 
+	// public function __construct() {
+	// 	parent::__construct();
+	// }
+
 	public function all() {
+
+		
+		// return $this->basisAll('user');
+
+
 		$result = $this->db->query('SELECT * FROM user')->fetch_all(MYSQLI_ASSOC);
 		return $result;
 	}
 
+	// Takes 1 user from database in assoc array
 	public function show($id) {
-		$result = $this->db->query("SELECT * FROM user WHERE id = '$id'")->fetch_all(MYSQLI_ASSOC);
+		$result = $this->db->query("SELECT * FROM user WHERE id = '$id'")->fetch_object();
 		return $result;
 	}
 
-	public function showRow($id) {
-		$result = $this->db->query("SELECT * FROM user WHERE id = '$id'")->fetch_row();
-		return $result;
-	}
-
+	// Stores or updates user details
+	// $id=0 => register user
+	// $id!=0 => update user
 	public function store($id = null) {
 		
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
@@ -45,8 +53,6 @@ class user {
 		$pass = $this->db->query("SELECT password FROM user WHERE id = '$id'")->fetch_row();
 
 		// Validations for register and update user details.
-		// $id=0 => register user
-		// $id!=0 => update user
 	    if( Val::valName($f_first_name) && Val::valName($f_last_name) ) {
 
 	    	if(!Val::valEmailValid($f_email)) {

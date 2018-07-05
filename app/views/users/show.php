@@ -3,9 +3,9 @@
     <div class="container">
      
 <div class="span10 offset1">
-    <?php foreach ($user as $unit) { ?>
+    
     <div class="row">
-        <h2><?= $unit['first_name'] ?></h2>
+        <h2><?= $user->first_name ?></h2>
     </div>
      
     <div class="form-horizontal" >
@@ -13,7 +13,7 @@
         <label class="control-label">Name</label>
         <div class="controls">
             <label class="checkbox">
-                <?= $unit['first_name'] . " " . $unit['last_name'] ?>
+                <?= $user->first_name. " " .$user->last_name ?>
             </label>
         </div>
       </div>
@@ -21,7 +21,7 @@
         <label class="control-label">Email Address</label>
         <div class="controls">
             <label class="checkbox">
-                <?= $unit['email'] ?>
+                <?= $user->email ?>
             </label>
         </div>
       </div>
@@ -29,11 +29,11 @@
         <label class="control-label">Birthday</label>
         <div class="controls">
             <label class="checkbox">
-                <?= $unit['birthday'] ?>
+                <?= $user->birthday ?>
             </label>
         </div>
       </div>
-      <?php } ?>
+    
         <div class="form-actions">
           <a class="btn" href="/sportbuddy/users">Back</a>
        </div>
