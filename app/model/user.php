@@ -26,6 +26,11 @@ class user {
 		return $result;
 	}
 
+	public function showRow($id) {
+		$result = $this->db->query("SELECT * FROM user WHERE id = '$id'")->fetch_row();
+		return $result;
+	}
+
 	public function store($id = null) {
 		
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
@@ -86,7 +91,14 @@ class user {
 		
 	} 
 
-
+	public function delete($id) {
+		$result = $this->db->query("DELETE FROM user WHERE id = '$id'");
+		if (!$result) {
+			return mysqli_error($this->db);	
+		} else {
+			return false;
+		}
+	}
 
 
 }

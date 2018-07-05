@@ -1,5 +1,13 @@
 <?= HTML_START ?>
 
+<?= isset($success) ?
+    '<div class="alert alert-'.$notice.' fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+         '. $success . '
+    </div>' : ''
+?>
+
+
 <h2>Users</h2>
 
 <table>
@@ -20,7 +28,12 @@
     <td>
       <a class="btn" href="user/<?= $unit['id'] ?>">Show</a>
       <a class="btn" href="user/update-index/<?= $unit['id'] ?>">Update</a>
-      <a class="btn" href="user/delete/<?= $unit['id'] ?>">Delete</a>
+      
+      <form method="delete" action="/sportbuddy/user/delete/<?= $unit['id'] ?>">
+      <input type="hidden" name="submit" value="submit">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn" href="">Delete</button>
+      </form>
     </td>
   </tr>
 <?php } ?>
