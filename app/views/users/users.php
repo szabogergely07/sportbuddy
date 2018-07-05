@@ -11,6 +11,7 @@
     <th></th>
   </tr>
 <?php foreach ($names as $unit) { ?>
+
   <tr>
     <td><?= $unit['first_name'] ?></td>
     <td><?= $unit['last_name'] ?></td>
