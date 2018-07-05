@@ -49,6 +49,16 @@
 
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <!-- Subject -->
+            <input name="password_new" class="contact-cmp-password form-control" type="password" placeholder="New Password">
+            <div class="<?= isset($data['password_new']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+                <?= isset($data['password_new']) ? '<strong> '.$data['password_new'].'</strong>' : '' ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row has-error has-feedback">
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Email -->
             <input name="birthday" type="date" class="contact-first-name form-control " placeholder="Birthday*" value="<?= isset($_POST['birthday']) ? $_POST['birthday'] : $unit['birthday'] ?>" required="">
             <div class="<?= isset($data['birthday']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
