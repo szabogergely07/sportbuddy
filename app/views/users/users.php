@@ -26,8 +26,8 @@
     <td><?= $unit['email'] ?></td>
     <td><?= $unit['birthday'] ?></td>
     <td>
-      <a class="btn" href="user/<?= $unit['id'] ?>">Show</a>
-      <a class="btn" href="user/update-index/<?= $unit['id'] ?>">Update</a>
+      <a class="btn" href="/sportbuddy/user/<?= $unit['id'] ?>">Show</a>
+      <a class="btn" href="/sportbuddy/user/update-index/<?= $unit['id'] ?>">Update</a>
       
       <form method="delete" action="/sportbuddy/user/delete/<?= $unit['id'] ?>">
       <input type="hidden" name="submit" value="submit">

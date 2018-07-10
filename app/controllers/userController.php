@@ -3,20 +3,20 @@
 namespace app\controllers;
 use app\view\view;
 use app\model\user;
-use app\model\event;
+use app\model\basis;
 
 class userController {
 	private $user;
-	private $event;
+	private $basis;
 
 	public function __construct() {
 		$this->user = new user;
-		$this->event = new event;
+		$this->basis = new basis;
 	}
 
 	public function index() {
 		//Model
-		$names = $this->user->all();
+		$names = $this->basis->all('user');
 		
 		//View
 		$view = new view('users/users');
@@ -47,7 +47,7 @@ class userController {
 
 	public function show($id) {
 		//Model
-		$user = $this->user->show($id);
+		$user = $this->basis->show($id,'user');
 
 		//View
     	$view = new view('users/show');
@@ -56,7 +56,7 @@ class userController {
 	
 	public function updateIndex($id) {
 		//Model
-		$user = $this->user->show($id);
+		$user = $this->basis->show($id,'user');
 
 		// View
 		$view = new view('users/update');
@@ -66,11 +66,11 @@ class userController {
 	public function update($id) {
 		//Model
      	$data = $this->user->store($id);
-		$names = $this->user->all();
+		$names = $this->basis->all('user');
 
 		//View if there is error
 		if($data) {
-			$user = $this->user->show($id);
+			$user = $this->basis->show($id,'user');
 
 			$view = new view('users/update');
 			$view->assign('user', $user);
@@ -89,9 +89,9 @@ class userController {
 
 	public function delete($id) {
 		//Model
-     	$user = $this->user->show($id);
-     	$data = $this->user->delete($id);
-     	$names = $this->user->all();
+     	$user = $this->basis->show($id,'user');
+     	$data = $this->basis->delete($id,'user');
+     	$names = $this->basis->all('user');
 
 		// View 
 		if (!$data) {

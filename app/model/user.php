@@ -3,38 +3,10 @@
 namespace app\model;
 use myclass\Val;
 
-class user {
+class user extends basis {
 
 	private $error = [];
-	private $db;
-	
-	public function __construct() {
-		return $this->connect();
-	}
 
-	public function connect() {
-		$this->db = new \mysqli('localhost', 'root', '', 'mydb');
-	}
-
-	// public function __construct() {
-	// 	parent::__construct();
-	// }
-
-	public function all() {
-
-		
-		// return $this->basisAll('user');
-
-
-		$result = $this->db->query('SELECT * FROM user')->fetch_all(MYSQLI_ASSOC);
-		return $result;
-	}
-
-	// Takes 1 user from database in assoc array
-	public function show($id) {
-		$result = $this->db->query("SELECT * FROM user WHERE id = '$id'")->fetch_object();
-		return $result;
-	}
 
 	// Stores or updates user details
 	// $id=0 => register user
@@ -97,14 +69,6 @@ class user {
 		
 	} 
 
-	public function delete($id) {
-		$result = $this->db->query("DELETE FROM user WHERE id = '$id'");
-		if (!$result) {
-			return mysqli_error($this->db);	
-		} else {
-			return false;
-		}
-	}
 
 
 }

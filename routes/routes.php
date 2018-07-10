@@ -51,7 +51,11 @@ Router::group([], function () {
 	
 	Router::get('sportbuddy/events', 'eventController@index');
 
+	Router::get('sportbuddy/events/{id}', 'eventController@show');
+
+	Router::get('sportbuddy/create-event', 'eventController@create');
 	
+	Router::post('sportbuddy/events/store', 'eventController@store');
 
 
 });

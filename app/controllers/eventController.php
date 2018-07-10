@@ -4,30 +4,61 @@ namespace app\controllers;
 use app\view\view;
 use app\model\user;
 use app\model\event;
+use app\model\basis;
 
 
 class eventController {
-	private $user;
+	private $basis;
 	private $event;
 
 	public function __construct() {
-		$this->user = new user;
+		$this->basis = new basis;
 		$this->event = new event;
 	}
 
 	public function index() {
-		// $db = new \mysqli('localhost', 'root', '', 'mydb');
-		// $events = $db->query("SELECT name, description, date, start, size, first_name FROM event 
-  //   		JOIN user_has_event ON user_has_event.event_id = event.id
-  //   		JOIN user ON user.id = user_has_event.user_id;")->fetch_all(MYSQLI_ASSOC);
 
 		//Model
-		$events = $this->event->allWithUsers();
+		$names = $this->event->allWithUsers();
 
 		//View
 		$view = new view('events/events');
-		$view->assign('events', $events);
+		$view->assign('events', $names);
 	}
+
+	public function show($id) {
+		//Model
+		$event = $this->basis->show($id,'event');
+
+		//View
+    	$view = new view('events/show');
+		$view->assign('event', $event);
+	}
+
+	public function create() {
+		$view = new view('events/create');
+
+	}
+
+	public function store() {
+		$data = $this->event->store();
+		$events = $this->event->allWithUsers();
+
+		//View
+		if($data) {
+			$view = new view('events/create');
+			$view->assign('data', $data);
+		} else {
+			$notice = "success";
+			$success = "New event created successfully!";
+			$view = new view('events/events');
+			$view->assign('success', $success);
+			$view->assign('notice', $notice);
+			$view->assign('events', $events);
+	    }
+	}
+
+
 
 
 }
