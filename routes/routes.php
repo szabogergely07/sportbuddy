@@ -26,6 +26,15 @@ Router::group([], function () {
 	// Register page
 	Router::get('sportbuddy/register', 'userController@register');
 
+	// Login page
+	Router::get('sportbuddy/login', 'sessionController@login');
+
+	// User login, session start
+	Router::post('sportbuddy/loginuser', 'sessionController@loginuser');
+
+	// User logout
+	Router::get('sportbuddy/logout', 'sessionController@logout');
+
 	// Every users
 	Router::get('sportbuddy/users', 'userController@index');
 

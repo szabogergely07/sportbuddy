@@ -1,8 +1,8 @@
 <?= HTML_START ?>
 
-	<?= isset($success) ?
+	<?php isset($success) || isset($logout) || isset($login) ?
 		'<div class="alert alert-success" role="alert">
-	  		 '. $success . '
+	  		 <?= $success ? $success : $login ?>
 		</div>' : ''
 	?>
 	

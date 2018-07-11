@@ -69,6 +69,25 @@ class user extends basis {
 		
 	} 
 
+	public function login() {
+		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
+
+		$email = $f_email;
+		$password = $f_password;
+
+		$exist = $this->db->query("SELECT email FROM user WHERE email = '$email'")->fetch_row();
+
+		$pass = $this->db->query("SELECT password FROM user WHERE email = '$email'")->fetch_row();
+
+		$error = "Email or password is not correct, try again!";
+
+		if (!$exist || !password_verify($password, $pass[0])) {
+			return $error;
+		} else {
+			return false;
+		}
+			
+	}
 
 
 }

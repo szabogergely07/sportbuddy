@@ -4,14 +4,21 @@ namespace app\controllers;
 use app\view\view;
 use app\model\user;
 use app\model\basis;
+use app\lib\session;
 
 class userController {
 	private $user;
 	private $basis;
 
+
 	public function __construct() {
 		$this->user = new user;
 		$this->basis = new basis;
+		$objSess = session::inst();
+        if( !$objSess->checkLogin() ){
+            header('LOCATION: /sportbuddy');
+            exit();
+        }
 	}
 
 	public function index() {
