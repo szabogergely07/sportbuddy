@@ -107,14 +107,6 @@
         </div>
     </div>
 
-    <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
-            
-            <input name="user" class="form-control" type="" placeholder="user_id" value="" required="">
-            
-        </div>
-    </div>
-
     <!-- Subject Button -->
     <div class="form-group row">
         <div class="btn-form text-center col-xs-12 col-md-4 col-md-offset-4">

@@ -4,7 +4,7 @@ namespace app\controllers;
 use app\view\view;
 
 
-class indexController {
+class indexController extends basisController {
 
 	// Homepage
 	public function home() {

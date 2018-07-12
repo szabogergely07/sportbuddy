@@ -13,8 +13,8 @@
         <!-- Custom Script 
         ==========================================-->
         <script src="/sportbuddy/templates/js/custom-scripts.js"></script>
-
-
+        
+        
     </body>
 
 </html>

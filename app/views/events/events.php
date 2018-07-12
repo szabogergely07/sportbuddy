@@ -33,7 +33,7 @@
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
             <td><?= $unit['first_name'] ?></td>
-            <td><a class="btn" href="/sportbuddy/events/<?= $unit['id'] ?>">Show</a></td>
+            <td><a class="btn" href="/sportbuddy/events/<?= $unit['event_id'] ?>">Show</a></td>
           </tr>
         <?php } ?>
         </table>

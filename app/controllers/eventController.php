@@ -7,11 +7,12 @@ use app\model\event;
 use app\model\basis;
 
 
-class eventController {
+class eventController extends basisController {
 	private $basis;
 	private $event;
 
 	public function __construct() {
+		parent::__construct();
 		$this->basis = new basis;
 		$this->event = new event;
 	}

@@ -6,12 +6,13 @@ use app\model\user;
 use app\model\basis;
 use app\lib\session;
 
-class userController {
+class userController extends basisController {
 	private $user;
 	private $basis;
 
 
 	public function __construct() {
+		parent::__construct();
 		$this->user = new user;
 		$this->basis = new basis;
 		$objSess = session::inst();
@@ -44,11 +45,11 @@ class userController {
 			$view = new view('users/register');
 			$view->assign('data', $data);
 		} else {
-			$notice = "success";
-			$success = "You have registered successfully!";
+			$result = "success";
+			$register = "You have registered successfully!";
 			$view = new view('home');
-			$view->assign('success', $success);
-			$view->assign('notice', $notice);
+			$view->assign('notice', $register);
+			$view->assign('success', $result);
 	    }
 	}
 

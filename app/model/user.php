@@ -79,12 +79,12 @@ class user extends basis {
 
 		$pass = $this->db->query("SELECT password FROM user WHERE email = '$email'")->fetch_row();
 
-		$error = "Email or password is not correct, try again!";
+		$result = $this->db->query("SELECT id FROM user WHERE email = '$email'")->fetch_row();
 
-		if (!$exist || !password_verify($password, $pass[0])) {
-			return $error;
-		} else {
+		if (is_null($exist) || !password_verify($password, $pass[0])) {
 			return false;
+		} else {
+			return $result;
 		}
 			
 	}

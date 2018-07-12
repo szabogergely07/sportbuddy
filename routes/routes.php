@@ -18,13 +18,13 @@ Router::error(function(Request $request, \Exception $exception) {
 
 
 // Home page
-Router::get('sportbuddy', 'indexController@home');
+Router::get('sportbuddy', 'indexController@home')->name('profile');
 
 // User pages
 Router::group([], function () {
 	
 	// Register page
-	Router::get('sportbuddy/register', 'userController@register');
+	Router::get('sportbuddy/register', 'sessionController@register');
 
 	// Login page
 	Router::get('sportbuddy/login', 'sessionController@login');
@@ -42,7 +42,7 @@ Router::group([], function () {
 	Router::get('sportbuddy/user/{id}', 'userController@show');
 
 	// Creates user
-	Router::post('sportbuddy/createuser', 'userController@store');
+	Router::post('sportbuddy/createuser', 'sessionController@store');
 
 	// Update page
 	Router::get('sportbuddy/user/update-index/{id}', 'userController@updateIndex');

@@ -23,9 +23,6 @@ class event extends basis {
 		$category = $f_category;
 		$level = $f_level;
 		$location = $f_location;
-		
-		// User id is manually created before session is ready
-		$user = $f_user;
 	
 
 		$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level_id`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level');");
@@ -33,8 +30,10 @@ class event extends basis {
 		// Last inserted id
 		$event_id = $this->db->insert_id;
 
+		$user = intval(implode($_SESSION['user_id']));
+
 		// Query with manual user_id, has to be changed when session is ready
-		$this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user','$event_id');");
+		$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user','$event_id');");
 		
 
 	}
