@@ -1,4 +1,4 @@
-<?= HTML_START ?>
+<?= $HTML_START ?>
 
 	<?= isset($notice) ?
 		'<div class="alert alert-success" role="alert">'
@@ -12,4 +12,4 @@
 
 
 
-<?= HTML_END ?>
+<?= $HTML_END ?>

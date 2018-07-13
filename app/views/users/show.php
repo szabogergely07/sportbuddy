@@ -1,4 +1,4 @@
-<?= HTML_START ?>
+<?= $HTML_START ?>
 
     <div class="container">
      
@@ -44,4 +44,4 @@
  
     </div> <!-- /container -->
  
-<?= HTML_END ?>
+<?= $HTML_END ?>

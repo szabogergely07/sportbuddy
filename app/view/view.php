@@ -14,6 +14,7 @@ public function __construct($template)
 
         if (file_exists($file)) {
             $this->render = $file;
+
         } else {
             throw new customException('Template ' . $template . ' not found!');
         }
@@ -21,6 +22,7 @@ public function __construct($template)
     catch (customException $e) {
         echo $e->errorMessage();
     }
+
 }
 
 public function assign($variable, $value)
@@ -31,6 +33,17 @@ public function assign($variable, $value)
 public function __destruct()
 {
     extract($this->data);
+    
+    ob_start();
+    require 'app/views/layout/layout_start.php';
+    $HTML_START = ob_get_contents();
+    ob_end_clean();
+    
+    ob_start();
+    require 'app/views/layout/layout_end.php';
+    $HTML_END = ob_get_contents();
+    ob_end_clean();
+
     include($this->render);
 
 }

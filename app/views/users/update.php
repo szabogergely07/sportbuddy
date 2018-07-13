@@ -1,4 +1,4 @@
-<?= HTML_START ?>
+<?= $HTML_START ?>
                    
     <!-- Modal Close Button -->
 <div id="signup-form">
@@ -75,4 +75,4 @@
     </form>
 </div>
                
-<?= HTML_END ?>
+<?= $HTML_END ?>

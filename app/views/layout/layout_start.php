@@ -103,8 +103,7 @@
                                 <li><button class="btn-nav" onclick="location.href='/sportbuddy/events';">Events</button></li>
 
                                 <?php
-                                $objSess = app\lib\session::inst();
-                                if( !$objSess->checkLogin() ){
+                                if( !isset($_SESSION['user_id']) ){
                                     echo
                                 "<li><button class='btn-nav btn-border' onclick='location.href=\"/sportbuddy/login\";'>Login</button>
                                 </li>";
