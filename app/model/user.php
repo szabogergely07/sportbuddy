@@ -24,18 +24,20 @@ class user extends basis {
 		// Takes the user's password from database to compare it when updates details 	
 		$pass = $this->db->query("SELECT password FROM user WHERE id = '$id'")->fetch_row();
 
-		// Validations for register and update user details.
-	    if( Val::valName($f_first_name) && Val::valName($f_last_name) ) {
+		$result = $this->db->query("SELECT email from user WHERE email = '$email'")->fetch_all();
 
-	    	if(!Val::valEmailValid($f_email)) {
+		// Validations for register and update user details.
+	    if( Val::name($f_first_name) && Val::name($f_last_name) ) {
+
+	    	if(!Val::emailValid($f_email)) {
 	    		$this->error['email'] = "Email is not valid!";
 	    	}
-	    	if(($id == null) && !Val::valEmailExist($f_email)) {
+	    	if(($id == null) && !Val::emailExist($result)) {
 	    		$this->error['email'] = "Email exists already!";
 	    	}
-	    	if(!Val::valPassword($f_password)) {
+	    	if(!Val::password($f_password)) {
 	    		$this->error['password'] = "Password must be at least 6 characters!";
-	    	} elseif (($id != 0) && !empty($f_password_new) && !Val::valPassword($f_password_new)) {
+	    	} elseif (($id != 0) && !empty($f_password_new) && !Val::password($f_password_new)) {
 	    		$this->error['password_new'] = "Password must be at least 6 characters!";
 	    	} elseif (($id == 0) && ($f_password != $f_password2)) {
 	    		$this->error['password2'] = "Passwords do not match, please retype!";
@@ -47,7 +49,7 @@ class user extends basis {
 	    			$f_password_new = password_hash($f_password_new, PASSWORD_BCRYPT);
 	    		}
 	    	}
-	    	if(!Val::valDate($f_birthday)) {
+	    	if(!Val::date($f_birthday)) {
 	    		$this->error['birthday'] = "Date is not valid!";
 	    	}
 	    }
@@ -81,7 +83,7 @@ class user extends basis {
 
 		$result = $this->db->query("SELECT id FROM user WHERE email = '$email'")->fetch_row();
 
-		if (is_null($exist) || !password_verify($password, $pass[0])) {
+		if (empty($exist) || !password_verify($password, $pass[0])) {
 			return false;
 		} else {
 			return $result;

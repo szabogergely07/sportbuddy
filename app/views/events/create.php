@@ -1,10 +1,8 @@
-<?= $HTML_START ?>
-            
-                
+<?= $HTML_START ?>           
                     
     <!-- Modal Close Button -->
 <div id="signup-form">
-    <form method="post" class="single-form" id="" action="/sportbuddy/events/store">
+    <form method="post" class="single-form" id="" action="/sportbuddy/store-event">
     <input type="hidden" name="submit" value="submit">
 
     <div class="col-xs-12 text-center">
@@ -16,22 +14,25 @@
 
         <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
             <!-- First Name -->
-            <input name="name" class="form-control" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" required="" id="inputWarning1">
+            <input name="name" class="form-control" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="inputWarning1">
+            <div class="<?= isset($data['name']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+                <?= isset($data['name']) ? '<strong> '.$data['name'].'</strong>' : '' ?>
+            </div>
         </div>
     </div>
     
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
             <!-- Last Name -->
-            <textarea name="description" class="form-control " rows="5" placeholder="Description" value="<?= isset($_POST['description']) ? $_POST['description'] : '' ?>" required=""></textarea>
-            
+            <textarea name="description" class="form-control " rows="5" placeholder="Description"><?= isset($_POST['description']) ? $_POST['description'] : '' ?>
+            </textarea>
         </div>
     </div>
 
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
            
-            <input name="date" class="form-control" type="" placeholder="Date" value="<?= isset($_POST['date']) ? $_POST['date'] : '' ?>" required="">
+            <input name="date" class="form-control" type="" placeholder="Date" value="<?= isset($_POST['date']) ? $_POST['date'] : '' ?>">
             <div class="<?= isset($data['date']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['date']) ? '<strong> '.$data['date'].'</strong>' : '' ?>
             </div>
@@ -41,7 +42,7 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Email -->
-            <input name="start" class="form-control" type="" placeholder="Start" value="<?= isset($_POST['start']) ? $_POST['start'] : '' ?>" required="">
+            <input name="start" class="form-control" type="time" placeholder="Start time: hh:mm" value="<?= isset($_POST['start']) ? $_POST['start'] : '' ?>">
             <div class="<?= isset($data['start']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['start']) ? '<strong> '.$data['start'].'</strong>' : '' ?>
             </div>
@@ -51,7 +52,7 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             
-            <input name="end" class="form-control" type="" placeholder="End" value="<?= isset($_POST['end']) ? $_POST['end'] : '' ?>" required="">
+            <input name="end" class="form-control" type="" placeholder="End time: hh:mm" value="<?= isset($_POST['end']) ? $_POST['end'] : '' ?>">
             <div class="<?= isset($data['end']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['end']) ? '<strong> '.$data['end'].'</strong>' : '' ?>
             </div>
@@ -61,7 +62,7 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             
-            <input name="size" type="number" min="2" max="40" class="form-control " placeholder="Size" value="<?= isset($_POST['size']) ? $_POST['size'] : '' ?>" required="">
+            <input name="size" type="number" min="2" max="40" class="form-control " placeholder="Size" value="<?= isset($_POST['size']) ? $_POST['size'] : '' ?>">
             <div class="<?= isset($data['size']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['size']) ? '<strong> '.$data['size'].'</strong>' : '' ?>
             </div>

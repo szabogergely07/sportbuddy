@@ -32,17 +32,34 @@ class eventController extends basisController {
 		$event = $this->basis->show($id,'event');
 
 		//View
-    	$view = new view('events/show');
-		$view->assign('event', $event);
+		if($event) {
+	    	$view = new view('events/show');
+			$view->assign('event', $event);
+		} else {
+			$view = new view('404');
+		}
 	}
 
 	public function create() {
+
+		if( !isset($_SESSION['user_id']) ){
+            header('LOCATION: /sportbuddy');
+        }
+
 		$view = new view('events/create');
 
 	}
 
 	public function store() {
-		$data = $this->event->store();
+
+		if( !isset($_SESSION['user_id']) ){
+            $view = new view('404');
+        }
+
+		// The logged in user's id, saved at login
+		$user_id = intval(implode($_SESSION['user_id']));
+		//Model
+		$data = $this->event->store($user_id);
 		$events = $this->event->allWithUsers();
 
 		//View

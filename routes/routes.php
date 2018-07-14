@@ -11,7 +11,7 @@ Router::get('sportbuddy/not-found', 'indexController@notFound');
 Router::error(function(Request $request, \Exception $exception) {
 
     if($exception instanceof NotFoundHttpException && $exception->getCode() === 404) {
-        self::response()->redirect('not-found');
+        self::response()->redirect('/sportbuddy/not-found');
     }
     
 });
@@ -64,7 +64,7 @@ Router::group([], function () {
 
 	Router::get('sportbuddy/create-event', 'eventController@create');
 	
-	Router::post('sportbuddy/events/store', 'eventController@store');
+	Router::post('sportbuddy/store-event', 'eventController@store');
 
 
 });

@@ -31,27 +31,6 @@ class userController extends basisController {
 		$view->assign('names', $names);
 	}
 
-	public function register() {
-		
-		$view = new view('users/register');
-	}
-
-	public function store() {
-		//Model
-     	$data = $this->user->store();
-		
-		//View
-		if($data) {
-			$view = new view('users/register');
-			$view->assign('data', $data);
-		} else {
-			$result = "success";
-			$register = "You have registered successfully!";
-			$view = new view('home');
-			$view->assign('notice', $register);
-			$view->assign('success', $result);
-	    }
-	}
 
 	public function show($id) {
 		//Model

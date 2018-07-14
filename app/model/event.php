@@ -1,5 +1,6 @@
 <?php
 namespace app\model;
+use myclass\Val;
 
 
 class event extends basis {
@@ -10,7 +11,8 @@ class event extends basis {
      		JOIN user ON user.id = user_has_event.user_id;")->fetch_all(MYSQLI_ASSOC);
 	}
 
-	public function store($id = null) {
+	public function store($user_id) {
+		$error = [];
 
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
@@ -23,19 +25,39 @@ class event extends basis {
 		$category = $f_category;
 		$level = $f_level;
 		$location = $f_location;
+
+		if(!Val::name($name)) {
+			$error['name'] = "Name cannot be empty!";
+		}
+		if(!Val::date($date)) {
+			$error['date'] = "Date format is not correct!";
+		}
+		if(!Val::name($size) || !is_numeric($size)) {
+			$error['size'] = "Size must be a number!";
+		}
+		if(!is_numeric($category)) {
+			$error['category'] = "Undefined category!";
+		}
+		if(!is_numeric($level)) {
+			$error['level'] = "Undefined level!";
+		}
+		if(!is_numeric($location)) {
+			$error['location'] = "Undefined location!";
+		}
 	
+		if(!$error) {
+			// Save event details
+			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level_id`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level');");
 
-		$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level_id`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level');");
+			// Last inserted id
+			$event_id = $this->db->insert_id;
 
-		// Last inserted id
-		$event_id = $this->db->insert_id;
-
-		$user = intval(implode($_SESSION['user_id']));
-
-		// Query with manual user_id, has to be changed when session is ready
-		$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user','$event_id');");
+			// Save user_id to the created event
+			$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");
 		
-
+		} else {
+			return $error;
+		}
 	}
 
 }

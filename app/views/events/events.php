@@ -7,11 +7,12 @@
     </div>' : ''
 ?>
 
-<div class="container">
-    <button>
-        <a href="/sportbuddy/create-event">Create New Event</a>
-    </button>
-</div>
+<?= isset($_SESSION['user_id']) ?
+'<div class="container">
+    <button onClick="javascript: window.location=\'/sportbuddy/create-event\'">Create New Event</button>
+</div>' : ''
+?>
+
         <h2>Events</h2>
 
 

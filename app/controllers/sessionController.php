@@ -49,51 +49,29 @@ class sessionController extends basisController {
 		$data = $this->user->login();
 
 		if($data != false) {
-			
-			// $redirect = "<script> setTimeout(function () {
-   // 				location.href = '/sportbuddy'; }, 2000); </script>";
-			//header('LOCATION: /sportbuddy');
 
-			$objSess = session::inst();
 			$objSess = session::setLogin();
 			$login = "You have logged in!";
 			 
 			$_SESSION['user_id'] = $data;
-        	// if( !$objSess->checkLogin() ){
-         //    	$this->button = true;
-        	// } else {
-        	// 	$this->button = false;
-        	// }
 
 			$view = new view('home');
 			$view->assign('notice',$login);
-			//$view->assign('redirect',$redirect);
-				
-			// $view->assign('button',$button);
 			
 		} else {
 			$error = "Email or password is not correct, try again!";
 			$view = new view('users/login');
 			$view->assign('error', $error);
 		}
-
-		
 	}
 
 	public function logout() {
-		$objSess = session::inst();
-        
+		
 		$objSess = session::logout();
 		$logout = "You have logged out!";
-
-		// $redirect = "<script> setTimeout(function () {
-  //  				location.href = '/sportbuddy'; }, 2000); </script>";
-
-		//header('LOCATION: /sportbuddy');
 		
 		$view = new view('home');
 		$view->assign('notice',$logout);
-		//$view->assign('redirect',$redirect);
 
 	}
 

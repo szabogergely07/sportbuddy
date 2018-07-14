@@ -1,14 +1,14 @@
-*DONE Create validations for user registration form
-*DONE Redirect registration page after successfull reg
-*DONE Namespaces
-*DONE Basic autoload works but without htaccess set
-*DONE Composer Autoload
-*DONE Create Sportbuddy navbar-brand
-
-
-
-* Login / Authentication / Sessions
-
 * Create event CRUD pages
 
 * Validation for create event form
+
+* Rebuild databank model:
+	1. event->levels+created_by, delete level table
+	2. add timestamps to tables
+	3. add is_admin to user table
+
+* Save databank credentials in config file
+
+* Form fields require correction
+
+* Add CSRF
