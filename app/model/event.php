@@ -11,7 +11,7 @@ class event extends basis {
      		JOIN user_has_event ON user_has_event.event_id = event.id
      		JOIN user ON user.id = user_has_event.user_id;")->fetch_all(MYSQLI_ASSOC);
 		} else {
-			return $this->db->query("SELECT first_name FROM user 
+			return $this->db->query("SELECT first_name, name FROM user 
      		JOIN user_has_event ON user_has_event.user_id = user.id
      		JOIN event ON event.id = user_has_event.event_id WHERE event.id = '$id';")->fetch_all(MYSQLI_ASSOC);
 		}

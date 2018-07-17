@@ -25,7 +25,7 @@
             <th>Size</th>
             <th>Created by</th>
             <th></th>
-            
+            <th></th>
           </tr>
         <?php foreach ($events as $unit) { ?>
           <tr>
@@ -37,9 +37,17 @@
             <td><?= $unit['first_name'] ?></td>
             
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['event_id'] ?>">Show</a></td>
+            <td>
+              <form method="delete" action="/sportbuddy/delete-event/<?= $unit['event_id'] ?>/<?= str_replace(' ', '_', $unit['name']) ?>">
+              <input type="hidden" name="submit" value="submit">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn" href="">Delete</button>
+              </form>
+            </td>
           </tr>
         <?php } ?>
         </table>
+
 
 </div>
 

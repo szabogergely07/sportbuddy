@@ -15,7 +15,7 @@ class userController extends basisController {
 		parent::__construct();
 		$this->user = new user;
 		$this->basis = new basis;
-        if( !$objSess->checkLogin() ){
+        if( !isset($_SESSION['user']) ){
             header('LOCATION: /sportbuddy');
             exit();
         }

@@ -1,6 +1,4 @@
-* Create event CRUD pages
-
-* Validation for create event form
+* Create event Update
 
 * Rebuild databank model:
 	1. event->levels+created_by, delete level table

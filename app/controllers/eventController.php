@@ -94,6 +94,34 @@ class eventController extends basisController {
 	    }
 	}
 
+	public function delete($event_id,$event_name) {
+		$event_name = str_replace('_',' ',$event_name);
+		$event_exist = $this->basis->show($event_id,'event');
+		if(!empty($event_exist)) {
+			$data = $this->basis->delete($event_id,'event');
+			if(isset($data) && !$data) {
+				$success = $event_name." has been deleted successfully!";
+				$notice = "success";
+			} else {
+				$success = $event_name." cannot be deleted. Reason:<br>".$data;
+				$notice = "danger";
+			
+			}
+		} else {
+			$success = "This event does not exist!";
+			$notice = "danger";
+		}
+		$events = $this->event->allWithUsers();
+
+
+		//View
+		$view = new view('events/events');
+		$view->assign('events', $events);
+		$view->assign('success', $success);
+		$view->assign('notice', $notice);
+
+	}
+
 	public function join($event_id) {
 		if(isset($_SESSION['user_id'])) {
 			$user_id = intval(implode($_SESSION['user_id']));
