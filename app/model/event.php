@@ -5,10 +5,17 @@ use myclass\Val;
 
 class event extends basis {
 
-	public function allWithUsers() {
+	public function allWithUsers($id = 0) {
+		if($id == 0) {
 		return $this->db->query("SELECT * FROM event 
      		JOIN user_has_event ON user_has_event.event_id = event.id
      		JOIN user ON user.id = user_has_event.user_id;")->fetch_all(MYSQLI_ASSOC);
+		} else {
+			return $this->db->query("SELECT first_name FROM user 
+     		JOIN user_has_event ON user_has_event.user_id = user.id
+     		JOIN event ON event.id = user_has_event.event_id WHERE event.id = '$id';")->fetch_all(MYSQLI_ASSOC);
+		}
+
 	}
 
 	public function store($user_id) {
@@ -58,6 +65,21 @@ class event extends basis {
 		} else {
 			return $error;
 		}
+	}
+
+	public function join($user_id,$event_id) {
+		$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");
+
+		
+	}
+
+	public function leave($user_id,$event_id) {
+		$result = $this->db->query("DELETE FROM user_has_event WHERE user_id = '$user_id' AND event_id = '$event_id';");
+	
+	}
+
+	public function userHasEvent($user) {
+		return $this->db->query("SELECT event_id FROM user_has_event WHERE user_id = '$user';")->fetch_all(MYSQLI_ASSOC);
 	}
 
 }

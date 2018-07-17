@@ -28,13 +28,31 @@ class eventController extends basisController {
 	}
 
 	public function show($id) {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = intval(implode($_SESSION['user_id']));
+		
+			$option = $this->event->userHasEvent($user_id);
+
+			$button = [];
+			foreach ($option as $event_id) {
+				if(implode($event_id) == $id) {
+					$button[] = "match";
+				}
+			}	
+		}
+
 		//Model
 		$event = $this->basis->show($id,'event');
+		$users = $this->event->allWithUsers($id,'event');
 
 		//View
 		if($event) {
 	    	$view = new view('events/show');
 			$view->assign('event', $event);
+			$view->assign('joined_users', $users);
+			if(isset($_SESSION['user_id'])) {
+				$view->assign('button', $button);
+			}
 		} else {
 			$view = new view('404');
 		}
@@ -74,6 +92,29 @@ class eventController extends basisController {
 			$view->assign('notice', $notice);
 			$view->assign('events', $events);
 	    }
+	}
+
+	public function join($event_id) {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = intval(implode($_SESSION['user_id']));
+			$data = $this->event->join($user_id,$event_id);
+
+			//View
+			header('LOCATION: /sportbuddy/events/'.$event_id);
+		}
+		$view = new view('404');
+	}
+
+	public function leave($event_id) {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = intval(implode($_SESSION['user_id']));
+
+			$data = $this->event->leave($user_id,$event_id);
+
+			//View
+			header('LOCATION: /sportbuddy/events/'.$event_id);
+		}
+		$view = new view('404');
 	}
 
 

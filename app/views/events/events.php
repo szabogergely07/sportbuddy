@@ -25,6 +25,7 @@
             <th>Size</th>
             <th>Created by</th>
             <th></th>
+            
           </tr>
         <?php foreach ($events as $unit) { ?>
           <tr>
@@ -34,6 +35,7 @@
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
             <td><?= $unit['first_name'] ?></td>
+            
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['event_id'] ?>">Show</a></td>
           </tr>
         <?php } ?>

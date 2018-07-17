@@ -20,7 +20,11 @@ class basis {
 
 	public function show($id,$table) {
 		$result = $this->db->query("SELECT * FROM $table WHERE id = '$id'")->fetch_object();
-		return $result;
+		if(!empty($result)) {
+			return $result;
+		} else {
+			return false;
+		}
 	}
 
 	public function delete($id,$table) {

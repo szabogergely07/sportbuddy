@@ -66,5 +66,8 @@ Router::group([], function () {
 	
 	Router::post('sportbuddy/store-event', 'eventController@store');
 
+	Router::post('sportbuddy/join-event/{id}', 'eventController@join');
+
+	Router::delete('sportbuddy/leave-event/{id}', 'eventController@leave');
 
 });
