@@ -35,9 +35,9 @@
             <td><?= $unit['date'] ?></td>
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
-            <td><?= $unit['first_name'] ?></td>
+            <td><?= $unit['first_name'].' '.$unit['last_name'] ?></td>
             
-            <td><a class="btn" href="/sportbuddy/events/<?= $unit['event_id'] ?>">Show</a></td>
+            <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
             <td>
               <form method="delete" action="/sportbuddy/delete-event/<?= $unit['event_id'] ?>/<?= str_replace(' ', '_', $unit['name']) ?>">
               <input type="hidden" name="submit" value="submit">

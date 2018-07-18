@@ -99,8 +99,23 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
            
             <select name="level" class="form-control">
-                <option value="1"><?= isset($_POST['level']) ? $_POST['level'] : 'Select level' ?></option>
-                <option>1</option>
+                <option value="1"><?= isset($_POST['level']) ? $_POST['level'] : 'Select Level' ?></option>
+                <option value="2">Beginner
+                </option>
+                <option value="3">Elementary
+                </option>
+                <option value="4">Low-Intermediate
+                </option>
+                <option value="5">Intermediate
+                </option>
+                <option value="6">Upper-Intermediate
+                </option>
+                <option value="7">Upper-Intermediate
+                </option>
+                <option value="8">Advanced
+                </option>
+                <option value="9">Professional
+                </option>
             </select>
             <div class="<?= isset($data['level']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['level']) ? '<strong> '.$data['level'].'</strong>' : '' ?>

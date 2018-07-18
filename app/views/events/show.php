@@ -50,13 +50,13 @@
       echo '';
     } elseif (empty($button)) {
       echo           
-      '<form method="post" action="/sportbuddy/join-event/'.$event->id.'">
+      '<form method="post" action="/sportbuddy/join-event/'.$event->eventId.'">
       <input type="hidden" name="submit" value="submit">
       <button class="btn" href="">Join</button>
       </form>';
     } else {
       echo
-      '<form method="delete" action="/sportbuddy/leave-event/'.$event->id.'">
+      '<form method="delete" action="/sportbuddy/leave-event/'.$event->eventId.'">
       <input type="hidden" name="submit" value="submit">
       <input type="hidden" name="_method" value="DELETE">
       <button class="btn" href="">Leave</button>

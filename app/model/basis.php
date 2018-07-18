@@ -19,7 +19,7 @@ class basis {
 	}
 
 	public function show($id,$table) {
-		$result = $this->db->query("SELECT * FROM $table WHERE id = '$id'")->fetch_object();
+		$result = $this->db->query("SELECT * FROM $table WHERE eventId = '$id'")->fetch_object();
 		if(!empty($result)) {
 			return $result;
 		} else {
