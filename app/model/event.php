@@ -18,7 +18,7 @@ class event extends basis {
 
 	}
 
-	public function store($user_id) {
+	public function store($user_id = null, $event = null) {
 		$error = [];
 
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
@@ -52,7 +52,7 @@ class event extends basis {
 			$error['location'] = "Undefined location!";
 		}
 	
-		if(!$error) {
+		if(!$error && $event == null) {
 			// Save event details
 			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level_id`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level');");
 
@@ -62,15 +62,15 @@ class event extends basis {
 			// Save user_id to the created event
 			$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");
 		
+		} elseif (!$error && $event != null) {
+			$this->db->query("UPDATE event SET `name` = '$name', `description` = '$description', `date` = '$date', `start` = '$start', `end` = '$end', `size` = '$size', `location_idlocation` = '$location', `category_id` = '$category', `level_id` = '$level' WHERE `id` = '$event';");
 		} else {
 			return $error;
 		}
 	}
 
 	public function join($user_id,$event_id) {
-		$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");
-
-		
+		$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");	
 	}
 
 	public function leave($user_id,$event_id) {

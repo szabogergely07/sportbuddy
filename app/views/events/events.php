@@ -26,6 +26,7 @@
             <th>Created by</th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         <?php foreach ($events as $unit) { ?>
           <tr>
@@ -43,6 +44,9 @@
               <input type="hidden" name="_method" value="DELETE">
               <button class="btn" href="">Delete</button>
               </form>
+            </td>
+            <td>
+              <a class="btn" href="/sportbuddy/events/update-index/<?= $unit['id'] ?>">Update</a>
             </td>
           </tr>
         <?php } ?>

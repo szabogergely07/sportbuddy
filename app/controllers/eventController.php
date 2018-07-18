@@ -77,7 +77,7 @@ class eventController extends basisController {
 		// The logged in user's id, saved at login
 		$user_id = intval(implode($_SESSION['user_id']));
 		//Model
-		$data = $this->event->store($user_id);
+		$data = $this->event->store($user_id, null);
 		$events = $this->event->allWithUsers();
 
 		//View
@@ -92,6 +92,39 @@ class eventController extends basisController {
 			$view->assign('notice', $notice);
 			$view->assign('events', $events);
 	    }
+	}
+
+	public function updateIndex($id) {
+		//Model
+		$event = $this->basis->show($id,'event');
+
+		// View
+		$view = new view('events/update');
+		$view->assign('event', $event);
+	}
+
+	public function update($event_id) {
+		//Model
+     	$data = $this->event->store(null, $event_id);
+     	$events = $this->event->allWithUsers();
+
+		//View if there is error
+		if($data) {
+			$event = $this->basis->show($event_id,'event');
+
+			$view = new view('events/update');
+			$view->assign('event', $event);
+			$view->assign('data', $data);
+		// View if there is no error
+		} else {
+			$success = "You have updated successfully!";
+			$notice = "success";
+			$view = new view('events/events');
+			$view->assign('success', $success);
+			$view->assign('events', $events);
+			$view->assign('notice', $notice);
+	    }
+		
 	}
 
 	public function delete($event_id,$event_name) {

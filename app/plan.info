@@ -1,14 +1,28 @@
 * Create event Update
 
-* Rebuild databank model:
+* Rebuild database model:
 	1. event->levels+created_by, delete level table
 	2. add timestamps to tables
 	3. add is_admin to user table
 
-* Save databank credentials in config file
-
-* Form fields require correction
+* Ability to update/delete ONLY own datas
 
 * Add CSRF
 
+* Save database credentials in config file
+
+* Form fields require correction
+
 * Set 403 page where applicable
+
+* Create Location and Category CRUD
+
+* If event's size reached the max, cannot join, notice message
+
+* Build in front end
+
+* Comments, Reviews
+
+* Setup emails
+
+* Deploy
