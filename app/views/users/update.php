@@ -74,7 +74,7 @@
     </div>
     </form>
 
-    <form method="delete" action="/sportbuddy/user/self-delete/<?= $user->userId ?>">
+    <form method="delete" onsubmit="if(!confirm('Are you sure?')){return false;}" action="/sportbuddy/user/self-delete/<?= $user->userId ?>">
         <input type="hidden" name="submit" value="submit">
         <input type="hidden" name="_method" value="DELETE">
         <div class="form-group row">

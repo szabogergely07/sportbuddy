@@ -112,7 +112,7 @@ class eventController extends basisController {
 		//Model
 		$event = $this->basis->show($id,'event');
 
-		if($event->created_by == $_SESSION['user_id']) {
+		if(isset($_SESSION['user_id']) && $event->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
 			// View
 			$view = new view('events/update');
 			$view->assign('event', $event);
@@ -127,7 +127,7 @@ class eventController extends basisController {
      	$events = $this->event->allWithUsers();
      	
      	$event = $this->basis->show($event_id,'event');
-		if($event->created_by == $_SESSION['user_id']) {
+		if($event->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
 		// 	View if there is error
 			if($data) {
 				$event = $this->basis->show($event_id,'event');
@@ -153,32 +153,31 @@ class eventController extends basisController {
 	public function delete($event_id,$event_name) {
 		$event_name = str_replace('_',' ',$event_name);
 		$event_exist = $this->basis->show($event_id,'event');
-		if(!empty($event_exist)) {
-			$data = $this->basis->delete($event_id,'event');
-			if(isset($data) && !$data) {
-				$success = $event_name." has been deleted successfully!";
-				$notice = "success";
+		if($event_exist->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
+			if(!empty($event_exist)) {
+				$data = $this->basis->delete($event_id,'event');
+				if(isset($data) && !$data) {
+					$success = $event_name." has been deleted successfully!";
+					$notice = "success";
+				} else {
+					$success = $event_name." cannot be deleted. Reason:<br>".$data;
+					$notice = "danger";
+				
+				}
 			} else {
-				$success = $event_name." cannot be deleted. Reason:<br>".$data;
+				$success = "This event does not exist!";
 				$notice = "danger";
-			
 			}
+			$events = $this->event->allWithUsers();
+
+				//View
+				$view = new view('events/events');
+				$view->assign('events', $events);
+				$view->assign('success', $success);
+				$view->assign('notice', $notice);
 		} else {
-			$success = "This event does not exist!";
-			$notice = "danger";
+			$view = new view(404);
 		}
-		$events = $this->event->allWithUsers();
-
-		if($event_exist->created_by == $_SESSION['user_id']) {
-			//View
-			$view = new view('events/events');
-			$view->assign('events', $events);
-			$view->assign('success', $success);
-			$view->assign('notice', $notice);
-		} else {
-			$view = new view('404');
-			}
-
 	}
 
 	public function join($event_id) {

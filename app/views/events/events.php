@@ -40,7 +40,7 @@
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
             <?php if(!isset($_SESSION['user_id'])) {
                     echo '';
-            } elseif ($_SESSION['user_id'] == $unit['created_by']) {
+            } elseif (($_SESSION['user_id'] == $unit['created_by']) || ($_SESSION['admin'] == 2)) {
               echo
             '<td>
               <form method="delete" action="/sportbuddy/delete-event/'.$unit['eventId'].'/'.str_replace(' ', '_', $unit['name']).'">

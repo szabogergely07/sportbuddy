@@ -91,5 +91,13 @@ class user extends basis {
 			
 	}
 
+	public function deleteOwn($id) {
+		$result = $this->db->query("DELETE FROM user WHERE userId = '$id'");
+		if (!$result) {
+			return mysqli_error($this->db);	
+		} else {
+			return false;
+		}
+	}
 
 }

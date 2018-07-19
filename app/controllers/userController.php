@@ -120,7 +120,7 @@ class userController extends basisController {
 			
 			//Model
 	     	$user = $this->basis->show($id,'user');
-	     	$data = $this->basis->delete($id,'user');
+	     	$data = $this->user->deleteOwn($id);
 	     	$objSess = session::logout();
 	     	
 			// View 
