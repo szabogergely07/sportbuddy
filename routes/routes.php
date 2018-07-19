@@ -50,8 +50,11 @@ Router::group([], function () {
 	// Updates user
 	Router::match(['patch'], 'sportbuddy/user/update/{id}', 'userController@update');
 
-	// Deletes user
+	// Admin deletes user
 	Router::delete('sportbuddy/user/delete/{id}', 'userController@delete');
+
+	// User deletes self
+	Router::delete('sportbuddy/user/self-delete/{id}', 'userController@deleteOwn');
 
 });
 

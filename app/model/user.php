@@ -81,7 +81,7 @@ class user extends basis {
 
 		$pass = $this->db->query("SELECT password FROM user WHERE email = '$email'")->fetch_row();
 
-		$result = $this->db->query("SELECT userId, first_name FROM user WHERE email = '$email'")->fetch_row();
+		$result = $this->db->query("SELECT userId, first_name, is_admin FROM user WHERE email = '$email'")->fetch_row();
 
 		if (empty($exist) || !password_verify($password, $pass[0])) {
 			return false;

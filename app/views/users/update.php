@@ -73,6 +73,17 @@
         </div>
     </div>
     </form>
+
+    <form method="delete" action="/sportbuddy/user/self-delete/<?= $user->userId ?>">
+        <input type="hidden" name="submit" value="submit">
+        <input type="hidden" name="_method" value="DELETE">
+        <div class="form-group row">
+            <div class="btn-form text-center col-xs-12 col-md-4 col-md-offset-4">
+                <button class="btn btn-fill danger" href="">Delete</button>
+            </div>
+        </div>
+    </form>
+
 </div>
                
 <?= $HTML_END ?>

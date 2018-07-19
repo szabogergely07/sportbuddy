@@ -114,8 +114,11 @@
                                 </li>";
                                 }
                                 ?>
+                                <?= isset($_SESSION['admin']) && $_SESSION['admin'] == 2 ?
+                                '<li><button class="btn-nav" onclick="location.href=\'/sportbuddy/users\';">Users</button>
+                                </li>' : ''
+                                ?>
 
-                                <li><button class="btn-nav" onclick="location.href='/sportbuddy/users';">Users</button></li>
                                 <li><button class="btn-nav" onclick="location.href='/sportbuddy/events';">Events</button></li>
 
                                 <?php

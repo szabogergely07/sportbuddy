@@ -427,6 +427,9 @@ h6 {
   background-color: #2b323f;
   border-color: #2b323f;
 }
+.btn.btn-fill.danger {
+  background-color: red;
+}
 .btn.btn-border {
   background-color: transparent;
   border-color: #ffffff;
