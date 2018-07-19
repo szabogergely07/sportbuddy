@@ -39,7 +39,7 @@
       </tr>
         <?php foreach ($joined_users as $users) { ?>
       <tr>
-        <td><?= $users['first_name'] ?></td>
+        <td><?= $users['first_name'].' '.$users['last_name'] ?></td>
       </tr>
       <?php } ?>
     </table>

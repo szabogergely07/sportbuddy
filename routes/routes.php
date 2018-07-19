@@ -60,6 +60,8 @@ Router::group([], function () {
 	
 	Router::get('sportbuddy/events', 'eventController@index');
 
+	Router::get('sportbuddy/my-events', 'eventController@own');
+
 	Router::get('sportbuddy/events/{id}', 'eventController@show');
 
 	Router::get('sportbuddy/create-event', 'eventController@create');

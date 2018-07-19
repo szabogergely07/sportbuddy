@@ -99,6 +99,22 @@
 
                         <nav role="navigation" class="okayNav pull-right" id="js-navbar-menu">
                             <ul id="navbar-nav" class="navbar-nav">
+                                <?php
+                                if( isset($_SESSION['user_id']) ){
+                                    echo
+                                "<li><button class='btn-nav' onclick='location.href=\"/sportbuddy/user/update-index/".$_SESSION['user_id']."\";'>Hello ".$_SESSION['user_name']."</button>
+                                </li>";
+                                }
+                                ?>
+
+                                <?php
+                                if( isset($_SESSION['user_id']) ){
+                                    echo
+                                "<li><button class='btn-nav' onclick='location.href=\"/sportbuddy/my-events\";'>My events</button>
+                                </li>";
+                                }
+                                ?>
+
                                 <li><button class="btn-nav" onclick="location.href='/sportbuddy/users';">Users</button></li>
                                 <li><button class="btn-nav" onclick="location.href='/sportbuddy/events';">Events</button></li>
 
@@ -111,8 +127,7 @@
                                 ?>
 
                                 <?php
-                                $objSess = app\lib\session::inst();
-                                if( !$objSess->checkLogin() ){
+                                if( !isset($_SESSION['user_id']) ){
                                     echo
                                 "<li><button class='btn-nav' onclick='location.href=\"/sportbuddy/register\";'>Register</button>
                                 </li>";
@@ -120,8 +135,7 @@
                                 ?>
 
                                 <?php
-                                $objSess = app\lib\session::inst();
-                                if( $objSess->checkLogin() ){
+                                if( isset($_SESSION['user_id']) ){
                                     echo
                                 "<li><button class='btn-nav btn-border' onclick='location.href=\"/sportbuddy/logout\";'>Logout</button>
                                 </li>";

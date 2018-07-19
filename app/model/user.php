@@ -22,7 +22,7 @@ class user extends basis {
 		$password = $f_password;
 		
 		// Takes the user's password from database to compare it when updates details 	
-		$pass = $this->db->query("SELECT password FROM user WHERE id = '$id'")->fetch_row();
+		$pass = $this->db->query("SELECT password FROM user WHERE userId = '$id'")->fetch_row();
 
 		$result = $this->db->query("SELECT email from user WHERE email = '$email'")->fetch_all();
 
@@ -61,9 +61,9 @@ class user extends basis {
 	    	if ($id == null) {
 				$this->db->query("INSERT INTO user (first_name, last_name, email, password, birthday) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday');");
 			} elseif (($id != null) && !empty($f_password_new)) {
-				$this->db->query("UPDATE user SET first_name = '$f_first_name', last_name = '$f_last_name', email = '$f_email', password = '$f_password_new', birthday = '$f_birthday' WHERE id = '$id';");	
+				$this->db->query("UPDATE user SET first_name = '$f_first_name', last_name = '$f_last_name', email = '$f_email', password = '$f_password_new', birthday = '$f_birthday' WHERE userId = '$id';");	
 			} else {
-				$this->db->query("UPDATE user SET first_name = '$f_first_name', last_name = '$f_last_name', email = '$f_email', password = '$f_password', birthday = '$f_birthday' WHERE id = '$id';");	
+				$this->db->query("UPDATE user SET first_name = '$f_first_name', last_name = '$f_last_name', email = '$f_email', password = '$f_password', birthday = '$f_birthday' WHERE userId = '$id';");	
 			}
 	    } else {
 	    	return $this->error;
@@ -81,7 +81,7 @@ class user extends basis {
 
 		$pass = $this->db->query("SELECT password FROM user WHERE email = '$email'")->fetch_row();
 
-		$result = $this->db->query("SELECT id FROM user WHERE email = '$email'")->fetch_row();
+		$result = $this->db->query("SELECT userId, first_name FROM user WHERE email = '$email'")->fetch_row();
 
 		if (empty($exist) || !password_verify($password, $pass[0])) {
 			return false;

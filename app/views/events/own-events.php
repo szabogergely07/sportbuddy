@@ -23,7 +23,6 @@
             <th>Date</th>
             <th>Start Time</th>
             <th>Size</th>
-            <th>Created by</th>
             <th></th>
             <th></th>
             <th></th>
@@ -35,27 +34,20 @@
             <td><?= $unit['date'] ?></td>
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
-            <td><?= $unit['first_name'].' '.$unit['last_name'] ?></td>
             
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
-            <?php if(!isset($_SESSION['user_id'])) {
-                    echo '';
-            } elseif ($_SESSION['user_id'] == $unit['created_by']) {
-              echo
-            '<td>
-              <form method="delete" action="/sportbuddy/delete-event/'.$unit['eventId'].'/'.str_replace(' ', '_', $unit['name']).'">
+            
+            <td>
+              <form method="delete" action="/sportbuddy/delete-event/<?= $unit['eventId']?>/<?= str_replace(' ', '_', $unit['name']) ?>">
               <input type="hidden" name="submit" value="submit">
               <input type="hidden" name="_method" value="DELETE">
               <button class="btn" href="">Delete</button>
               </form>
             </td>
             <td>
-              <a class="btn" href="/sportbuddy/events/update-index/'.$unit['eventId'].'">Update</a>
-            </td>';
-            } else {
-              '';
-            }
-            ?>
+              <a class="btn" href="/sportbuddy/events/update-index/<?= $unit['eventId'] ?>">Update</a>
+            </td>
+        
           </tr>
         <?php } ?>
         </table>

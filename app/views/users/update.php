@@ -2,7 +2,7 @@
                    
     <!-- Modal Close Button -->
 <div id="signup-form">
-    <form method="post" class="single-form" id="" action="/sportbuddy/user/update/<?= $user->id ?>">
+    <form method="post" class="single-form" id="" action="/sportbuddy/user/update/<?= $user->userId ?>">
     <input type="hidden" name="submit" value="submit">
     <input type="hidden" name="_method" value="PATCH">
 

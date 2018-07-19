@@ -8,13 +8,18 @@ class event extends basis {
 	public function allWithUsers($id = 0) {
 		if($id == 0) {
 		return $this->db->query("SELECT * FROM event 
-     		JOIN user ON user.id = event.created_by;")->fetch_all(MYSQLI_ASSOC);
+     		JOIN user ON user.userId = event.created_by;")->fetch_all(MYSQLI_ASSOC);
 		} else {
-			return $this->db->query("SELECT first_name, name FROM user 
-     		JOIN user_has_event ON user_has_event.user_id = user.id
+			return $this->db->query("SELECT * FROM user 
+     		JOIN user_has_event ON user_has_event.user_id = user.userId
      		JOIN event ON eventId = user_has_event.event_id WHERE eventId = '$id';")->fetch_all(MYSQLI_ASSOC);
 		}
 
+	}
+
+	public function own($id) {
+		$result = $this->db->query("SELECT * FROM event WHERE created_by = '$id';")->fetch_all(MYSQLI_ASSOC);
+		return $result;
 	}
 
 	public function store($user_id = null, $event = null) {
@@ -62,7 +67,7 @@ class event extends basis {
 			$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");
 		
 		} elseif (!$error && $event != null) {
-			$this->db->query("UPDATE event SET `name` = '$name', `description` = '$description', `date` = '$date', `start` = '$start', `end` = '$end', `size` = '$size', `location_idlocation` = '$location', `category_id` = '$category', `level` = '$level' WHERE `event.id` = '$event';");
+			$this->db->query("UPDATE event SET `name` = '$name', `description` = '$description', `date` = '$date', `start` = '$start', `end` = '$end', `size` = '$size', `location_idlocation` = '$location', `category_id` = '$category', `level` = '$level' WHERE `eventId` = '$event';");
 		} else {
 			return $error;
 		}

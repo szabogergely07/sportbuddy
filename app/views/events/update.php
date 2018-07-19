@@ -2,7 +2,7 @@
                    
     <!-- Modal Close Button -->
 <div id="signup-form">
-    <form method="post" class="single-form" id="" action="/sportbuddy/events/update/<?= $event->id ?>">
+    <form method="post" class="single-form" id="" action="/sportbuddy/events/update/<?= $event->eventId ?>">
     <input type="hidden" name="submit" value="submit">
     <input type="hidden" name="_method" value="PATCH">
 
@@ -99,8 +99,23 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
            
             <select name="level" class="form-control">
-                <option value="1"><?= isset($_POST['level']) ? $_POST['level'] : $event->level_id ?></option>
-                <option>1</option>
+                <option value="1"><?= isset($_POST['level']) ? $_POST['level'] : $event->level ?></option>
+                <option value="2">Beginner
+                </option>
+                <option value="3">Elementary
+                </option>
+                <option value="4">Low-Intermediate
+                </option>
+                <option value="5">Intermediate
+                </option>
+                <option value="6">Upper-Intermediate
+                </option>
+                <option value="7">Upper-Intermediate
+                </option>
+                <option value="8">Advanced
+                </option>
+                <option value="9">Professional
+                </option>
             </select>
             <div class="<?= isset($data['level']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['level']) ? '<strong> '.$data['level'].'</strong>' : '' ?>

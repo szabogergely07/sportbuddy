@@ -53,7 +53,8 @@ class sessionController extends basisController {
 			$objSess = session::setLogin();
 			$login = "You have logged in!";
 			 
-			$_SESSION['user_id'] = $data[];
+			$_SESSION['user_id'] = $data[0];
+			$_SESSION['user_name'] = $data[1];
 
 			$view = new view('home');
 			$view->assign('notice',$login);

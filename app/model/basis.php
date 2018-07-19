@@ -19,7 +19,7 @@ class basis {
 	}
 
 	public function show($id,$table) {
-		$result = $this->db->query("SELECT * FROM $table WHERE eventId = '$id'")->fetch_object();
+		$result = $this->db->query("SELECT * FROM $table WHERE ".$table."Id = '$id'")->fetch_object();
 		if(!empty($result)) {
 			return $result;
 		} else {
@@ -28,7 +28,7 @@ class basis {
 	}
 
 	public function delete($id,$table) {
-		$result = $this->db->query("DELETE FROM $table WHERE id = '$id'");
+		$result = $this->db->query("DELETE FROM $table WHERE ".$table."Id = '$id'");
 		if (!$result) {
 			return mysqli_error($this->db);	
 		} else {

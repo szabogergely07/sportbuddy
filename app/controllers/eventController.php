@@ -27,9 +27,23 @@ class eventController extends basisController {
 		$view->assign('events', $names);
 	}
 
+	public function own() {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = $_SESSION['user_id'];
+			//Model
+			$names = $this->event->own($user_id);
+
+			//View
+			$view = new view('events/own-events');
+			$view->assign('events', $names);
+		} else {
+			$view = new view('404');
+		}
+	}	
+
 	public function show($id) {
 		if(isset($_SESSION['user_id'])) {
-			$user_id = intval(implode($_SESSION['user_id']));
+			$user_id = $_SESSION['user_id'];
 		
 			$option = $this->event->userHasEvent($user_id);
 
@@ -98,32 +112,41 @@ class eventController extends basisController {
 		//Model
 		$event = $this->basis->show($id,'event');
 
-		// View
-		$view = new view('events/update');
-		$view->assign('event', $event);
+		if($event->created_by == $_SESSION['user_id']) {
+			// View
+			$view = new view('events/update');
+			$view->assign('event', $event);
+		} else {
+			$view = new view('404');
+		}
 	}
 
 	public function update($event_id) {
 		//Model
      	$data = $this->event->store(null, $event_id);
      	$events = $this->event->allWithUsers();
+     	
+     	$event = $this->basis->show($event_id,'event');
+		if($event->created_by == $_SESSION['user_id']) {
+		// 	View if there is error
+			if($data) {
+				$event = $this->basis->show($event_id,'event');
 
-		//View if there is error
-		if($data) {
-			$event = $this->basis->show($event_id,'event');
-
-			$view = new view('events/update');
-			$view->assign('event', $event);
-			$view->assign('data', $data);
-		// View if there is no error
+				$view = new view('events/update');
+				$view->assign('event', $event);
+				$view->assign('data', $data);
+			// View if there is no error
+			} else {
+				$success = "You have updated successfully!";
+				$notice = "success";
+				$view = new view('events/events');
+				$view->assign('success', $success);
+				$view->assign('events', $events);
+				$view->assign('notice', $notice);
+		    }
 		} else {
-			$success = "You have updated successfully!";
-			$notice = "success";
-			$view = new view('events/events');
-			$view->assign('success', $success);
-			$view->assign('events', $events);
-			$view->assign('notice', $notice);
-	    }
+			$view = new view('404');
+		}
 		
 	}
 
@@ -146,18 +169,21 @@ class eventController extends basisController {
 		}
 		$events = $this->event->allWithUsers();
 
-
-		//View
-		$view = new view('events/events');
-		$view->assign('events', $events);
-		$view->assign('success', $success);
-		$view->assign('notice', $notice);
+		if($event_exist->created_by == $_SESSION['user_id']) {
+			//View
+			$view = new view('events/events');
+			$view->assign('events', $events);
+			$view->assign('success', $success);
+			$view->assign('notice', $notice);
+		} else {
+			$view = new view('404');
+			}
 
 	}
 
 	public function join($event_id) {
 		if(isset($_SESSION['user_id'])) {
-			$user_id = intval(implode($_SESSION['user_id']));
+			$user_id = $_SESSION['user_id'];
 			$data = $this->event->join($user_id,$event_id);
 
 			//View
@@ -168,7 +194,7 @@ class eventController extends basisController {
 
 	public function leave($event_id) {
 		if(isset($_SESSION['user_id'])) {
-			$user_id = intval(implode($_SESSION['user_id']));
+			$user_id = $_SESSION['user_id'];
 
 			$data = $this->event->leave($user_id,$event_id);
 
