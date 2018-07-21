@@ -35,13 +35,13 @@ class user extends basis {
 	    	if(($id == null) && !Val::emailExist($result)) {
 	    		$this->error['email'] = "Email exists already!";
 	    	}
-	    	if(!Val::password($f_password)) {
+	    	if(!Val::password($f_password) && ($_SESSION['admin'] != 2)) {
 	    		$this->error['password'] = "Password must be at least 6 characters!";
-	    	} elseif (($id != 0) && !empty($f_password_new) && !Val::password($f_password_new)) {
+	    	} elseif (($id != 0) && !empty($f_password_new) && !Val::password($f_password_new) && ($_SESSION['admin'] != 2)) {
 	    		$this->error['password_new'] = "Password must be at least 6 characters!";
 	    	} elseif (($id == 0) && ($f_password != $f_password2)) {
 	    		$this->error['password2'] = "Passwords do not match, please retype!";
-	    	} elseif ($id != 0 && !password_verify($f_password, $pass[0])) {
+	    	} elseif ($id != 0 && !password_verify($f_password, $pass[0]) && ($_SESSION['admin'] != 2)) {
 	    		$this->error['password'] = "Password is not correct, please try again!";
 	    	} else {
 	    		$f_password = password_hash($f_password, PASSWORD_BCRYPT);

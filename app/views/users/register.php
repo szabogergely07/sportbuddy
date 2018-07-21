@@ -6,6 +6,7 @@
 <div id="signup-form">
     <form method="post" class="single-form" id="" action="/sportbuddy/createuser">
     <input type="hidden" name="submit" value="submit">
+    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
 
     <div class="col-xs-12 text-center">
         <h2 class="section-heading p-b-30">Register</h2>

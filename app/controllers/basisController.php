@@ -10,7 +10,8 @@ class basisController {
 
  public function __construct() {
  	
- 	$objSess = session::inst();
+ 	// $objSess = session::inst();
+ 	
  
  }
 

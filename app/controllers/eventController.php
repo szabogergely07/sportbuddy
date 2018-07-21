@@ -89,7 +89,7 @@ class eventController extends basisController {
         }
 
 		// The logged in user's id, saved at login
-		$user_id = intval(implode($_SESSION['user_id']));
+		$user_id = $_SESSION['user_id'];
 		//Model
 		$data = $this->event->store($user_id, null);
 		$events = $this->event->allWithUsers();

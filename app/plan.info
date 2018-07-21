@@ -1,8 +1,4 @@
-* Basis show function: eventId problem!!! Must change other tables
-
-* Ability to update/delete ONLY own datas
-
-* Add CSRF
+* Add CSRF to events forms
 
 * Save database credentials in config file
 

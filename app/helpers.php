@@ -76,3 +76,12 @@ function csrf_token(): ?string
     }
     return null;
 }
+
+function token() {
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+    return $_SESSION['token'];
+}
+
+function tokenValid() {
+    return hash_equals($_POST['token'], $_SESSION['token']);
+}

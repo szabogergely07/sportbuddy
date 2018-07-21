@@ -5,6 +5,7 @@
 <div id="sign-in-form" class="sign-form" tabindex="" role="">
     
     <form method="post" class="single-form" action="/sportbuddy/loginuser">
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
 
         <div class="col-xs-12 text-center">
             <h2 class="section-heading p-b-30">Sign In</h2>

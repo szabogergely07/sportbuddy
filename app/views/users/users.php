@@ -29,7 +29,8 @@
       <a class="btn" href="/sportbuddy/user/<?= $unit['userId'] ?>">Show</a>
       <a class="btn" href="/sportbuddy/user/update-index/<?= $unit['userId'] ?>">Update</a>
       
-      <form method="delete" onsubmit="if(!confirm('Are you sure?')){return false;}" action="/sportbuddy/user/delete/<?= $unit['userId'] ?>">
+      <form method="post" onsubmit="if(!confirm('Are you sure?')){return false;}" action="/sportbuddy/user/delete/<?= $unit['userId'] ?>">
+      <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
       <input type="hidden" name="submit" value="submit">
       <input type="hidden" name="_method" value="DELETE">
       <button class="btn" href="">Delete</button>

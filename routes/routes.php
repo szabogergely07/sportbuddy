@@ -3,6 +3,7 @@
 use app\Router;
 use Pecee\Http\Request;
 use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
+use Pecee\Http\Middleware\BaseCsrfVerifier;
 
 
 // Redirect to 404 page when route not found
@@ -18,11 +19,11 @@ Router::error(function(Request $request, \Exception $exception) {
 
 
 // Home page
-Router::get('sportbuddy', 'indexController@home')->name('profile');
+Router::get('sportbuddy', 'indexController@home')->name('home');
 
 // User pages
 Router::group([], function () {
-	
+
 	// Register page
 	Router::get('sportbuddy/register', 'sessionController@register');
 

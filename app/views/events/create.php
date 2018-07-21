@@ -3,7 +3,9 @@
     <!-- Modal Close Button -->
 <div id="signup-form">
     <form method="post" class="single-form" id="" action="/sportbuddy/store-event">
+    <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
     <input type="hidden" name="submit" value="submit">
+
 
     <div class="col-xs-12 text-center">
         <h2 class="section-heading p-b-30">Create New Event</h2>
