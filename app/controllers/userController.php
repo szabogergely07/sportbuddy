@@ -14,7 +14,6 @@ class userController extends basisController {
 		parent::__construct();
 		$this->user = new user;
 		$this->basis = new basis;
-        
 	}
 
 
@@ -29,7 +28,7 @@ class userController extends basisController {
 			$view = new view('users/users');
 			$view->assign('names', $names);
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 
 	}
@@ -45,7 +44,7 @@ class userController extends basisController {
 	    	$view = new view('users/show');
 			$view->assign('user', $user);
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 	}
 	
@@ -60,7 +59,7 @@ class userController extends basisController {
 			$view = new view('users/update');
 			$view->assign('user', $user);
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 	}
 
@@ -87,7 +86,7 @@ class userController extends basisController {
 				$view->assign('notice', $notice);
 		    }
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 		
 	}
@@ -114,7 +113,7 @@ class userController extends basisController {
 				$view->assign('names', $names);
 				$view->assign('notice', $notice);
 			} else {
-				$view = new view('404');
+				$view = new view('403');
 			}
 		}
 	}
@@ -134,7 +133,7 @@ class userController extends basisController {
 				$view = new view('home');
 				$view->assign('notice', $notice);
 			} else {
-				$view = new view('404');
+				$view = new view('403');
 			}
 		}
 	}

@@ -3,7 +3,6 @@
 use app\Router;
 use Pecee\Http\Request;
 use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
-use Pecee\Http\Middleware\BaseCsrfVerifier;
 
 
 // Redirect to 404 page when route not found

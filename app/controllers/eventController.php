@@ -37,7 +37,7 @@ class eventController extends basisController {
 			$view = new view('events/own-events');
 			$view->assign('events', $names);
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 	}	
 
@@ -75,17 +75,16 @@ class eventController extends basisController {
 	public function create() {
 
 		if( !isset($_SESSION['user_id']) ){
-            header('LOCATION: /sportbuddy');
-        }
-
-		$view = new view('events/create');
-
+            $view = new view('403');
+        } else {
+			$view = new view('events/create');
+		}
 	}
 
 	public function store() {
 
 		if( !isset($_SESSION['user_id']) ){
-            $view = new view('404');
+            $view = new view('403');
         }
 
 		// The logged in user's id, saved at login
@@ -117,7 +116,7 @@ class eventController extends basisController {
 			$view = new view('events/update');
 			$view->assign('event', $event);
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 	}
 
@@ -145,7 +144,7 @@ class eventController extends basisController {
 				$view->assign('notice', $notice);
 		    }
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 		
 	}
@@ -176,7 +175,7 @@ class eventController extends basisController {
 				$view->assign('success', $success);
 				$view->assign('notice', $notice);
 		} else {
-			$view = new view(404);
+			$view = new view(403);
 		}
 	}
 
@@ -186,9 +185,9 @@ class eventController extends basisController {
 			$data = $this->event->join($user_id,$event_id);
 
 			//View
-			header('LOCATION: /sportbuddy/events/'.$event_id);
+			redirect('/sportbuddy/events/'.$event_id);
 		}
-		$view = new view('404');
+		$view = new view('403');
 	}
 
 	public function leave($event_id) {
@@ -198,9 +197,9 @@ class eventController extends basisController {
 			$data = $this->event->leave($user_id,$event_id);
 
 			//View
-			header('LOCATION: /sportbuddy/events/'.$event_id);
+			redirect('/sportbuddy/events/'.$event_id);
 		}
-		$view = new view('404');
+		$view = new view('403');
 	}
 
 

@@ -70,7 +70,7 @@ class sessionController extends basisController {
 				$view->assign('error', $error);
 			}
 		} else {
-			$view = new view('404');
+			$view = new view('403');
 		}
 	}
 
