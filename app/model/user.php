@@ -35,19 +35,32 @@ class user extends basis {
 	    	if(($id == null) && !Val::emailExist($result)) {
 	    		$this->error['email'] = "Email exists already!";
 	    	}
-	    	if(!Val::password($f_password) && ($_SESSION['admin'] != 2)) {
-	    		$this->error['password'] = "Password must be at least 6 characters!";
-	    	} elseif (($id != 0) && !empty($f_password_new) && !Val::password($f_password_new) && ($_SESSION['admin'] != 2)) {
-	    		$this->error['password_new'] = "Password must be at least 6 characters!";
-	    	} elseif (($id == 0) && ($f_password != $f_password2)) {
-	    		$this->error['password2'] = "Passwords do not match, please retype!";
-	    	} elseif ($id != 0 && !password_verify($f_password, $pass[0]) && ($_SESSION['admin'] != 2)) {
-	    		$this->error['password'] = "Password is not correct, please try again!";
+	    	// Not Admin password
+	    	if($_SESSION['admin'] != 2 || ($_SESSION['admin'] == 2 && $_SESSION['user_id'] == $id) ) {
+		    	if(!Val::password($f_password)) {
+		    		$this->error['password'] = "Password must be at least 6 characters!";
+		    	} elseif (($id != 0) && !empty($f_password_new) && !Val::password($f_password_new)) {
+		    		$this->error['password_new'] = "Password must be at least 6 characters!";
+		    	} elseif (($id == 0) && ($f_password != $f_password2)) {
+		    		$this->error['password2'] = "Passwords do not match, please retype!";
+		    	} elseif ($id != 0 && !password_verify($f_password, $pass[0])) {
+		    		$this->error['password'] = "Password is not correct, please try again!";
+		    	} else {
+		    		$f_password = password_hash($f_password, PASSWORD_BCRYPT);
+		    		if(($id != 0) && !empty($f_password_new)) {
+		    			$f_password_new = password_hash($f_password_new, PASSWORD_BCRYPT);
+		    		}
+		    	}
 	    	} else {
-	    		$f_password = password_hash($f_password, PASSWORD_BCRYPT);
-	    		if(($id != 0) && !empty($f_password_new)) {
-	    			$f_password_new = password_hash($f_password_new, PASSWORD_BCRYPT);
-	    		}
+	    		if(!empty($f_password) && !Val::password($f_password)) {
+		    		$this->error['password'] = "Password must be at least 6 characters!";
+		    	} elseif (!empty($f_password_new) && !Val::password($f_password_new)) {
+		    		$this->error['password_new'] = "Password must be at least 6 characters!";
+		    	} elseif ($f_password != $f_password_new) {
+		    		$this->error['password'] = "Passwords do not match, please retype!";
+		    	} else {
+		    		$f_password_new = password_hash($f_password_new, PASSWORD_BCRYPT);
+		    	}
 	    	}
 	    	if(!Val::date($f_birthday)) {
 	    		$this->error['birthday'] = "Date is not valid!";

@@ -39,7 +39,35 @@ class eventController extends basisController {
 		} else {
 			$view = new view('403');
 		}
+	}
+
+	public function joined() {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = $_SESSION['user_id'];
+			//Model
+			$names = $this->event->joined($user_id);
+
+			//View
+			$view = new view('events/joined-events');
+			$view->assign('events', $names);
+		} else {
+			$view = new view('403');
+		}
 	}	
+
+	public function take($event_id) {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = $_SESSION['user_id'];
+			//Model
+			$take = $this->event->take($user_id,$event_id);
+			$names = $this->event->joined($user_id);
+			//View
+			$view = new view('events/joined-events');
+			$view->assign('events', $names);
+		} else {
+			$view = new view('403');
+		}
+	}
 
 	public function show($id) {
 		if(isset($_SESSION['user_id'])) {
@@ -175,7 +203,7 @@ class eventController extends basisController {
 				$view->assign('success', $success);
 				$view->assign('notice', $notice);
 		} else {
-			$view = new view(403);
+			$view = new view('403');
 		}
 	}
 

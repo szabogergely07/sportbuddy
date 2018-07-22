@@ -75,7 +75,8 @@
     </div>
     </form>
 
-    <form method="delete" onsubmit="if(!confirm('Are you sure?')){return false;}" action="/sportbuddy/user/self-delete/<?= $user->userId ?>">
+    <form method="post" onsubmit="if(!confirm('Are you sure?')){return false;}" action="/sportbuddy/user/self-delete/<?= $user->userId ?>">
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" name="submit" value="submit">
         <input type="hidden" name="_method" value="DELETE">
         <div class="form-group row">

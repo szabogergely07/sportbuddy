@@ -114,6 +114,13 @@
                                 </li>";
                                 }
                                 ?>
+                                 <?php
+                                if( isset($_SESSION['user_id']) ){
+                                    echo
+                                "<li><button class='btn-nav' onclick='location.href=\"/sportbuddy/joined-events\";'>Joined events</button>
+                                </li>";
+                                }
+                                ?>
                                 <?= isset($_SESSION['admin']) && $_SESSION['admin'] == 2 ?
                                 '<li><button class="btn-nav" onclick="location.href=\'/sportbuddy/users\';">Users</button>
                                 </li>' : ''

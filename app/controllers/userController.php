@@ -14,6 +14,19 @@ class userController extends basisController {
 		parent::__construct();
 		$this->user = new user;
 		$this->basis = new basis;
+
+		// set SESSION variables for 
+		if(isset($_SESSION['admin'])) {
+			return $_SESSION['admin'];
+		} else {
+			$_SESSION['admin'] = null;
+		}
+
+		if(isset($_SESSION['user_id'])) {
+			return $_SESSION['user_id'];
+		} else {
+			$_SESSION['user_id'] = null;
+		}
 	}
 
 

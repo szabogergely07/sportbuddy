@@ -22,6 +22,17 @@ class event extends basis {
 		return $result;
 	}
 
+	public function joined($id) {
+		$result = $this->db->query("SELECT * FROM event
+			JOIN user_has_event ON user_has_event.event_id = event.eventId
+			JOIN user ON userId = user_has_event.user_id WHERE user_id = '$id';")->fetch_all(MYSQLI_ASSOC);
+		return $result;
+	}
+
+	public function take($user_id,$event_id) {
+		$this->db->query("UPDATE event SET `created_by` = '$user_id' WHERE `eventId` = '$event_id';");
+	}
+
 	public function store($user_id = null, $event = null) {
 		$error = [];
 

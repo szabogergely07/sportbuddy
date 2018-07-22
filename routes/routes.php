@@ -65,6 +65,8 @@ Router::group([], function () {
 
 	Router::get('sportbuddy/my-events', 'eventController@own');
 
+	Router::get('sportbuddy/joined-events', 'eventController@joined');
+
 	Router::get('sportbuddy/events/{id}', 'eventController@show');
 
 	Router::get('sportbuddy/create-event', 'eventController@create');
@@ -80,5 +82,7 @@ Router::group([], function () {
 	Router::post('sportbuddy/join-event/{id}', 'eventController@join');
 
 	Router::delete('sportbuddy/leave-event/{id}', 'eventController@leave');
+
+	Router::post('sportbuddy/take-ownership/{id}', 'eventController@take');
 
 });
