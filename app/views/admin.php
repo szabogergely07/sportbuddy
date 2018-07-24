@@ -1,4 +1,4 @@
-<?= $HTML_START ?>
+<?= $ADMIN_START ?>
 
 <h2><a href="/sportbuddy/users">USERS</a></h2>
 <br>
@@ -6,4 +6,4 @@
 <br>
 <h2><a href="/sportbuddy/categories">CATEGORIES</a></h2>
 
-<?= $HTML_END ?>
+<?= $ADMIN_END ?>

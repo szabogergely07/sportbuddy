@@ -25,6 +25,15 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
+         <!-- Admin -->
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/blog-post.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/blog-styles.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/font-awesome.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/metisMenu.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/sb-admin-2.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/bootstrap.css">
+        <link rel="stylesheet" href="/sportbuddy/templates/css/admin/bootstrap.min.css">
+
         <!-- BOOTSTRAP CSS -->
         <link rel="stylesheet" href="/sportbuddy/templates/bootstrap/css/bootstrap.min.css">
 
@@ -37,7 +46,10 @@
         <!--   COUSTOM CSS link  -->
         <link rel="stylesheet" href="/sportbuddy/templates/css/style.css">
         <link rel="stylesheet" href="/sportbuddy/templates/css/responsive.css">
-        
+
+
+
+
         <style>
             body {
                 background-color: #330000;

@@ -44,6 +44,16 @@ public function __destruct()
     $HTML_END = ob_get_contents();
     ob_end_clean();
 
+    ob_start();
+    require 'app/views/layout/admin_start.php';
+    $ADMIN_START = ob_get_contents();
+    ob_end_clean();
+
+    ob_start();
+    require 'app/views/layout/admin_end.php';
+    $ADMIN_END = ob_get_contents();
+    ob_end_clean();
+
     include($this->render);
 
 }
