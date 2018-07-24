@@ -20,6 +20,9 @@ Router::error(function(Request $request, \Exception $exception) {
 // Home page
 Router::get('sportbuddy', 'indexController@home')->name('home');
 
+// Admin page
+Router::get('sportbuddy/admin', 'userController@admin');
+
 // User pages
 Router::group([], function () {
 
@@ -85,4 +88,36 @@ Router::group([], function () {
 
 	Router::post('sportbuddy/take-ownership/{id}', 'eventController@take');
 
+});
+
+// Location pages
+Router::group([], function () {
+	
+	Router::get('sportbuddy/locations', 'locationController@index');
+
+	Router::get('sportbuddy/create-location', 'locationController@create');
+	
+	Router::post('sportbuddy/store-location', 'locationController@store');
+
+	Router::get('sportbuddy/locations/update-index/{id}', 'locationController@updateIndex');
+
+	Router::patch('sportbuddy/locations/update/{id}', 'locationController@update');
+
+	Router::delete('sportbuddy/delete-location/{id}', 'locationController@delete');
+});
+
+// Category pages
+Router::group([], function () {
+	
+	Router::get('sportbuddy/categories', 'categoryController@index');
+
+	Router::get('sportbuddy/create-category', 'categoryController@create');
+	
+	Router::post('sportbuddy/store-category', 'categoryController@store');
+
+	Router::get('sportbuddy/categories/update-index/{id}', 'categoryController@updateIndex');
+
+	Router::patch('sportbuddy/categories/update/{id}', 'categoryController@update');
+
+	Router::delete('sportbuddy/delete-category/{id}', 'categoryController@delete');
 });

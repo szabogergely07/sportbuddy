@@ -61,6 +61,7 @@ class eventController extends basisController {
 			//Model
 			$take = $this->event->take($user_id,$event_id);
 			$names = $this->event->joined($user_id);
+			
 			//View
 			$view = new view('events/joined-events');
 			$view->assign('events', $names);

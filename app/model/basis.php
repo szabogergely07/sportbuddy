@@ -3,14 +3,20 @@ namespace app\model;
 
 class basis {
 	protected $db;
+	protected $reg;
 	
 	public function __construct() {
-		return $this->connect();
+		$this->register();
+		$this->connect();
 	}
 
 	public function connect() {
-		$this->db = new \mysqli('localhost', 'root', '', 'mydb');
+		$this->db = new \mysqli($this->reg->dbhost, $this->reg->dbuser, $this->reg->dbpass, $this->reg->dbname);
 	}
+
+	protected function register(){
+        $this->reg = \app\lib\config::inst();
+    }
 
 
 	public function all($table) {

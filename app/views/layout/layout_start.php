@@ -122,7 +122,7 @@
                                 }
                                 ?>
                                 <?= isset($_SESSION['admin']) && $_SESSION['admin'] == 2 ?
-                                '<li><button class="btn-nav" onclick="location.href=\'/sportbuddy/users\';">Users</button>
+                                '<li><button class="btn-nav" onclick="location.href=\'/sportbuddy/admin\';">Admin</button>
                                 </li>' : ''
                                 ?>
 

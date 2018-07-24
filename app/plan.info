@@ -1,10 +1,6 @@
 * Add CSRF to events forms
 
-* Save database credentials in config file
-
 * Form fields require correction
-
-* Set 403 page where applicable
 
 * Create Location and Category CRUD
 
@@ -18,4 +14,8 @@
 
 * Setup emails
 
+* Make description for classes, functions etc.
+
 * Deploy
+
+* Show in Portfolio

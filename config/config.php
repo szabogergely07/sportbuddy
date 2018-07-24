@@ -1,9 +1,9 @@
 <?php
-//require('rb.php');
-namespace config;
 
-use vendor\rb.php;
+// Set Database credentials
 
-class config {
-	R::setup('mysql:host=localhost;dbname=mydb', 'root', '');
-}
+	$conf['dbhost'] = 'localhost';
+	$conf['dbuser'] = 'root';
+	$conf['dbpass'] = '';
+	$conf['dbname'] = 'mydb';
+

@@ -15,18 +15,6 @@ class userController extends basisController {
 		$this->user = new user;
 		$this->basis = new basis;
 
-		// set SESSION variables for 
-		if(isset($_SESSION['admin'])) {
-			return $_SESSION['admin'];
-		} else {
-			$_SESSION['admin'] = null;
-		}
-
-		if(isset($_SESSION['user_id'])) {
-			return $_SESSION['user_id'];
-		} else {
-			$_SESSION['user_id'] = null;
-		}
 	}
 
 
@@ -40,6 +28,17 @@ class userController extends basisController {
 			//View
 			$view = new view('users/users');
 			$view->assign('names', $names);
+		} else {
+			$view = new view('403');
+		}
+
+	}
+
+	public function admin() {
+		if(($_SESSION['admin'] == 2)) {
+        
+			//View
+			$view = new view('admin');
 		} else {
 			$view = new view('403');
 		}
