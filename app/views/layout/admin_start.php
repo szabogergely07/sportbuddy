@@ -10,15 +10,6 @@
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         
 
-
-        
-
-
-
-
-
-        
-
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -241,4 +232,4 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"></h1>
+              

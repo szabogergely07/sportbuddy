@@ -1,4 +1,4 @@
-<?= $HTML_START ?>
+<?= $ADMIN_START ?>
 
 <?= isset($success) ?
     '<div class="alert alert-'.$notice.' fade in">
@@ -40,4 +40,4 @@
 <?php } ?>
 </table>
 
-<?= $HTML_END ?>
+<?= $ADMIN_END ?>

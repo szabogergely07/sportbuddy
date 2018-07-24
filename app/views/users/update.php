@@ -1,4 +1,4 @@
-<?= $HTML_START ?>
+<?= $_SESSION['admin'] == 2 ? $ADMIN_START : $HTML_START ?>
                    
     <!-- Modal Close Button -->
 <div id="signup-form">
@@ -88,4 +88,4 @@
 
 </div>
                
-<?= $HTML_END ?>
+<?= $_SESSION['admin'] == 2 ? $ADMIN_END : $HTML_END ?>

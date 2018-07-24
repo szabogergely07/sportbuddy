@@ -132,7 +132,7 @@ body {
         z-index: 1;
         position: absolute;
         width: 250px;
-        margin-top: 51px;
+        margin-top: 0px;
     }
 
     .navbar-top-links .dropdown-messages,
@@ -351,4 +351,8 @@ table.dataTable thead .sorting:after {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+.navbar-default.sidebar {
+    margin-top: 0px;
 }
