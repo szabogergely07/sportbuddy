@@ -85,3 +85,27 @@ function token() {
 function tokenValid() {
     return hash_equals($_POST['token'], $_SESSION['token']);
 }
+
+// Define event levels 
+function eventLevel($id) {
+    switch ($id) {
+        case '2':
+            return 'Beginner';
+            break;
+        case '3':
+            return 'Elementary';
+            break;
+        case '4':
+            return 'Intermediate';
+            break;
+        case '5':
+            return 'Advanced';
+            break;
+        case '6':
+            return 'Professional';
+            break;
+        default:
+            return 'Not defined';
+            break;
+    }
+}

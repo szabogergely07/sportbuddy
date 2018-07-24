@@ -2,11 +2,9 @@
 
 * Form fields require correction
 
-* Create Location and Category CRUD
+* Build in Location/Category to events
 
 * If event's size reached the max, cannot join, notice message
-
-* If user deletes self, event set null and possibility to take the ownership from other users
 
 * Build in front end
 

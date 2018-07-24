@@ -10,11 +10,16 @@ use app\model\basis;
 class eventController extends basisController {
 	private $basis;
 	private $event;
+	private $eventLevels = [];
 
 	public function __construct() {
 		parent::__construct();
 		$this->basis = new basis;
 		$this->event = new event;
+		for ($i=2; $i <7 ; $i++) { 
+			$this->eventLevels[] = [$i=>eventLevel($i)];
+		}
+		
 	}
 
 	public function index() {
@@ -102,11 +107,17 @@ class eventController extends basisController {
 	}
 
 	public function create() {
-
+		//Model
+		$location = $this->basis->all('location');
+		$category = $this->basis->all('category');
+		//View
 		if( !isset($_SESSION['user_id']) ){
             $view = new view('403');
         } else {
 			$view = new view('events/create');
+			$view->assign('locations',$location);
+			$view->assign('categories',$category);
+			$view->assign('eventLevels',$this->eventLevels);
 		}
 	}
 
@@ -121,11 +132,15 @@ class eventController extends basisController {
 		//Model
 		$data = $this->event->store($user_id, null);
 		$events = $this->event->allWithUsers();
-
+		$location = $this->basis->all('location');
+		$category = $this->basis->all('category');
 		//View
 		if($data) {
 			$view = new view('events/create');
 			$view->assign('data', $data);
+			$view->assign('locations',$location);
+			$view->assign('categories',$category);
+			$view->assign('eventLevels',$this->eventLevels);
 		} else {
 			$notice = "success";
 			$success = "New event created successfully!";
@@ -139,11 +154,16 @@ class eventController extends basisController {
 	public function updateIndex($id) {
 		//Model
 		$event = $this->basis->show($id,'event');
+		$location = $this->basis->all('location');
+		$category = $this->basis->all('category');
 
 		if(isset($_SESSION['user_id']) && $event->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
 			// View
 			$view = new view('events/update');
 			$view->assign('event', $event);
+			$view->assign('locations',$location);
+			$view->assign('categories',$category);
+			$view->assign('eventLevels',$this->eventLevels);
 		} else {
 			$view = new view('403');
 		}
@@ -155,6 +175,9 @@ class eventController extends basisController {
      	$events = $this->event->allWithUsers();
      	
      	$event = $this->basis->show($event_id,'event');
+     	$location = $this->basis->all('location');
+		$category = $this->basis->all('category');
+
 		if($event->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
 		// 	View if there is error
 			if($data) {
@@ -163,6 +186,9 @@ class eventController extends basisController {
 				$view = new view('events/update');
 				$view->assign('event', $event);
 				$view->assign('data', $data);
+				$view->assign('locations',$location);
+				$view->assign('categories',$category);
+				$view->assign('eventLevels',$this->eventLevels);
 			// View if there is no error
 			} else {
 				$success = "You have updated successfully!";

@@ -24,6 +24,9 @@
             <th>Start Time</th>
             <th>Size</th>
             <th>Created by</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Level</th>
             <th></th>
             <th></th>
             <th></th>
@@ -36,7 +39,9 @@
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
             <td><?= $unit['first_name'].' '.$unit['last_name'] ?></td>
-            
+            <td></td>
+            <td></td>
+            <td><?= eventLevel($unit['level']) ?></td>
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
             <?php if(!isset($_SESSION['user_id'])) {
                     echo '';

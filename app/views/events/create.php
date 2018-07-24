@@ -1,5 +1,5 @@
 <?= $HTML_START ?>           
-                    
+
     <!-- Modal Close Button -->
 <div id="signup-form">
     <form method="post" class="single-form" id="" action="/sportbuddy/store-event">
@@ -76,7 +76,9 @@
            
             <select name="location" class="form-control">
                 <option value="1"><?= isset($_POST['location']) ? $_POST['location'] : 'Select location' ?></option>
-                <option>1</option>
+                <?php foreach($locations as $location) { ?>
+                <option value="<?= $location['locationId'] ?>"><?= $location['name'] ?></option>
+                <?php } ?>
             </select>
             <div class="<?= isset($data['location']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['location']) ? '<strong> '.$data['location'].'</strong>' : '' ?>
@@ -89,7 +91,9 @@
            
             <select name="category" class="form-control">
                 <option value="1"><?= isset($_POST['category']) ? $_POST['category'] : 'Select category' ?></option>
-                <option>1</option>
+               <?php foreach($categories as $category) { ?>
+                <option value="<?= $category['categoryId'] ?>"><?= $category['name'] ?></option>
+                <?php } ?>
             </select>
             <div class="<?= isset($data['category']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['category']) ? '<strong> '.$data['category'].'</strong>' : '' ?>
@@ -101,23 +105,13 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
            
             <select name="level" class="form-control">
-                <option value="1"><?= isset($_POST['level']) ? $_POST['level'] : 'Select Level' ?></option>
-                <option value="2">Beginner
+                <option value="1"><?= isset($_POST['level']) ? eventLevel($_POST['level']) : 'Select Level' ?></option>
+                <?php foreach($eventLevels as $eventLevel) {
+                    foreach ($eventLevel as $key => $value) { ?>
+                <option value="<?= $key ?>"><?= $value ?>
                 </option>
-                <option value="3">Elementary
-                </option>
-                <option value="4">Low-Intermediate
-                </option>
-                <option value="5">Intermediate
-                </option>
-                <option value="6">Upper-Intermediate
-                </option>
-                <option value="7">Upper-Intermediate
-                </option>
-                <option value="8">Advanced
-                </option>
-                <option value="9">Professional
-                </option>
+                <?php } ?>
+                <?php } ?>
             </select>
             <div class="<?= isset($data['level']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['level']) ? '<strong> '.$data['level'].'</strong>' : '' ?>

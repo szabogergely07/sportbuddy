@@ -101,7 +101,6 @@ class locationController extends basisController {
 	     	$result = $this->basis->all('location');
 
 			// View 
-			
 			$success = "You have successfully deleted ".$location->name." !";
 			$notice = "success";
 
