@@ -121,3 +121,19 @@ Router::group([], function () {
 
 	Router::delete('sportbuddy/delete-category/{id}', 'categoryController@delete');
 });
+
+// Category pages
+Router::group([], function () {
+	
+	// Router::get('sportbuddy/categories', 'categoryController@index');
+
+	// Router::get('sportbuddy/create-category', 'categoryController@create');
+	
+	Router::post('sportbuddy/store-comment/{id}', 'commentController@store');
+
+	// Router::get('sportbuddy/categories/update-index/{id}', 'categoryController@updateIndex');
+
+	// Router::patch('sportbuddy/categories/update/{id}', 'categoryController@update');
+
+	// Router::delete('sportbuddy/delete-category/{id}', 'categoryController@delete');
+});

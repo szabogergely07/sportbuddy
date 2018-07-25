@@ -94,12 +94,14 @@ class eventController extends basisController {
 		//Model
 		$event = $this->basis->show($id,'event');
 		$users = $this->event->allWithUsers($id,'event');
+		$comments = $this->event->comment($id);
 
 		//View
 		if($event) {
 	    	$view = new view('events/show');
 			$view->assign('event', $event);
 			$view->assign('joined_users', $users);
+			$view->assign('comments',$comments);
 			if(isset($_SESSION['user_id'])) {
 				$view->assign('button', $button);
 			}

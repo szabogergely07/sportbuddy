@@ -72,8 +72,6 @@ class event extends basis {
 			$error['category'] = "Undefined category!";
 		}
 		
-		
-		
 		if(!is_numeric($level)) {
 			$error['level'] = "Undefined level!";
 		}
@@ -90,6 +88,7 @@ class event extends basis {
 			$error['location'] = "Undefined location!";
 		}
 	
+		// Create new event if there is no error and no eventid
 		if(!$error && $event == null) {
 			// Save event details
 			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level`, `created_by`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level', '$user_id');");
@@ -100,6 +99,7 @@ class event extends basis {
 			// Save user_id to the created event
 			$result = $this->db->query("INSERT INTO user_has_event (user_id, event_id) VALUES ('$user_id','$event_id');");
 		
+		// Update an event if there is no error
 		} elseif (!$error && $event != null) {
 			$this->db->query("UPDATE event SET `name` = '$name', `description` = '$description', `date` = '$date', `start` = '$start', `end` = '$end', `size` = '$size', `location_idlocation` = '$location', `category_id` = '$category', `level` = '$level' WHERE `eventId` = '$event';");
 		} else {
@@ -118,6 +118,12 @@ class event extends basis {
 
 	public function userHasEvent($user) {
 		return $this->db->query("SELECT event_id FROM user_has_event WHERE user_id = '$user';")->fetch_all(MYSQLI_ASSOC);
+	}
+
+	public function comment($id) {
+		return $this->db->query("SELECT * FROM comment
+			JOIN user ON comment.user_iduser = user.userId
+			WHERE event_id = '$id';")->fetch_all(MYSQLI_ASSOC);
 	}
 
 }

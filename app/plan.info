@@ -1,8 +1,11 @@
-* Show location/category in events all
+* Set admin navigation area
 
 * Add labels to forms, change color
 
-* Change root directory to 'sportbuddy/'
+***** Change root directory to 'sportbuddy/'
+***** php.ini?
+
+* Add search field
 
 * Add CSRF to events forms
 
