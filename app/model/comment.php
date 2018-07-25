@@ -28,5 +28,11 @@ class comment extends basis {
 		}
 	}
 
+	public function commentUser($comment_id) {
+		return $this->db->query("SELECT userId FROM comment
+			JOIN user ON comment.user_iduser = user.userId
+			WHERE commentId = '$comment_id';")->fetch_object();
+	}
+
 
 }

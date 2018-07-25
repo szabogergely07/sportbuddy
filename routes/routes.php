@@ -70,7 +70,7 @@ Router::group([], function () {
 
 	Router::get('sportbuddy/joined-events', 'eventController@joined');
 
-	Router::get('sportbuddy/events/{id}', 'eventController@show');
+	Router::get('sportbuddy/events/{id}/{deleted?}', 'eventController@show');
 
 	Router::get('sportbuddy/create-event', 'eventController@create');
 	
@@ -135,5 +135,5 @@ Router::group([], function () {
 
 	// Router::patch('sportbuddy/categories/update/{id}', 'categoryController@update');
 
-	// Router::delete('sportbuddy/delete-category/{id}', 'categoryController@delete');
+	Router::delete('sportbuddy/delete-comment/{comment_id}/{event_id}', 'commentController@delete');
 });

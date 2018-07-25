@@ -1,5 +1,10 @@
 <?= $HTML_START ?>
-
+<?= isset($success) ?
+    '<div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+         '. $success . '
+    </div>' : ''
+?>
     <div class="container">
      
 <div class="span10 offset1">
@@ -39,12 +44,29 @@
         <th>Comment body</th>
         <th>Created by</th>
         <th>Date</th>
+        <th></th>
       </tr>
     <?php foreach ($comments as $comment) { ?>
       <tr>
         <td><?= $comment['body'] ?></td>
         <td><?= $comment['first_name'].' '.$comment['last_name'] ?></td>
-        <td><?= $comment['created_at'] ?></td>
+        <td><?= time_ago(strtotime($comment['created'])) ?></td>
+
+        <?php if(!isset($_SESSION['user_id'])) {
+                    echo '<td>""</td>';
+            } elseif (($_SESSION['user_id'] == $comment['userId']) || ($_SESSION['admin'] == 2)) {
+              echo
+            '<td>
+              <form method="delete" action="/sportbuddy/delete-comment/'.$comment['commentId'].'/'.$event->eventId.'">
+              <input type="hidden" name="submit" value="submit">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn" href="">Delete</button>
+              </form>
+            </td>';
+            } else {
+              echo '';
+            }
+        ?>
       </tr>
     <?php } ?>
     </table>

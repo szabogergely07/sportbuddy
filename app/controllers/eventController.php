@@ -77,12 +77,14 @@ class eventController extends basisController {
 		}
 	}
 
-	public function show($id) {
+	public function show($id,$deleted=null) {
 		if(isset($_SESSION['user_id'])) {
 			$user_id = $_SESSION['user_id'];
 		
+			//Gets all events the user has
 			$option = $this->event->userHasEvent($user_id);
 
+			// If the user has this event already, $button will be a not empty array -> this decides in show page Join or Leave button
 			$button = [];
 			foreach ($option as $event_id) {
 				if(implode($event_id) == $id) {
@@ -94,7 +96,7 @@ class eventController extends basisController {
 		//Model
 		$event = $this->basis->show($id,'event');
 		$users = $this->event->allWithUsers($id,'event');
-		$comments = $this->event->comment($id);
+		$comments = $this->event->commentByUser($id);
 
 		//View
 		if($event) {
@@ -102,6 +104,11 @@ class eventController extends basisController {
 			$view->assign('event', $event);
 			$view->assign('joined_users', $users);
 			$view->assign('comments',$comments);
+
+			// If comment deleted, commentController gives this parameter
+			if($deleted == "deleted") {
+				$view->assign('success','Comment deleted successfully!');
+			}
 			if(isset($_SESSION['user_id'])) {
 				$view->assign('button', $button);
 			}
@@ -209,6 +216,7 @@ class eventController extends basisController {
 	}
 
 	public function delete($event_id,$event_name) {
+
 		$event_name = str_replace('_',' ',$event_name);
 		$event_exist = $this->basis->show($event_id,'event');
 		if($event_exist->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {

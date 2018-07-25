@@ -7,7 +7,7 @@ class event extends basis {
 
 	public function allWithUsers($id = 0) {
 		if($id == 0) {
-		return $this->db->query("SELECT *, event.name AS event_name FROM event 
+		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
      		JOIN location ON location.name = event.location_idlocation
      		left JOIN category ON category.name = event.category_id;")->fetch_all(MYSQLI_ASSOC);
@@ -120,10 +120,11 @@ class event extends basis {
 		return $this->db->query("SELECT event_id FROM user_has_event WHERE user_id = '$user';")->fetch_all(MYSQLI_ASSOC);
 	}
 
-	public function comment($id) {
-		return $this->db->query("SELECT * FROM comment
+	public function commentByUser($id) {
+		return $this->db->query("SELECT *, comment.created_at AS created FROM comment
 			JOIN user ON comment.user_iduser = user.userId
 			WHERE event_id = '$id';")->fetch_all(MYSQLI_ASSOC);
 	}
+
 
 }

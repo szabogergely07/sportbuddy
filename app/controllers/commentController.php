@@ -14,16 +14,21 @@ class commentController extends basisController {
 		parent::__construct();
 		$this->basis = new basis;
 		$this->comment = new comment;
+
+		if(!isset($_SESSION['user_id'])) {
+			header("location: /sportbuddy");
+			exit;
+		}
 	}
 
 	public function index() {
 		
-			//Model
-			$result = $this->basis->all('comment');
+			// //Model
+			// $result = $this->basis->all('comment');
 			
-			//View
-			$view = new view('comments/comments');
-			$view->assign('result', $result);
+			// //View
+			// $view = new view('comments/comments');
+			// $view->assign('result', $result);
 	}
 
 
@@ -49,62 +54,19 @@ class commentController extends basisController {
 	 //    }
 	}
 
-	
-	public function updateIndex($id) {
-		
+
+	public function delete($comment_id,$event_id) {
+
+		$comment = $this->comment->commentUser($comment_id);
+		if (($_SESSION['user_id'] == $comment->userId || ($_SESSION['admin'] == 2))) {
 			//Model
-			$result = $this->basis->show($id,'location');
-
-			// View
-			$view = new view('locations/update');
-			$view->assign('result', $result);
-	}
-
-	public function update($id) {
-			//Model
-	     	$data = $this->location->store($id);
-			$result = $this->basis->all('location');
-
-			//View if there is error
-			if($data) {
-				$result = $this->basis->show($id,'location');
-
-				$view = new view('locations/update');
-				$view->assign('result', $result);
-				$view->assign('data', $data);
-			// View if there is no error
-			} else {
-				$success = "You have updated successfully!";
-				$notice = "success";
-				$view = new view('locations/locations');
-				$view->assign('success', $success);
-				$view->assign('result', $result);
-				$view->assign('notice', $notice);
-		    }
-		// } else {
-		// 	$view = new view('403');
-		// }
-		
-	}
-
-	public function delete($id) {
-		
-			//Model
-	     	$location = $this->basis->show($id,'location');
-	     	$data = $this->basis->delete($id,'location');
-	     	$result = $this->basis->all('location');
-
+	     	$data = $this->basis->delete($comment_id,'comment');
+	     	
 			// View 
-			$success = "You have successfully deleted ".$location->name." !";
-			$notice = "success";
-
-			$view = new view('locations/locations');
-			$view->assign('success', $success);
-			$view->assign('result', $result);
-			$view->assign('notice', $notice);
-		// } else {
-		// 	$view = new view('403');
-		// }
+			redirect('/sportbuddy/events/'.$event_id.'/deleted');
+		} else {
+			$view = new view('403');
+		}
 	}
 
 

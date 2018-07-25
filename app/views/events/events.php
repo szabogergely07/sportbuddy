@@ -27,6 +27,7 @@
             <th>Category</th>
             <th>Location</th>
             <th>Level</th>
+            <th>Created</th>
             <th></th>
             <th></th>
             <th></th>
@@ -42,6 +43,7 @@
             <td><?= $unit['category_id']?></td>
             <td><?= $unit['location_idlocation']?></td>
             <td><?= eventLevel($unit['level']) ?></td>
+            <td><?= time_ago(strtotime($unit['created'])) ?></td>
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
             <?php if(!isset($_SESSION['user_id'])) {
                     echo '';
