@@ -16,6 +16,8 @@ class eventController extends basisController {
 		parent::__construct();
 		$this->basis = new basis;
 		$this->event = new event;
+
+		// Fill up the array with level names, modify $i when eventLevel method changes
 		for ($i=2; $i <7 ; $i++) { 
 			$this->eventLevels[] = [$i=>eventLevel($i)];
 		}

@@ -1,3 +1,5 @@
+* Change root directory to 'sportbuddy/'
+
 * Add CSRF to events forms
 
 * Form fields require correction

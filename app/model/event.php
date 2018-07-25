@@ -57,15 +57,26 @@ class event extends basis {
 		if(!Val::name($size) || !is_numeric($size)) {
 			$error['size'] = "Size must be a number!";
 		}
-		if(!is_numeric($category)) {
+		
+		// Check if selected category is present in category table
+		$c_names = $this->db->query("SELECT name FROM category;")->fetch_all(MYSQLI_ASSOC);
+		foreach($c_names as $c_name) {
+			if($location != $c_name) {
 			$error['category'] = "Undefined category!";
+			}	
 		}
 		if(!is_numeric($level)) {
 			$error['level'] = "Undefined level!";
 		}
-		if(!is_numeric($location)) {
+		
+		// Check if selected location is present in location table
+		$l_names = $this->db->query("SELECT name FROM location;")->fetch_all(MYSQLI_ASSOC);
+		foreach($l_names as $l_name) {
+			if($location != $l_name) {
 			$error['location'] = "Undefined location!";
+			}	
 		}
+		
 	
 		if(!$error && $event == null) {
 			// Save event details

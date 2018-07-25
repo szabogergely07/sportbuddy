@@ -75,9 +75,9 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
            
             <select name="location" class="form-control">
-                <option value="1"><?= isset($_POST['location']) ? $_POST['location'] : 'Select location' ?></option>
+                <option value="<?= isset($_POST['location']) ? $_POST['location'] : 'Select location' ?>"><?= isset($_POST['location']) ? $_POST['location'] : 'Select location' ?></option>
                 <?php foreach($locations as $location) { ?>
-                <option value="<?= $location['locationId'] ?>"><?= $location['name'] ?></option>
+                <option value="<?= $location['name'] ?>"><?= $location['name'] ?></option>
                 <?php } ?>
             </select>
             <div class="<?= isset($data['location']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
@@ -90,9 +90,9 @@
         <div class="col-xs-12 col-md-4 col-md-offset-4">
            
             <select name="category" class="form-control">
-                <option value="1"><?= isset($_POST['category']) ? $_POST['category'] : 'Select category' ?></option>
+                <option value="<?= isset($_POST['category']) ? $_POST['category'] : 'Select category' ?>"><?= isset($_POST['category']) ? $_POST['category'] : 'Select category' ?></option>
                <?php foreach($categories as $category) { ?>
-                <option value="<?= $category['categoryId'] ?>"><?= $category['name'] ?></option>
+                <option value="<?= $category['name'] ?>"><?= $category['name'] ?></option>
                 <?php } ?>
             </select>
             <div class="<?= isset($data['category']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">

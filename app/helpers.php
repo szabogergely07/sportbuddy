@@ -86,7 +86,7 @@ function tokenValid() {
     return hash_equals($_POST['token'], $_SESSION['token']);
 }
 
-// Define event levels 
+// Define event levels, when changed show eventController's construct() 
 function eventLevel($id) {
     switch ($id) {
         case '2':
