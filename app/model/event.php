@@ -7,8 +7,10 @@ class event extends basis {
 
 	public function allWithUsers($id = 0) {
 		if($id == 0) {
-		return $this->db->query("SELECT * FROM event 
-     		JOIN user ON user.userId = event.created_by;")->fetch_all(MYSQLI_ASSOC);
+		return $this->db->query("SELECT *, event.name AS event_name FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		left JOIN category ON category.name = event.category_id;")->fetch_all(MYSQLI_ASSOC);
 		} else {
 			return $this->db->query("SELECT * FROM user 
      		JOIN user_has_event ON user_has_event.user_id = user.userId
@@ -60,23 +62,33 @@ class event extends basis {
 		
 		// Check if selected category is present in category table
 		$c_names = $this->db->query("SELECT name FROM category;")->fetch_all(MYSQLI_ASSOC);
+		$cat = [];
 		foreach($c_names as $c_name) {
-			if($location != $c_name) {
-			$error['category'] = "Undefined category!";
-			}	
+			if(in_array($category,$c_name)) {
+				$cat[] = 1; 
+			}
 		}
+		if(empty($cat)) {
+			$error['category'] = "Undefined category!";
+		}
+		
+		
+		
 		if(!is_numeric($level)) {
 			$error['level'] = "Undefined level!";
 		}
 		
 		// Check if selected location is present in location table
 		$l_names = $this->db->query("SELECT name FROM location;")->fetch_all(MYSQLI_ASSOC);
+		$loc = [];
 		foreach($l_names as $l_name) {
-			if($location != $l_name) {
-			$error['location'] = "Undefined location!";
+			if(in_array($location,$l_name)) {
+				$loc[] = 1;
 			}	
 		}
-		
+		if(empty($loc)) {
+			$error['location'] = "Undefined location!";
+		}
 	
 		if(!$error && $event == null) {
 			// Save event details

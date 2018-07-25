@@ -13,10 +13,10 @@
 
 
     <div class="form-group row has-error has-feedback">
-
-        <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
+        <label for="name" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Name</label>
+        <div class="col-xs-8 col-md-4 fields">
             <!-- First Name -->
-            <input name="name" class="form-control" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="inputWarning1">
+            <input name="name" id="name" class="form-control" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="inputWarning1">
             <div class="<?= isset($data['name']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['name']) ? '<strong> '.$data['name'].'</strong>' : '' ?>
             </div>
@@ -24,7 +24,8 @@
     </div>
     
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Description</label>
+        <div class="col-xs-8 col-md-4 fields">
             <!-- Last Name -->
             <textarea name="description" class="form-control " rows="5" placeholder="Description"><?= isset($_POST['description']) ? $_POST['description'] : '' ?>
             </textarea>

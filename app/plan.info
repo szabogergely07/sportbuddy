@@ -1,10 +1,12 @@
+* Show location/category in events all
+
+* Add labels to forms, change color
+
 * Change root directory to 'sportbuddy/'
 
 * Add CSRF to events forms
 
 * Form fields require correction
-
-* Build in Location/Category to events
 
 * If event's size reached the max, cannot join, notice message
 

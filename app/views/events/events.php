@@ -33,14 +33,14 @@
           </tr>
         <?php foreach ($events as $unit) { ?>
           <tr>
-            <td><?= $unit['name'] ?></td>
+            <td><?= $unit['event_name'] ?></td>
             <td><?= $unit['description'] ?></td>
             <td><?= $unit['date'] ?></td>
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
             <td><?= $unit['first_name'].' '.$unit['last_name'] ?></td>
-            <td></td>
-            <td></td>
+            <td><?= $unit['category_id']?></td>
+            <td><?= $unit['location_idlocation']?></td>
             <td><?= eventLevel($unit['level']) ?></td>
             <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
             <?php if(!isset($_SESSION['user_id'])) {
