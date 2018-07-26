@@ -38,7 +38,7 @@
             </label>
         </div>
       </div>
-
+  <h2>Comments</h2>
     <table>
       <tr>
         <th>Comment body</th>
@@ -53,7 +53,7 @@
         <td><?= time_ago(strtotime($comment['created'])) ?></td>
 
         <?php if(!isset($_SESSION['user_id'])) {
-                    echo '<td>""</td>';
+                    echo '';
             } elseif (($_SESSION['user_id'] == $comment['userId']) || ($_SESSION['admin'] == 2)) {
               echo
             '<td>
@@ -71,9 +71,12 @@
     <?php } ?>
     </table>
 
-  <div id="signup-form">
-    <form method="post" class="single-form" id="" action="/sportbuddy/store-comment/<?= $event->eventId ?>">
-    <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
+<?php
+  if(isset($_SESSION['user_id'])) {
+  echo
+  '<div id="signup-form">
+    <form method="post" class="single-form" id="" action="/sportbuddy/store-comment/'.$event->eventId .'">
+    <input type="hidden" name="csrf_token" value="'.csrf_token() .'">
     <input type="hidden" name="submit" value="submit">
 
     <div class="col-xs-12">
@@ -83,9 +86,9 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-8 col-md-4 fields">
             <!-- First Name -->
-            <textarea name="comment" id="" class="form-control" rows="4" placeholder="Your comment"><?= isset($_POST['name']) ? $_POST['name'] : '' ?></textarea>
-            <div class="<?= isset($data['name']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
-                <?= isset($data['name']) ? '<strong> '.$data['name'].'</strong>' : '' ?>
+            <textarea name="comment" id="" class="form-control" rows="4" placeholder="Your comment">'.(isset($_POST['name']) ? $_POST['name'] : '').'</textarea>
+            <div class="'.(isset($data['name']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ).'">
+                '. (isset($data['name']) ? $data['name'] : '' ).'
             </div>
         </div>
     </div>
@@ -96,9 +99,10 @@
         </div>
     </div>
   </form>
-</div>
-
-
+</div>';
+}
+?>
+<br>
     <table>
       <tr>
         <th>Joined users</th>
