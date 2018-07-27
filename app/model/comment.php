@@ -10,7 +10,7 @@ class comment extends basis {
 
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
-		$comment = $f_comment;
+		$comment = mysqli_real_escape_string($this->db, $f_comment);
 		
 
 		if(!Val::name($comment)) {
@@ -27,7 +27,8 @@ class comment extends basis {
 			return $error;
 		}
 	}
-
+	
+	// Get userid for validation to delete only own comment
 	public function commentUser($comment_id) {
 		return $this->db->query("SELECT userId FROM comment
 			JOIN user ON comment.user_iduser = user.userId

@@ -2,7 +2,7 @@
                    
     <!-- Modal Close Button -->
 <div id="signup-form">
-    <form method="post" class="single-form" id="" action="/sportbuddy/events/update/<?= $event->eventId ?>">
+    <form method="post" class="single-form" id="" action="/sportbuddy/event/update/<?= $event->eventId ?>">
     <input type="hidden" name="submit" value="submit">
     <input type="hidden" name="_method" value="PATCH">
 

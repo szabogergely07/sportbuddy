@@ -36,7 +36,7 @@
             <td><?= $unit['start'] ?></td>
             <td><?= $unit['size'] ?></td>
             
-            <td><a class="btn" href="/sportbuddy/events/<?= $unit['eventId'] ?>">Show</a></td>
+            <td><a class="btn" href="/sportbuddy/event/<?= $unit['eventId'] ?>">Show</a></td>
             <?php if(!isset($_SESSION['user_id'])) {
                     echo '';
             } elseif (($_SESSION['user_id'] == $unit['created_by']) || ($_SESSION['admin'] == 2)) {
@@ -49,7 +49,7 @@
               </form>
             </td>
             <td>
-              <a class="btn" href="/sportbuddy/events/update-index/'.$unit['eventId'].'">Update</a>
+              <a class="btn" href="/sportbuddy/event/update-index/'.$unit['eventId'].'">Update</a>
             </td>';
             } else {
               '';

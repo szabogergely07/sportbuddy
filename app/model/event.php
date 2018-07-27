@@ -40,8 +40,8 @@ class event extends basis {
 
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
-		$name = $f_name;
-		$description = $f_description;
+		$name = mysqli_real_escape_string($this->db, $f_name);
+		$description = mysqli_real_escape_string($this->db, $f_description);
 		$date = $f_date;
 		$start = $f_start;
 		$end = $f_end;
@@ -120,11 +120,48 @@ class event extends basis {
 		return $this->db->query("SELECT event_id FROM user_has_event WHERE user_id = '$user';")->fetch_all(MYSQLI_ASSOC);
 	}
 
+	// Get all comments for the event with the user created the comment
 	public function commentByUser($id) {
 		return $this->db->query("SELECT *, comment.created_at AS created FROM comment
 			JOIN user ON comment.user_iduser = user.userId
 			WHERE event_id = '$id';")->fetch_all(MYSQLI_ASSOC);
 	}
 
+	public function search() {
+
+		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
+
+		$location = $f_location;
+		$category = $f_category;
+		$level = $f_level;
+		
+		
+		if($location != 'All' && $category != 'All' && $level != '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE location.name = '$location' AND category.name = '$category' AND level = '$level' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+		
+		} elseif($location == 'All' && $category == 'All' && $level == '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+
+     	} elseif($category != 'All' && $location != 'All' && $level == '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE location.name = '$location' AND category.name = '$category' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+		}
+
+
+	}
+	
 
 }

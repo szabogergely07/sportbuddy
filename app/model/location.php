@@ -10,7 +10,7 @@ class location extends basis {
 
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
-		$name = $f_name;
+		$name = mysqli_real_escape_string($this->db, $f_name);
 		
 
 		if(!Val::name($name)) {

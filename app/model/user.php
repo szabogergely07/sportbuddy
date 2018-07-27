@@ -15,11 +15,11 @@ class user extends basis {
 		
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
-		$first_name = $f_first_name;
-		$last_name = $f_last_name;
-		$email = $f_email;
+		$first_name = mysqli_real_escape_string($this->db, $f_first_name);
+		$last_name = mysqli_real_escape_string($this->db, $f_last_name);
+		$email = mysqli_real_escape_string($this->db, $f_email);
 		$birthday = $f_birthday;
-		$password = $f_password;
+		$password = mysqli_real_escape_string($this->db, $f_password);
 		
 		// Takes the user's password from database to compare it when updates details 	
 		$pass = $this->db->query("SELECT password FROM user WHERE userId = '$id'")->fetch_row();
@@ -87,8 +87,8 @@ class user extends basis {
 	public function login() {
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
-		$email = $f_email;
-		$password = $f_password;
+		$email = mysqli_real_escape_string($this->db, $f_email);
+		$password = mysqli_real_escape_string($this->db, $f_password);
 
 		$exist = $this->db->query("SELECT email FROM user WHERE email = '$email'")->fetch_row();
 

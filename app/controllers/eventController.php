@@ -24,14 +24,23 @@ class eventController extends basisController {
 		
 	}
 
-	public function index() {
+	public function index($search = null) {
 
 		//Model
-		$names = $this->event->allWithUsers();
+		if($search == null) {
+			$names = $this->event->allWithUsers();
+		} else {
+			$names = $this->event->search();
+		}
+		$location = $this->basis->all('location');
+		$category = $this->basis->all('category');
 
 		//View
 		$view = new view('events/events');
 		$view->assign('events', $names);
+		$view->assign('eventLevels',$this->eventLevels);
+		$view->assign('locations', $location);
+		$view->assign('categories', $category);
 	}
 
 	public function own() {
@@ -252,7 +261,7 @@ class eventController extends basisController {
 			$data = $this->event->join($user_id,$event_id);
 
 			//View
-			redirect('/sportbuddy/events/'.$event_id);
+			redirect('/sportbuddy/event/'.$event_id);
 		}
 		$view = new view('403');
 	}
@@ -264,12 +273,16 @@ class eventController extends basisController {
 			$data = $this->event->leave($user_id,$event_id);
 
 			//View
-			redirect('/sportbuddy/events/'.$event_id);
+			redirect('/sportbuddy/event/'.$event_id);
 		}
 		$view = new view('403');
 	}
 
+	// public function search() {
+	// 	$data = $this->event->search();
 
+
+	// }
 
 
 }

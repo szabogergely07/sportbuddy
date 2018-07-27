@@ -13,6 +13,10 @@ Router::error(function(Request $request, \Exception $exception) {
     if($exception instanceof NotFoundHttpException && $exception->getCode() === 404) {
         self::response()->redirect('/sportbuddy/not-found');
     }
+
+    //  if($exception instanceof NotFoundHttpException && $exception->getCode() === 403) {
+    //     self::response()->redirect('/sportbuddy/403');
+    // }
     
 });
 
@@ -64,21 +68,21 @@ Router::group([], function () {
 //Event pages
 Router::group([], function () {
 	
-	Router::get('sportbuddy/events', 'eventController@index');
+	Router::form('sportbuddy/events/{search?}', 'eventController@index');
 
 	Router::get('sportbuddy/my-events', 'eventController@own');
 
 	Router::get('sportbuddy/joined-events', 'eventController@joined');
 
-	Router::get('sportbuddy/events/{id}/{deleted?}', 'eventController@show');
+	Router::get('sportbuddy/event/{id}/{deleted?}', 'eventController@show');
 
 	Router::get('sportbuddy/create-event', 'eventController@create');
 	
 	Router::post('sportbuddy/store-event', 'eventController@store');
 
-	Router::get('sportbuddy/events/update-index/{id}', 'eventController@updateIndex');
+	Router::get('sportbuddy/event/update-index/{id}', 'eventController@updateIndex');
 
-	Router::patch('sportbuddy/events/update/{id}', 'eventController@update');
+	Router::patch('sportbuddy/event/update/{id}', 'eventController@update');
 
 	Router::delete('sportbuddy/delete-event/{id}/{name}', 'eventController@delete');
 
@@ -87,6 +91,9 @@ Router::group([], function () {
 	Router::delete('sportbuddy/leave-event/{id}', 'eventController@leave');
 
 	Router::post('sportbuddy/take-ownership/{id}', 'eventController@take');
+
+	// Search field
+	Router::get('sportbuddy/search-event', 'eventController@search');
 
 });
 
