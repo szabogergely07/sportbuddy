@@ -93,25 +93,7 @@ class locationController extends basisController {
 		
 	}
 
-	public function delete($id) {
-		
-			//Model
-	     	$location = $this->basis->show($id,'location');
-	     	$data = $this->basis->delete($id,'location');
-	     	$result = $this->basis->all('location');
-
-			// View 
-			$success = "You have successfully deleted ".$location->name." !";
-			$notice = "success";
-
-			$view = new view('locations/locations');
-			$view->assign('success', $success);
-			$view->assign('result', $result);
-			$view->assign('notice', $notice);
-		// } else {
-		// 	$view = new view('403');
-		// }
-	}
+	
 
 
 	

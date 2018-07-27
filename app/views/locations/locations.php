@@ -43,21 +43,12 @@
           <tr>
             <th>Location Name</th>
             <th></th>
-            <th></th>
            
           </tr>
         <?php foreach ($result as $unit) { ?>
           <tr>
             <td><?= $unit['name'] ?></td>
            
-            
-            <td>
-              <form method="delete" action="/sportbuddy/delete-location/<?= $unit['locationId'] ?>" >
-              <input type="hidden" name="submit" value="submit">
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="btn" href="">Delete</button>
-              </form>
-            </td>
             <td>
               <a class="btn" href="/sportbuddy/locations/update-index/<?= $unit['locationId'] ?>">Update</a>
             </td>

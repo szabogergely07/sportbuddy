@@ -91,25 +91,7 @@ class categoryController extends basisController {
 		
 	}
 
-	public function delete($id) {
-		
-			//Model
-	     	$category = $this->basis->show($id,'category');
-	     	$data = $this->basis->delete($id,'category');
-	     	$result = $this->basis->all('category');
-
-			// View 
-			$success = "You have successfully deleted ".$category->name." !";
-			$notice = "success";
-
-			$view = new view('categories/categories');
-			$view->assign('success', $success);
-			$view->assign('result', $result);
-			$view->assign('notice', $notice);
-		// } else {
-		// 	$view = new view('403');
-		// }
-	}
+	
 
 
 	
