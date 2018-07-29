@@ -306,7 +306,7 @@ h6 {
  */
 .section-separator {
   display: block;
-  padding-top: 70px;
+  padding-top: 50px;
   padding-bottom: 80px;
 }
 .section-separator.sp-top {
@@ -358,6 +358,13 @@ h6 {
  *   Defult Button Style
  * ===============================
  */
+.btn.btn-primary.btn-sm {
+  padding: 10px;
+  background-color: #2b323f;
+  color: #fff;
+  margin-right: 0px;
+}
+
 .btn {
   border-radius: 10px 10px 10px 10px ;
   -webkit-border-radius: 10px 10px 10px 10px ;
@@ -835,7 +842,7 @@ h6 {
      */
   .section-separator {
     display: block;
-    padding-top: 100px;
+    padding-top: 30px;
     padding-bottom: 100px;
   }
   /**
@@ -894,7 +901,7 @@ h6 {
   background-color: #f6f8f7;
 }
 .background-dark {
-  background-color: #252c2f;
+  background-color: #330000;
 }
 /**
  * =======================
@@ -1388,9 +1395,16 @@ h6 {
   letter-spacing: 3px;
 }
 .pricing-table .each-table .inner .nav {
-  padding-left: 0px;
+  padding-left: 60px;
   margin-top: 35px;
 }
+
+@media (max-width: 767px) {
+  .pricing-table .each-table .inner .nav {
+  padding-left: 0px;
+  }
+}
+
 .pricing-table .each-table .inner .nav li {
   font-size: 16px;
   line-height: 30px;
@@ -1654,4 +1668,17 @@ h6 {
 }
 .copyright p {
   font-size: 13px;
+}
+
+/*OWN CSS*/
+
+.each-table.col-md-4:hover {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: 0.8;
+  -webkit-transition: opacity .40s ease-in-out;
+  -moz-transition: opacity .40s ease-in-out;
+  -ms-transition: opacity .40s ease-in-out;
+  -o-transition: opacity .40s ease-in-out;
+  transition: opacity .40s ease-in-out;
 }

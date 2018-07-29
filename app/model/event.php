@@ -20,14 +20,15 @@ class event extends basis {
 	}
 
 	public function own($id) {
-		$result = $this->db->query("SELECT * FROM event WHERE created_by = '$id';")->fetch_all(MYSQLI_ASSOC);
+		$result = $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event
+			JOIN user ON user.userId = event.created_by WHERE created_by = '$id';")->fetch_all(MYSQLI_ASSOC);
 		return $result;
 	}
 
 	public function joined($id) {
-		$result = $this->db->query("SELECT * FROM event
+		$result = $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event
 			JOIN user_has_event ON user_has_event.event_id = event.eventId
-			JOIN user ON userId = user_has_event.user_id WHERE user_id = '$id';")->fetch_all(MYSQLI_ASSOC);
+			JOIN user ON user.userId = event.created_by WHERE user_id = '$id';")->fetch_all(MYSQLI_ASSOC);
 		return $result;
 	}
 

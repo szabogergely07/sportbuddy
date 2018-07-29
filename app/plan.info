@@ -1,28 +1,23 @@
-* Add comment delete own comments / admin all
+* Show only future events
 
 * Set admin navigation area
 
 * Add labels to forms, change color
 
-***** Change root directory to 'sportbuddy/'
-***** php.ini?
-
 * Add search field
 
-* Add CSRF to events forms
+* Add CSRF to events/location/category forms
 
 * Form fields require correction
 
 * If event's size reached the max, cannot join, notice message
 
-* Build in front end
+******* Build in front end
 
 * Reviews
 
 * Setup emails
 
 * Make description for classes, functions etc.
-
-* Deploy
 
 * Show in Portfolio

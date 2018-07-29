@@ -48,12 +48,18 @@ class eventController extends basisController {
 			$user_id = $_SESSION['user_id'];
 			//Model
 			$names = $this->event->own($user_id);
+			$location = $this->basis->all('location');
+			$category = $this->basis->all('category');
 
 			//View
 			$view = new view('events/own-events');
 			$view->assign('events', $names);
+			$view->assign('eventLevels',$this->eventLevels);
+			$view->assign('locations', $location);
+			$view->assign('categories', $category);
 		} else {
-			$view = new view('403');
+			$view = new view(
+				'403');
 		}
 	}
 
@@ -62,10 +68,15 @@ class eventController extends basisController {
 			$user_id = $_SESSION['user_id'];
 			//Model
 			$names = $this->event->joined($user_id);
+			$location = $this->basis->all('location');
+			$category = $this->basis->all('category');
 
 			//View
 			$view = new view('events/joined-events');
 			$view->assign('events', $names);
+			$view->assign('eventLevels',$this->eventLevels);
+			$view->assign('locations', $location);
+			$view->assign('categories', $category);
 		} else {
 			$view = new view('403');
 		}
