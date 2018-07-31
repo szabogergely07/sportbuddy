@@ -61,7 +61,7 @@ class sessionController extends basisController {
 				$_SESSION['user_name'] = $data[1];
 				$_SESSION['admin'] = $data[2];
 
-				$view = new view('home');
+				$view = new view('home_in');
 				$view->assign('notice',$login);
 				
 			} else {

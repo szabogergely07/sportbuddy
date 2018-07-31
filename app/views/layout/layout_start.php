@@ -48,6 +48,8 @@
         <link rel="stylesheet" href="/sportbuddy/templates/css/style.css">
         <link rel="stylesheet" href="/sportbuddy/templates/css/responsive.css">
 
+        <link href="/sportbuddy/templates/css/hover-min.css" rel="stylesheet">
+
 
 
 

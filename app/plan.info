@@ -1,10 +1,8 @@
 * Show only future events
 
-* Set admin navigation area
-
 * Add labels to forms, change color
 
-* Add search field
+* Finish search field
 
 * Add CSRF to events/location/category forms
 
@@ -12,7 +10,9 @@
 
 * If event's size reached the max, cannot join, notice message
 
-******* Build in front end
+* Add footer
+
+* Add contact page
 
 * Reviews
 

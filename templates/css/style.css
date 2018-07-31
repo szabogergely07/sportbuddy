@@ -427,12 +427,12 @@ h6 {
 }
 .btn.btn-fill:hover,
 .btn.btn-border:hover {
-  border-color: #161a21;
-  background-color: #161a21;
+  border-color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 .btn.btn-fill {
-  background-color: #2b323f;
-  border-color: #2b323f;
+  background-color: #333333;
+  border-color: #333333;
 }
 .btn.btn-fill.danger {
   background-color: red;
@@ -1681,4 +1681,19 @@ h6 {
   -ms-transition: opacity .40s ease-in-out;
   -o-transition: opacity .40s ease-in-out;
   transition: opacity .40s ease-in-out;
+}
+
+.btn.btn-primary.btn-sm {
+  
+  background-color: #333333;
+}
+
+.btn.btn-primary.btn-sm:hover {
+  
+  background-color: #1a1a1a;
+}
+
+#homeButton:hover {
+  background-color: #800000;
+  border-color: #800000;
 }
