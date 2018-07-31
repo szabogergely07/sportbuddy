@@ -256,7 +256,7 @@ h6 {
   margin: 0;
 }
 .section-header {
-  margin-bottom: 45px;
+  margin-bottom: 20px;
   text-align: center;
 }
 .section-header .sub-heading {
@@ -1672,7 +1672,7 @@ h6 {
 
 /*OWN CSS*/
 
-.each-table.col-md-4:hover {
+.each-table.col-md-4.all-events:hover {
   zoom: 1;
   filter: alpha(opacity=50);
   opacity: 0.8;

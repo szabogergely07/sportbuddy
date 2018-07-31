@@ -36,6 +36,13 @@ class event extends basis {
 		$this->db->query("UPDATE event SET `created_by` = '$user_id' WHERE `eventId` = '$event_id';");
 	}
 
+	public function showDetails($event_id) {
+		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		WHERE eventId = '$event_id';")->fetch_object();
+
+	}
+
 	public function store($user_id = null, $event = null) {
 		$error = [];
 

@@ -100,7 +100,7 @@
                 <div class="row">
           
           <?php foreach ($events as $unit) { ?>           
-                    <div style="margin-top: 15px;" class="each-table col-md-4">
+                    <div style="margin-top: 15px;" class="each-table col-md-4 all-events">
                         <div onclick="location.href='/sportbuddy/event/<?= $unit['eventId'] ?>';" style="border-radius: 10px; cursor: pointer; box-shadow: inset 0 0 10px #000000;" class="inner text-center background-light">
 
                             <h4 class="title"><?= $unit['event_name'] ?></h4>

@@ -10,13 +10,13 @@
   
         <!-- Meta -->
         <meta charset="utf-8">
-        <meta name="description" content="StartUp Landing Page Template" />
-        <meta name="keywords" content="Treetoper, startup, landing page, gradient background, image background, video background, template, responsive, bootstrap" />
+        <meta name="description" content="Find your sportbuddies now!" />
+        <meta name="keywords" content="sport, friends, relationship, sportbuddy, freetime, outdoor" />
         <meta name="developer" content="TemplateOcean">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!-- FAV AND TOUCH ICONS   -->
-        <link rel="icon" href="images/favicon.ico">
+        <link rel="icon" href="/sportbuddy/templates/images/sport-dark.png">
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
         <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -25,7 +25,7 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-         <!-- Admin -->
+            <!-- Admin -->
         <link rel="stylesheet" href="/sportbuddy/templates/css/admin/blog-post.css">
         <link rel="stylesheet" href="/sportbuddy/templates/css/admin/blog-styles.css">
         <link rel="stylesheet" href="/sportbuddy/templates/css/admin/font-awesome.css">
@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="/sportbuddy/templates/css/admin/sb-admin-2.css">
         <link rel="stylesheet" href="/sportbuddy/templates/css/admin/bootstrap.css">
         <link rel="stylesheet" href="/sportbuddy/templates/css/admin/bootstrap.min.css">
+
 
         <!-- BOOTSTRAP CSS -->
         <link rel="stylesheet" href="/sportbuddy/templates/bootstrap/css/bootstrap.min.css">
@@ -82,6 +83,10 @@
             .alert {
                 padding: 1px;
                 padding-left: 5px;
+            }
+
+            .navbar-fixed-top {
+                border-width: 0px;
             }
         </style>
 

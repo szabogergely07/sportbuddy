@@ -99,6 +99,7 @@ class eventController extends basisController {
 
 	public function show($id,$deleted=null) {
 		if(isset($_SESSION['user_id'])) {
+			
 			$user_id = $_SESSION['user_id'];
 		
 			//Gets all events the user has
@@ -114,7 +115,7 @@ class eventController extends basisController {
 		}
 
 		//Model
-		$event = $this->basis->show($id,'event');
+		$event = $this->event->showDetails($id);
 		$users = $this->event->allWithUsers($id,'event');
 		$comments = $this->event->commentByUser($id);
 
