@@ -29,9 +29,12 @@ class eventController extends basisController {
 		//Model
 		if($search == null) {
 			$names = $this->event->allWithUsers();
-		} else {
+		} elseif ( isset($_POST['category']) || isset($_POST['location']) || isset($_POST['level']) ) {
 			$names = $this->event->search();
+		} else {
+			redirect('/sportbuddy/not-found');
 		}
+
 		$location = $this->basis->all('location');
 		$category = $this->basis->all('category');
 
@@ -290,11 +293,27 @@ class eventController extends basisController {
 		$view = new view('403');
 	}
 
-	// public function search() {
-	// 	$data = $this->event->search();
+	// Past events only for admin
+	public function past() {
+		if(isset($_SESSION['admin']) && $_SESSION['admin'] == 2) {
 
+			//Model
+			
+			$names = $this->event->pastEvents();
+			
+			$location = $this->basis->all('location');
+			$category = $this->basis->all('category');
 
-	// }
+			//View
+			$view = new view('events/past');
+			$view->assign('events', $names);
+			$view->assign('eventLevels',$this->eventLevels);
+			$view->assign('locations', $location);
+			$view->assign('categories', $category);
+		} else {
+			$view = new view('403');
+		}
+	}
 
 
 }

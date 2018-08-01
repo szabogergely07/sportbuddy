@@ -1,14 +1,15 @@
 <?= $HTML_START ?>
 
+	
+ <!-- Start: Header Section
+        ================================ -->
+<section class="header-section-1 background-dark header-js" id="header" >
+
 	<?= isset($notice) ?
 		'<div class="alert alert-success" role="alert">'
 	  		 .$notice.
 		'</div>' : ''
 	?>
-	
- <!-- Start: Header Section
-        ================================ -->
-<section class="header-section-1 background-dark header-js" id="header" >
     
         <div class="container">
             <div class="row">

@@ -1697,3 +1697,13 @@ h6 {
   background-color: #800000;
   border-color: #800000;
 }
+
+/*@media (max-width: 767px) {
+  .signin {
+    margin-top: 50px;
+  }
+}*/
+
+.has-error .control-label {
+  color: #737373;
+}

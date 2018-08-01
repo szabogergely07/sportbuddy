@@ -65,6 +65,12 @@
                         <!-- /.nav-second-level -->
                     </li>
 
+                    <li>
+                        <a href="/sportbuddy/past-events"><i class="fa fa-wrench fa-fw"></i>Past Events<span class="fa arrow"></span></a>
+                        
+                        <!-- /.nav-second-level -->
+                    </li>
+
 
 
 

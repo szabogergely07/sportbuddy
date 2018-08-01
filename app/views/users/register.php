@@ -1,6 +1,6 @@
 <?= $_SESSION['admin'] == 2 ? $ADMIN_START : $HTML_START ?>
             
-                
+<section class="signin">                
                     
     <!-- Modal Close Button -->
 <div id="signup-form">
@@ -77,5 +77,7 @@
     </div>
     </form>
 </div>
+
+</section>
                
 <?= $_SESSION['admin'] == 2 ? $ADMIN_END : $HTML_END ?>

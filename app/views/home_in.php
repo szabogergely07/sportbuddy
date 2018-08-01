@@ -1,20 +1,20 @@
 <?= $HTML_START ?>
 
+
+ <!-- Start: Header Section
+        ================================ -->
+<section class="header-section-1 background-dark header-js" id="header" >
+
 	<?= isset($notice) ?
 		'<div class="alert alert-success" role="alert">'
 	  		 .$notice.
 		'</div>' : ''
 	?>
-
-
- <!-- Start: Header Section
-        ================================ -->
-<section class="header-section-1 background-dark header-js" id="header" >
     
         <div class="container">
             <div class="row">
 
-                <div style="margin-top: 40px;" class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                <div style="margin-top: 40px;" class="col-md-10 col-md-offs*et-1 col-sm-10 col-sm-offset-1">
                     <div class="part-inner text-center">
 
                         <!--  Header SubTitle Goes here -->

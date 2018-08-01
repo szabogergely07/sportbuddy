@@ -6,11 +6,16 @@ use myclass\Val;
 class event extends basis {
 
 	public function allWithUsers($id = 0) {
+		
+		// Events index page
 		if($id == 0) {
 		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
      		JOIN location ON location.name = event.location_idlocation
-     		left JOIN category ON category.name = event.category_id;")->fetch_all(MYSQLI_ASSOC);
+     		left JOIN category ON category.name = event.category_id
+     		WHERE `date` >= CURRENT_DATE();")->fetch_all(MYSQLI_ASSOC);
+		
+		// Event show page joined users
 		} else {
 			return $this->db->query("SELECT * FROM user 
      		JOIN user_has_event ON user_has_event.user_id = user.userId
@@ -21,15 +26,24 @@ class event extends basis {
 
 	public function own($id) {
 		$result = $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event
-			JOIN user ON user.userId = event.created_by WHERE created_by = '$id';")->fetch_all(MYSQLI_ASSOC);
+			JOIN user ON user.userId = event.created_by WHERE created_by = '$id' AND `date` >= CURRENT_DATE();")->fetch_all(MYSQLI_ASSOC);
 		return $result;
 	}
 
 	public function joined($id) {
 		$result = $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event
 			JOIN user_has_event ON user_has_event.event_id = event.eventId
-			JOIN user ON user.userId = event.created_by WHERE user_id = '$id';")->fetch_all(MYSQLI_ASSOC);
+			JOIN user ON user.userId = event.created_by WHERE user_id = '$id' AND `date` >= CURRENT_DATE();")->fetch_all(MYSQLI_ASSOC);
 		return $result;
+	}
+
+	// Past events only for admin
+	public function pastEvents() {
+		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		left JOIN category ON category.name = event.category_id
+     		WHERE `date` <= CURRENT_DATE();")->fetch_all(MYSQLI_ASSOC);
 	}
 
 	public function take($user_id,$event_id) {
@@ -37,9 +51,17 @@ class event extends basis {
 	}
 
 	public function showDetails($event_id) {
-		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+		
+		// Only admin can see past events
+		if ($_SESSION['admin'] != 2) {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		WHERE eventId = '$event_id' AND `date` >= CURRENT_DATE();")->fetch_object();
+		} else {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
      		WHERE eventId = '$event_id';")->fetch_object();
+		}
 
 	}
 
@@ -143,7 +165,7 @@ class event extends basis {
 		$category = $f_category;
 		$level = $f_level;
 		
-		
+		// Results when all set
 		if($location != 'All' && $category != 'All' && $level != '1') {
 			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
@@ -151,7 +173,8 @@ class event extends basis {
      		JOIN category ON category.name = event.category_id
      		WHERE location.name = '$location' AND category.name = '$category' AND level = '$level' 
      		 ;")->fetch_all(MYSQLI_ASSOC);
-		
+
+		// Results when nothing set (show all)
 		} elseif($location == 'All' && $category == 'All' && $level == '1') {
 			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
@@ -159,6 +182,7 @@ class event extends basis {
      		JOIN category ON category.name = event.category_id
      		 ;")->fetch_all(MYSQLI_ASSOC);
 
+		// Results when only level is not set
      	} elseif($category != 'All' && $location != 'All' && $level == '1') {
 			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
@@ -166,9 +190,57 @@ class event extends basis {
      		JOIN category ON category.name = event.category_id
      		WHERE location.name = '$location' AND category.name = '$category' 
      		 ;")->fetch_all(MYSQLI_ASSOC);
+		
+
+		// Results when only category is not set
+     	} elseif($category == 'All' && $location != 'All' && $level != '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE location.name = '$location' AND level = '$level' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+		
+
+		// Results when only location is not set
+     	} elseif($category != 'All' && $location == 'All' && $level != '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE category.name = '$category' AND level = '$level' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+		
+
+		// Results when only location is set
+     	} elseif($category == 'All' && $location != 'All' && $level == '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE location.name = '$location' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+		
+
+		// Results when only category is set
+     	} elseif($category != 'All' && $location == 'All' && $level == '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE category.name = '$category' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
+		
+
+		// Results when only level is set
+     	} elseif($category == 'All' && $location == 'All' && $level != '1') {
+			return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
+     		JOIN user ON user.userId = event.created_by
+     		JOIN location ON location.name = event.location_idlocation
+     		JOIN category ON category.name = event.category_id
+     		WHERE level = '$level' 
+     		 ;")->fetch_all(MYSQLI_ASSOC);
 		}
-
-
 	}
 	
 

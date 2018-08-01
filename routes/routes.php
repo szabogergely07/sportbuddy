@@ -95,6 +95,9 @@ Router::group([], function () {
 	// Search field
 	Router::get('sportbuddy/search-event', 'eventController@search');
 
+	//Events in the past for admin
+	Router::get('sportbuddy/past-events', 'eventController@past');
+
 });
 
 // Location pages

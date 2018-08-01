@@ -1,5 +1,7 @@
 <?= $HTML_START ?>
 
+
+<section class="signin">
 <!-- Start: Sign In Form
         ================================== -->
 <div id="sign-in-form" class="sign-form" tabindex="" role="">
@@ -23,7 +25,7 @@
 
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Subject -->
-            <input name="password" class="contact-password form-control" type="pass" placeholder="Password">
+            <input name="password" class="contact-password form-control" type="password" placeholder="Password">
         </div>
 
         <div class="col-xs-12 col-md-4 col-md-offset-4">
@@ -43,5 +45,6 @@
 </div><!-- End: .modal -->
         <!-- End: Sign In Form
         ================================== -->
+</section>
 
 <?= $HTML_END ?>

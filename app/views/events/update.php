@@ -11,8 +11,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-
-        <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Name</label>
+        <div class="col-xs-8 col-md-4 fields">
             <!-- First Name -->
             <input name="name" class="form-control" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : $event->name ?>" id="inputWarning1">
             <div class="<?= isset($data['name']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
@@ -22,7 +22,8 @@
     </div>
     
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Description</label>
+        <div class="col-xs-8 col-md-4 fields">
             <!-- Last Name -->
             <textarea name="description" class="form-control " rows="5" placeholder="Description"><?= isset($_POST['description']) ? $_POST['description'] : $event->description ?>
             </textarea>
@@ -30,7 +31,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Date</label>
+        <div class="col-xs-8 col-md-4 fields">
            
             <input name="date" class="form-control" type="date" placeholder="Date" value="<?= isset($_POST['date']) ? $_POST['date'] : $event->date ?>">
             <div class="<?= isset($data['date']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
@@ -40,7 +42,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Time start</label>
+        <div class="col-xs-8 col-md-4 fields">
             <!-- Email -->
             <input name="start" class="form-control" type="time" placeholder="Start time: hh:mm" value="<?= isset($_POST['start']) ? $_POST['start'] : $event->start ?>">
             <div class="<?= isset($data['start']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
@@ -50,7 +53,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Time end</label>
+        <div class="col-xs-8 col-md-4 fields">
             
             <input name="end" class="form-control" type="time" placeholder="End time: hh:mm" value="<?= isset($_POST['end']) ? $_POST['end'] : $event->end ?>">
             <div class="<?= isset($data['end']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
@@ -60,7 +64,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Members</label>
+        <div class="col-xs-8 col-md-4 fields">
             
             <input name="size" type="number" min="2" max="40" class="form-control " placeholder="Size" value="<?= isset($_POST['size']) ? $_POST['size'] : $event->size ?>">
             <div class="<?= isset($data['size']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
@@ -70,7 +75,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Location</label>
+        <div class="col-xs-8 col-md-4 fields">
            
             <select name="location" class="form-control">
                 <option value="<?= isset($_POST['location']) ? $_POST['location'] : $event->location_idlocation ?>"><?= isset($_POST['location']) ? $_POST['location'] : $event->location_idlocation ?></option>
@@ -85,7 +91,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Category</label>
+        <div class="col-xs-8 col-md-4 fields">
            
             <select name="category" class="form-control">
                 <option value="<?= isset($_POST['category']) ? $_POST['category'] : $event->category_id ?>"><?= isset($_POST['category']) ? $_POST['category'] : $event->category_id ?></option>
@@ -100,7 +107,8 @@
     </div>
 
     <div class="form-group row has-error has-feedback">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Level</label>
+        <div class="col-xs-8 col-md-4 fields">
            
             <select name="level" class="form-control">
                 <option value="1"><?= isset($_POST['level']) ? eventLevel($_POST['level']) : eventLevel($event->level) ?></option>

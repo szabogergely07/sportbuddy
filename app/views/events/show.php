@@ -1,17 +1,17 @@
 <?= $HTML_START ?>
 
-<?= isset($success) ?
-    '<div class="alert alert-success fade in">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-         '. $success . '
-    </div>' : ''
-?>
-
-
 
 <!-- Start: Features Section 9
         ====================================== -->
 <section class="features-section-9 relative background-dark" id="pricing">
+
+  <?= isset($success) ?
+    '<div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+         '. $success . '
+    </div>' : ''
+  ?>
+  
     <div class="container">
         <div class="row section-separator text-center">
             
