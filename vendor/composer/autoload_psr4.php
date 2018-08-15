@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'users\\' => array($baseDir . '/app/views/users'),
+    'phpmailer\\' => array($baseDir . '/src/phpmailer/phpmailer'),
     'myclass\\' => array($baseDir . '/src'),
     'app\\' => array($baseDir . '/app'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),

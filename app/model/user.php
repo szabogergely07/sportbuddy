@@ -1,6 +1,8 @@
 <?php
 
 namespace app\model;
+
+use app\model\mailer;
 use myclass\Val;
 
 class user extends basis {
@@ -73,6 +75,19 @@ class user extends basis {
             // R::exec("INSERT INTO user (first_name, last_name, email, password, birthday) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday');");
 	    	if ($id == null) {
 				$this->db->query("INSERT INTO user (first_name, last_name, email, password, birthday) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday');");
+
+
+	// Send a welcome email after registration
+	$mail = new mailer($f_email, $name, $subject, $body);
+    
+    $name = $f_first_name.' '.$f_last_name;
+    $subject = 'Welcome to SportBuddy!';
+    $body = 'Thank you for registering on SportBuddy!';
+
+
+
+
+
 			} elseif (($id != null) && !empty($f_password_new)) {
 				$this->db->query("UPDATE user SET first_name = '$f_first_name', last_name = '$f_last_name', email = '$f_email', password = '$f_password_new', birthday = '$f_birthday' WHERE userId = '$id';");	
 			} else {

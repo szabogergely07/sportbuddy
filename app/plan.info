@@ -1,7 +1,3 @@
-* Show only future events
-
-* Finish search field
-
 * Add CSRF to events/location/category forms
 
 * If event's size reached the max, cannot join, notice message
@@ -12,7 +8,7 @@
 
 * Reviews
 
-* Setup emails
+**** Setup emails
 
 * Make description for classes, functions etc.
 

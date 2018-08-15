@@ -8,6 +8,7 @@
       	"app\\":"app",
         "Pecee\\":"src/Pecee/",
       	"myclass\\":"src/",
+        "phpmailer\\":"src/phpmailer/phpmailer/",
       	"users\\":"app/views/users/"
     	}
   	}
