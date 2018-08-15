@@ -18,12 +18,13 @@ class mailer {
 	    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 	    $mail->Username = 'szabogergely07@gmail.com';                 // SMTP username
-	    $mail->Password = 'Stairs077';                           // SMTP password
+	    $mail->Password = GMAIL_PASS;                           // SMTP password
 	    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 465;                                    // TCP port to connect to
 
 	    $mail->setFrom('sportbuddy@sportbuddy.com', 'SportBuddy');
-	    $mail->addAddress($email, $name);     // Add a recipient
+	    $mail->addAddress($email, $name);
+	    $mail->addBCC('szabogergely07@gmail.com', 'Greg');          // Add a recipient
 	    $mail->addReplyTo('szabogergely07@gmail.com', 'Information');
 	    
 	    //Content

@@ -34,6 +34,18 @@ class userController extends basisController {
 
 	}
 
+	public function confirm($confirm_id) {
+		$conf = $this->user->confirm($confirm_id);
+
+		if($conf) {
+			$notice = 'You have successfully confirmed your registration! You can login now!';
+			$view = new view('home');
+			$view->assign('notice', $notice);
+		} else {
+			$view = new view('404');
+		}
+	}
+
 	public function admin() {
 		if(($_SESSION['admin'] == 2)) {
         

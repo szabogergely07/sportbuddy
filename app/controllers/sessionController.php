@@ -33,7 +33,7 @@ class sessionController extends basisController {
 				$view->assign('data', $data);
 			} else {
 				$result = "success";
-				$register = "You have registered successfully!";
+				$register = "You have registered successfully! Please check your emails and confirm your registration!";
 				$view = new view('home');
 				$view->assign('notice', $register);
 				$view->assign('success', $result);

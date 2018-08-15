@@ -33,6 +33,9 @@ Router::group([], function () {
 	// Register page
 	Router::get('sportbuddy/register', 'sessionController@register');
 
+	// Confirm registration
+	Router::get('sportbuddy/confirm/{id}', 'userController@confirm');
+
 	// Login page
 	Router::get('sportbuddy/login', 'sessionController@login');
 

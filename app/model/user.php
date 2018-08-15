@@ -7,7 +7,14 @@ use myclass\Val;
 
 class user extends basis {
 
+	public $confirm_id;
+
 	private $error = [];
+
+	public function __construct() {
+		parent::__construct();
+		$this->confirm_id = bin2hex(openssl_random_pseudo_bytes(16));
+	}
 
 
 	// Stores or updates user details
@@ -74,15 +81,17 @@ class user extends basis {
 
             // R::exec("INSERT INTO user (first_name, last_name, email, password, birthday) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday');");
 	    	if ($id == null) {
-				$this->db->query("INSERT INTO user (first_name, last_name, email, password, birthday) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday');");
+				$this->db->query("INSERT INTO user (first_name, last_name, email, password, birthday, confirm_id) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday', '$this->confirm_id');");
 
 
 	// Send a welcome email after registration
+	$name = $f_first_name.' '.$f_last_name;
+    $subject = 'Hi '.$name.'! Welcome to SportBuddy!';
+    
+    $body = 'Thank you for registering on SportBuddy! Please click to confirm your registration: https://sportbuddies.000webhostapp.com/sportbuddy/confirm/'.$this->confirm_id;
+
 	$mail = new mailer($f_email, $name, $subject, $body);
     
-    $name = $f_first_name.' '.$f_last_name;
-    $subject = 'Welcome to SportBuddy!';
-    $body = 'Thank you for registering on SportBuddy!';
 
 
 
@@ -99,6 +108,17 @@ class user extends basis {
 		
 	} 
 
+	public function confirm($confirmed) {
+		$result = $this->db->query("SELECT confirm_id FROM user WHERE confirm_id = '$confirmed'")->fetch_row();
+
+		if(!empty($result)) {
+			$this->db->query("UPDATE user SET is_confirmed = '1' WHERE confirm_id = '$confirmed';");
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function login() {
 		extract($_REQUEST, EXTR_PREFIX_ALL, "f");
 
@@ -111,7 +131,9 @@ class user extends basis {
 
 		$result = $this->db->query("SELECT userId, first_name, is_admin FROM user WHERE email = '$email'")->fetch_row();
 
-		if (empty($exist) || !password_verify($password, $pass[0])) {
+		$confirmed = $this->db->query("SELECT is_confirmed FROM user WHERE email = '$email'")->fetch_row();
+
+		if ($confirmed[0] != '1' || empty($exist) || !password_verify($password, $pass[0])) {
 			return false;
 		} else {
 			return $result;
