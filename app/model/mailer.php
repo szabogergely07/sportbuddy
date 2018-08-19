@@ -12,8 +12,8 @@ class mailer {
 		$email = new \SendGrid\Mail\Mail(); 
 		$email->setFrom("szabogergely07@gmail.com", "SportBuddy");
 		$email->setSubject($subject);
-		$email->addTo("szabogergely07@gmail.com", "Greg Taylor");
-		$email->addContent("text/plain", $body);
+		$email->addTo("$mail", "$name");
+		$email->addContent("text/html", $body);
 		// $email->addContent(
 		//     "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
 		

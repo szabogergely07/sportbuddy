@@ -88,7 +88,7 @@ class user extends basis {
 	$name = $f_first_name.' '.$f_last_name;
     $subject = 'Hi '.$name.'! Welcome to SportBuddy!';
     
-    $body = 'Thank you for registering on SportBuddy! Please click to confirm your registration: https://sportbuddies.000webhostapp.com/sportbuddy/confirm/'.$this->confirm_id;
+    $body = 'Thank you for registering on SportBuddy! Please click to confirm your registration: <a href="https://gergely-szabo.000webhostapp.com/sportbuddy/confirm/'.$this->confirm_id.'">CONFIRM</a>';
 
 	$mail = new mailer($f_email, $name, $subject, $body);
     
