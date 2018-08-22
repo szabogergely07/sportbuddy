@@ -1693,9 +1693,18 @@ h6 {
   background-color: #1a1a1a;
 }
 
+#homeButton {
+  background-color: white;
+  border-color: black;
+  color: black;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+
 #homeButton:hover {
   background-color: #800000;
   border-color: #800000;
+  color: white;
 }
 
 /*@media (max-width: 767px) {
