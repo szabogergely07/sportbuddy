@@ -288,8 +288,22 @@ $('#locationForm').on('submit', function (e) {
 // }
 
 
+// END store location with AJAX
 
 
+$('#password2').keyup(passValid);
+function passValid() {
+  if( $('#password2').val() != $('#password').val() ) {
+    $('#passFeedback').html("Passwords do not match!");
+    $('#passFeedback').addClass("invalid-feedback alert alert-danger");
+  } else {
+    $('#passFeedback').removeClass();
+    $('#passFeedback').html("All good!");
+    $('#passFeedback').addClass("valid-feedback alert alert-success");
+  }
+
+
+}
 
 
 
