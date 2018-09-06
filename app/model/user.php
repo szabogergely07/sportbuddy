@@ -16,6 +16,13 @@ class user extends basis {
 		$this->confirm_id = bin2hex(openssl_random_pseudo_bytes(16));
 	}
 
+	public function emailExists() {
+		$email1 = $_POST['email'];
+		$email2 = $this->db->query("SELECT email from user WHERE email = '$email1'")->fetch_all();
+		if(!Val::emailExist($email2)) {
+			return "Exists already!";
+		}
+	}
 
 	// Stores or updates user details
 	// $id=0 => register user

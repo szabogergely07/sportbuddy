@@ -32,8 +32,8 @@
     <div class="form-group row has-error has-feedback">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
             <!-- Email -->
-            <input name="email" class="contact-email form-control" type="email" placeholder="Email*" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required="">
-            <div class="<?= isset($data['email']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
+            <input name="email" id="email" class="contact-email form-control" type="email" placeholder="Email*" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required="">
+            <div id="emailFeedback" class="<?= isset($data['email']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['email']) ? '<strong> '.$data['email'].'</strong>' : '' ?>
             </div>
         </div>

@@ -17,6 +17,11 @@ class userController extends basisController {
 
 	}
 
+	public function emailExist() {
+		$result = $this->user->emailExists();
+		return $result;
+	}
+
 
 	public function index() {
 		token();

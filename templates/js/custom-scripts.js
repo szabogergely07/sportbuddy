@@ -226,7 +226,7 @@ $("#navbar-nav:first-child").hover(function() {
 });
 
 
-// Store location with AJAX
+/********** Store location with AJAX ***********/
 
  var myContainer = "";
     //document.getElementById("location-signup-form").submit(myFun);
@@ -288,24 +288,44 @@ $('#locationForm').on('submit', function (e) {
 // }
 
 
-// END store location with AJAX
+/******** END store location with AJAX *********/
 
 
-$('#password2').keyup(passValid);
-function passValid() {
-  if( $('#password2').val() != $('#password').val() ) {
-    $('#passFeedback').html("Passwords do not match!");
-    $('#passFeedback').addClass("invalid-feedback alert alert-danger");
-  } else {
-    $('#passFeedback').removeClass();
-    $('#passFeedback').html("All good!");
-    $('#passFeedback').addClass("valid-feedback alert alert-success");
-  }
+/************ Password check at Registration ***********/
+
+    $('#password2').keyup(passValid);
+    function passValid() {
+      if( $('#password2').val() != $('#password').val() ) {
+        $('#passFeedback').html("Passwords do not match!");
+        $('#passFeedback').addClass("invalid-feedback alert alert-danger");
+      } else {
+        $('#passFeedback').removeClass();
+        $('#passFeedback').html("All good!");
+        $('#passFeedback').addClass("valid-feedback alert alert-success");
+      }
 
 
-}
+    }
 
-
+    $('#email').keyup(emailExist);
+    function emailExist() {
+      var newdata = {
+        email: $('#email').val()
+      }
+      $.ajax({
+      type: 'post',
+      url: '/sportbuddy/email-exist',
+      data: newdata,
+        success: function (data,status,xhr) {
+          $('#emailFeedback').html(xhr.responseText);
+          if (xhr.responseText == "Exists already!") {
+            $('#emailFeedback').toggleClass("invalid-feedback alert alert-danger");
+          } else {
+           $('#emailFeedback').removeClass(); 
+          }
+        }
+      });
+    }
 
 
   });

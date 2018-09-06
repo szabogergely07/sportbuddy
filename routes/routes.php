@@ -33,6 +33,9 @@ Router::group([], function () {
 	// Register page
 	Router::get('sportbuddy/register', 'sessionController@register');
 
+	// AJAX Email exists
+	Router::post('sportbuddy/email-exist', 'userController@emailExist');
+
 	// Confirm registration
 	Router::get('sportbuddy/confirm/{id}', 'userController@confirm');
 
