@@ -5,7 +5,6 @@ require 'vendor/autoload.php';
 /* Load SimpleRouter helper file (routing and session) */
 require_once 'app/helpers.php'; 
 
-use myclass\Val;
 use app\Router;
 use app\lib\session;
 

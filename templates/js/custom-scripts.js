@@ -214,6 +214,86 @@
     });
 
 
+
+    $('#updateProfile').hide();
+
+$("#navbar-nav:first-child").hover(function() {
+   $('#helloUser').hide();
+  $('#updateProfile').show();
+}, function() {
+  $('#updateProfile').hide();
+  $('#helloUser').show();
+});
+
+
+// Store location with AJAX
+
+ var myContainer = "";
+    //document.getElementById("location-signup-form").submit(myFun);
+$("#success").hide();
+
+$('#locationForm').on('submit', function (e) {
+
+  e.preventDefault();
+
+  $.ajax({
+    type: 'post',
+    url: '/sportbuddy/store-location',
+    data: $('#locationForm').serialize(),
+    success: function () {
+     $("#success").show();
+     //var names = unserialize(this.data);
+     //console.log(names);
+     //$('#newLocation').append("");
+    }
+  });
+
+  $.ajax({
+    type: 'get',
+    url: '/sportbuddy/ajax-locations',
+    data: 'text',
+    success: function (response) {
+      var names = JSON.parse(response);
+      $('#newLocation').after("<tr><td>"+names[names.length-1].name+"</td><td><a class='btn' href='/sportbuddy/locations/update-index/"+names[names.length-1].locationId+"'>Update</a></td></tr>");
+      //var i;
+     // for(i=0;i<names.length;i++) {
+     //  $('#newLocation').after("<tr><td>"+names[i].name+"</td><td><a class='btn' href='/sportbuddy/locations/update-index/"+names[i].locationId+"'>Update</a></td></tr>");
+     // }
+    }
+  });
+
+
+
+
+});
+
+
+
+
+// function myFun() {
+      
+//     var location = document.getElementById("name").value;
+//     var a = new XMLHttpRequest();
+//     a.onreadystatechange = function () {
+//         if (a.readyState == 4 && a.status == 200) {
+//             console.log(a);
+            
+//         }
+
+//     }
+//     a.open("POST", "/sportbuddy/store-location", true);
+//     a.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     a.send("name=" + location);
+//     $("#success").show();
+// }
+
+
+
+
+
+
+
+
   });
 
 

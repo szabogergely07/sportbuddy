@@ -79,7 +79,6 @@ class user extends basis {
 	    // If there is no error, then run database queries
 	    if(!$this->error) {
 
-            // R::exec("INSERT INTO user (first_name, last_name, email, password, birthday) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday');");
 	    	if ($id == null) {
 				$this->db->query("INSERT INTO user (first_name, last_name, email, password, birthday, confirm_id) VALUES ('$f_first_name', '$f_last_name', '$f_email', '$f_password', '$f_birthday', '$this->confirm_id');");
 

@@ -34,25 +34,32 @@ class locationController extends basisController {
 			$view->assign('result', $result);
 	}
 
+	public function ajaxIndex() {
+		
+			//Model
+			$result = $this->basis->all('location');
+			return json_encode($result);
+	}
+
 	public function store() {
 
 		//Model
 		$data = $this->location->store();
-		$result = $this->basis->all('location');
+		//$result = $this->basis->all('location');
 
 		//View
-		if($data) {
-			$view = new view('locations/locations');
-			$view->assign('data', $data);
-			$view->assign('result', $result);
-		} else {
-			$notice = "success";
-			$success = "New location created successfully!";
-			$view = new view('locations/locations');
-			$view->assign('success', $success);
-			$view->assign('notice', $notice);
-			$view->assign('result', $result);
-	    }
+		// if($data) {
+		// 	//$view = new view('locations/locations');
+		// 	$view->assign('data', $data);
+		// 	$view->assign('result', $result);
+		// } else {
+		// 	$notice = "success";
+		// 	$success = "New location created successfully!";
+		// 	//$view = new view('locations/locations');
+		// 	$view->assign('success', $success);
+		// 	$view->assign('notice', $notice);
+		// 	$view->assign('result', $result);
+	 //    }
 	}
 
 	

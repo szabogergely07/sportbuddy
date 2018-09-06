@@ -121,7 +121,10 @@
                                 <?php
                                 if( isset($_SESSION['user_id']) ){
                                     echo
-                                "<li><button class='btn-nav' onclick='location.href=\"/sportbuddy/user/update-index/".$_SESSION['user_id']."\";'>Hello ".$_SESSION['user_name']."</button>
+                                "<li><button class='btn-nav' id='updateProfile' onclick='location.href=\"/sportbuddy/user/update-index/".$_SESSION['user_id']."\";'>Update Profile</button>
+                                </li>
+
+                                <li><button class='btn-nav' id='helloUser' onclick='location.href=\"/sportbuddy/user/update-index/".$_SESSION['user_id']."\";'>Hello ".$_SESSION['user_name']."</button>
                                 </li>";
                                 }
                                 ?>

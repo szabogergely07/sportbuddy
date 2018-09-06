@@ -1,7 +1,7 @@
                     
     <!-- Modal Close Button -->
 <div id="signup-form">
-    <form method="post" class="single-form" id="" action="/sportbuddy/store-location">
+    <form onsubmit="myFun()" method="post" class="single-form" id="" action="">
     <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
     <input type="hidden" name="submit" value="submit">
 
@@ -9,7 +9,7 @@
 
         <div class="col-xs-12 col-md-4 col-md-offset-4 fields">
             <!-- First Name -->
-            <input name="name" class="form-control" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="inputWarning1">
+            <input name="name" class="form-control" id="name" type="text" placeholder="Name*" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="inputWarning1">
             <div class="<?= isset($data['name']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['name']) ? '<strong> '.$data['name'].'</strong>' : '' ?>
             </div>

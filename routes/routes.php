@@ -108,6 +108,8 @@ Router::group([], function () {
 	
 	Router::get('sportbuddy/locations', 'locationController@index');
 
+	Router::get('sportbuddy/ajax-locations', 'locationController@ajaxIndex');
+
 	Router::get('sportbuddy/create-location', 'locationController@create');
 	
 	Router::post('sportbuddy/store-location', 'locationController@store');
