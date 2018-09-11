@@ -328,8 +328,150 @@ $('#locationForm').on('submit', function (e) {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
 
 
 } (jQuery) );
 
+
+
+/******* GOOGLE MAPS LOCATION to events create ***********/
+//google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+    var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+        initMap();
+      }
+
+       function fillInAddress() {
+         // Get the place details from the autocomplete object.
+         var place = autocomplete.getPlace();         
+
+        document.getElementById('lat').value = place.geometry.location.lat();
+        document.getElementById('lng').value = place.geometry.location.lng();
+
+      //   for (var component in componentForm) {
+      //     document.getElementById(component).value = '';
+      //     document.getElementById(component).disabled = false;
+      //   }
+
+      //   // Get each component of the address from the place details
+      //   // and fill the corresponding field on the form.
+      //   for (var i = 0; i < place.address_components.length; i++) {
+      //     var addressType = place.address_components[i].types[0];
+      //     if (componentForm[addressType]) {
+      //       var val = place.address_components[i][componentForm[addressType]];
+      //       document.getElementById(addressType).value = val;
+      //     }
+      //   }
+       }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+
+
+//google.maps.event.addDomListener(window, 'load', initMap);
+      // Initialize and add the map
+    function initMap() {
+      var a1 = window.location.pathname;
+      var a2 = a1.split("/");
+      var newdata = {
+        data: a2[3]
+      }
+      $.ajax({
+      type: 'post',
+      url: '/sportbuddy/gmaps',
+      data: newdata,
+        success: function (data,status,xhr) {
+          var result = JSON.parse(xhr.responseText);
+          var elat = parseFloat(result[0].lat);
+          var elng = parseFloat(result[0].lng);
+
+          // The location of Uluru
+          var uluru = {lat: elat, lng: elng};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 14, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+      });
+
+      
+    }
+
+
+    function allEvents() {
+      var options = {
+        zoom:12,
+        center:{lat:42.3601,lng:-71.0589}
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      $.ajax({
+      type: 'get',
+      url: '/sportbuddy/gmapsAll',
+      data: JSON,
+        success: function (response) {
+          var array = JSON.parse(response);  
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+      });
+
+
+
+
+    }

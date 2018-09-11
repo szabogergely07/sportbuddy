@@ -24,6 +24,16 @@ class eventController extends basisController {
 		
 	}
 
+	public function gmaps() {
+		if($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$result = $this->event->gmaps();
+			return json_encode($result);
+		} else {
+			$view = new view(
+				'404');
+		}
+	}
+
 	public function index($search = null) {
 
 		//Model

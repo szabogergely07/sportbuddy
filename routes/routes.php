@@ -73,6 +73,8 @@ Router::group([], function () {
 
 //Event pages
 Router::group([], function () {
+
+	Router::form('sportbuddy/gmaps', 'eventController@gmaps');
 	
 	Router::form('sportbuddy/events/{search?}', 'eventController@index');
 

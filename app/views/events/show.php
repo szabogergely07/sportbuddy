@@ -11,7 +11,7 @@
          '. $success . '
     </div>' : ''
   ?>
-  
+      
     <div class="container">
         <div class="row section-separator text-center">
             
@@ -62,7 +62,7 @@
                         </div> <!-- End: .table-single -->
                     </div> <!-- End: .each-table -->
                     
-     <div style="margin-top: 15px;" class="each-table col-md-8">
+     <div style="margin-top: 15px;" class="each-table col-md-4">
   <div style="border-radius: 10px; box-shadow: inset 0 0 10px #000000;" class="inner text-center background-light">
 
       <h4 class="title">Description</h4>
@@ -99,9 +99,17 @@
 
       
                         </div> <!-- End: .table-single -->
+
                     </div> <!-- End: .each-table -->
              
+<div style="margin-top: 15px;" class="each-table col-md-4">
+  <div style="border-radius: 10px; box-shadow: inset 0 0 10px #000000;" class="inner text-center background-light">
+    
+    <div style="width: 300px; height: 300px;" id="map"></div>
 
+
+    </div>
+  </div>
 
 
 
@@ -111,6 +119,9 @@
 
         </div> <!-- End: .row -->
     </div> <!-- End: .container -->
+
+
+
 
 
 <!-- NEW COMMENT -->

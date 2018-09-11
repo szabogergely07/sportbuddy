@@ -5,6 +5,8 @@
     <form method="post" class="single-form" id="" action="/sportbuddy/store-event">
     <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
     <input type="hidden" name="submit" value="submit">
+    <input type="hidden" id="lat" name="lat" value="">
+    <input type="hidden" id="lng" name="lng" value="">
 
 
     <div class="col-xs-12 text-center">
@@ -91,6 +93,21 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="form-group row has-error has-feedback">
+        <label for="location" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Location GM</label>
+        <div class="col-xs-8 col-md-4">
+           
+            <input id="autocomplete" placeholder="Start typing an address.." onFocus="geolocate()" type="text">
+            
+        </div>
+    </div>
+
+
+
+
 
     <div class="form-group row has-error has-feedback">
         <label for="name" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Category</label>

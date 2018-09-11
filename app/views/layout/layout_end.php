@@ -6,6 +6,9 @@
 
          <!-- SCRIPTS 
         ========================================-->
+       
+
+       
 
          <!-- Admin -->
         <script src="/sportbuddy/templates/js/admin/metisMenu.js"></script>
@@ -21,7 +24,13 @@
 
         <!-- Custom Script 
         ==========================================-->
+
+        
+
         <script src="/sportbuddy/templates/js/custom-scripts.js"></script>
+
+         <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEUZYWImc7hloVE18938QSP_g105EAMDE&libraries=places&callback=initAutocomplete"
+        async defer></script>
         
 <!-- Start: Footer Section 1
         ================================== -->

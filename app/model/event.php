@@ -79,6 +79,8 @@ class event extends basis {
 		$category = $f_category;
 		$level = $f_level;
 		$location = $f_location;
+		$lat = $f_lat;
+		$lng = $f_lng;
 
 		if(!Val::name($name)) {
 			$error['name'] = "Name cannot be empty!";
@@ -121,7 +123,7 @@ class event extends basis {
 		// Create new event if there is no error and no eventid
 		if(!$error && $event == null) {
 			// Save event details
-			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level`, `created_by`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level', '$user_id');");
+			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level`, `created_by`, `lat`, `lng`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level', '$user_id', '$lat', '$lng');");
 
 			// Last inserted id
 			$event_id = $this->db->insert_id;
@@ -243,5 +245,11 @@ class event extends basis {
 		}
 	}
 	
+
+	public function gmaps() {
+		$data = $_POST['data'];
+		$result = $this->db->query("SELECT lat, lng FROM event WHERE eventId = '$data';")->fetch_all(MYSQLI_ASSOC);
+		return $result;
+	}
 
 }
