@@ -5,6 +5,8 @@
     <form method="post" class="single-form" id="" action="/sportbuddy/event/update/<?= $event->eventId ?>">
     <input type="hidden" name="submit" value="submit">
     <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" id="lat" name="lat" value="">
+    <input type="hidden" id="lng" name="lng" value="">
 
     <div class="col-xs-12 text-center">
         <h2 class="section-heading p-b-30">Update <?= $event->name ?></h2>
@@ -78,12 +80,8 @@
         <label for="" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Location</label>
         <div class="col-xs-8 col-md-4 fields">
            
-            <select name="location" class="form-control">
-                <option value="<?= isset($_POST['location']) ? $_POST['location'] : $event->location_idlocation ?>"><?= isset($_POST['location']) ? $_POST['location'] : $event->location_idlocation ?></option>
-                 <?php foreach($locations as $location) { ?>
-                <option value="<?= $location['name'] ?>"><?= $location['name'] ?></option>
-                <?php } ?>
-            </select>
+            <input class="form-control" value="<?= isset($_POST['location']) ? $_POST['location'] : $event->location ?>" name="location" id="autocomplete" placeholder="Start typing an address.." onFocus="geolocate()" type="text">
+
             <div class="<?= isset($data['location']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['location']) ? '<strong> '.$data['location'].'</strong>' : '' ?>
             </div>

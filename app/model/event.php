@@ -11,7 +11,6 @@ class event extends basis {
 		if($id == 0) {
 		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
-     		JOIN location ON location.name = event.location_idlocation
      		left JOIN category ON category.name = event.category_id
      		WHERE `date` >= CURRENT_DATE();")->fetch_all(MYSQLI_ASSOC);
 		
@@ -41,7 +40,6 @@ class event extends basis {
 	public function pastEvents() {
 		return $this->db->query("SELECT *, event.name AS event_name, event.created_at AS created FROM event 
      		JOIN user ON user.userId = event.created_by
-     		JOIN location ON location.name = event.location_idlocation
      		left JOIN category ON category.name = event.category_id
      		WHERE `date` <= CURRENT_DATE();")->fetch_all(MYSQLI_ASSOC);
 	}
@@ -109,21 +107,21 @@ class event extends basis {
 		}
 		
 		// Check if selected location is present in location table
-		$l_names = $this->db->query("SELECT name FROM location;")->fetch_all(MYSQLI_ASSOC);
-		$loc = [];
-		foreach($l_names as $l_name) {
-			if(in_array($location,$l_name)) {
-				$loc[] = 1;
-			}	
-		}
-		if(empty($loc)) {
-			$error['location'] = "Undefined location!";
-		}
+		// $l_names = $this->db->query("SELECT name FROM location;")->fetch_all(MYSQLI_ASSOC);
+		// $loc = [];
+		// foreach($l_names as $l_name) {
+		// 	if(in_array($location,$l_name)) {
+		// 		$loc[] = 1;
+		// 	}	
+		// }
+		// if(empty($loc)) {
+		// 	$error['location'] = "Undefined location!";
+		// }
 	
 		// Create new event if there is no error and no eventid
 		if(!$error && $event == null) {
 			// Save event details
-			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location_idlocation`, `category_id`, `level`, `created_by`, `lat`, `lng`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level', '$user_id', '$lat', '$lng');");
+			$this->db->query("INSERT INTO event (`name`, `description`, `date`, `start`, `end`, `size`, `location`, `category_id`, `level`, `created_by`, `lat`, `lng`) VALUES ('$name', '$description', '$date', '$start', '$end', '$size', '$location', '$category', '$level', '$user_id', '$lat', '$lng');");
 
 			// Last inserted id
 			$event_id = $this->db->insert_id;
@@ -133,7 +131,7 @@ class event extends basis {
 		
 		// Update an event if there is no error
 		} elseif (!$error && $event != null) {
-			$this->db->query("UPDATE event SET `name` = '$name', `description` = '$description', `date` = '$date', `start` = '$start', `end` = '$end', `size` = '$size', `location_idlocation` = '$location', `category_id` = '$category', `level` = '$level' WHERE `eventId` = '$event';");
+			$this->db->query("UPDATE event SET `name` = '$name', `description` = '$description', `date` = '$date', `start` = '$start', `end` = '$end', `size` = '$size', `location` = '$location', `category_id` = '$category', `level` = '$level', `lat` = '$lat', `lng` = '$lng' WHERE `eventId` = '$event';");
 		} else {
 			return $error;
 		}

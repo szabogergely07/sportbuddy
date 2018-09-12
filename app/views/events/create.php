@@ -78,29 +78,17 @@
         </div>
     </div>
 
+
+
     <div class="form-group row has-error has-feedback">
         <label for="location" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Location</label>
         <div class="col-xs-8 col-md-4">
            
-            <select name="location" class="form-control">
-                <option value="<?= isset($_POST['location']) ? $_POST['location'] : 'Select location' ?>"><?= isset($_POST['location']) ? $_POST['location'] : 'Select location' ?></option>
-                <?php foreach($locations as $location) { ?>
-                <option value="<?= $location['name'] ?>"><?= $location['name'] ?></option>
-                <?php } ?>
-            </select>
+            <input class="form-control" name="location" id="autocomplete" placeholder="Start typing an address.." onFocus="geolocate()" type="text">
+
             <div class="<?= isset($data['location']) ? 'invalid-feedback alert alert-danger' : 'valid-feedback' ?>">
                 <?= isset($data['location']) ? '<strong> '.$data['location'].'</strong>' : '' ?>
             </div>
-        </div>
-    </div>
-
-
-
-    <div class="form-group row has-error has-feedback">
-        <label for="location" class="text-right col-xs-4 col-md-2 col-md-offset-2 control-label">Location GM</label>
-        <div class="col-xs-8 col-md-4">
-           
-            <input id="autocomplete" placeholder="Start typing an address.." onFocus="geolocate()" type="text">
             
         </div>
     </div>

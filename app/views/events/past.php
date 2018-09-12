@@ -47,7 +47,7 @@
                                 <li><strong>Start:</strong> <?= $unit['start'] ?></li>
                                 <li><strong>Size:</strong> <?= $unit['size'] ?></li>
                                 <li><strong>Level:</strong> <?= eventLevel($unit['level']) ?></li>
-                                <li><strong>Location:</strong> <?= $unit['location_idlocation'] ?></li>
+                                <li><strong>Location:</strong> <?= $unit['location'] ?></li>
                                 <li><strong>Organizer:</strong> <?= $unit['first_name'].' '.$unit['last_name'] ?></li>
                                 <li><strong>Event created:</strong> <?= time_ago(strtotime($unit['created'])) ?></li>
                             </ul>

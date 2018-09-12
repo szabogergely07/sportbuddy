@@ -54,14 +54,14 @@ class eventController extends basisController {
 			redirect('/sportbuddy/not-found');
 		}
 
-		$location = $this->basis->all('location');
+		
 		$category = $this->basis->all('category');
 
 		//View
 		$view = new view('events/events');
 		$view->assign('events', $names);
 		$view->assign('eventLevels',$this->eventLevels);
-		$view->assign('locations', $location);
+		
 		$view->assign('categories', $category);
 	}
 
@@ -70,14 +70,14 @@ class eventController extends basisController {
 			$user_id = $_SESSION['user_id'];
 			//Model
 			$names = $this->event->own($user_id);
-			$location = $this->basis->all('location');
+			
 			$category = $this->basis->all('category');
 
 			//View
 			$view = new view('events/own-events');
 			$view->assign('events', $names);
 			$view->assign('eventLevels',$this->eventLevels);
-			$view->assign('locations', $location);
+			
 			$view->assign('categories', $category);
 		} else {
 			$view = new view(
@@ -90,14 +90,14 @@ class eventController extends basisController {
 			$user_id = $_SESSION['user_id'];
 			//Model
 			$names = $this->event->joined($user_id);
-			$location = $this->basis->all('location');
+			
 			$category = $this->basis->all('category');
 
 			//View
 			$view = new view('events/joined-events');
 			$view->assign('events', $names);
 			$view->assign('eventLevels',$this->eventLevels);
-			$view->assign('locations', $location);
+			
 			$view->assign('categories', $category);
 		} else {
 			$view = new view('403');
@@ -162,14 +162,14 @@ class eventController extends basisController {
 
 	public function create() {
 		//Model
-		$location = $this->basis->all('location');
+		
 		$category = $this->basis->all('category');
 		//View
 		if( !isset($_SESSION['user_id']) ){
             $view = new view('403');
         } else {
 			$view = new view('events/create');
-			$view->assign('locations',$location);
+			
 			$view->assign('categories',$category);
 			$view->assign('eventLevels',$this->eventLevels);
 		}
@@ -186,13 +186,13 @@ class eventController extends basisController {
 		//Model
 		$data = $this->event->store($user_id, null);
 		$events = $this->event->allWithUsers();
-		$location = $this->basis->all('location');
+		
 		$category = $this->basis->all('category');
 		//View
 		if($data) {
 			$view = new view('events/create');
 			$view->assign('data', $data);
-			$view->assign('locations',$location);
+			
 			$view->assign('categories',$category);
 			$view->assign('eventLevels',$this->eventLevels);
 		} else {
@@ -208,14 +208,14 @@ class eventController extends basisController {
 	public function updateIndex($id) {
 		//Model
 		$event = $this->basis->show($id,'event');
-		$location = $this->basis->all('location');
+		
 		$category = $this->basis->all('category');
 
 		if(isset($_SESSION['user_id']) && $event->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
 			// View
 			$view = new view('events/update');
 			$view->assign('event', $event);
-			$view->assign('locations',$location);
+			
 			$view->assign('categories',$category);
 			$view->assign('eventLevels',$this->eventLevels);
 		} else {
@@ -229,7 +229,7 @@ class eventController extends basisController {
      	$events = $this->event->allWithUsers();
      	
      	$event = $this->basis->show($event_id,'event');
-     	$location = $this->basis->all('location');
+     	
 		$category = $this->basis->all('category');
 
 		if($event->created_by == $_SESSION['user_id'] || $_SESSION['admin'] == 2) {
@@ -240,7 +240,7 @@ class eventController extends basisController {
 				$view = new view('events/update');
 				$view->assign('event', $event);
 				$view->assign('data', $data);
-				$view->assign('locations',$location);
+				
 				$view->assign('categories',$category);
 				$view->assign('eventLevels',$this->eventLevels);
 			// View if there is no error
@@ -320,14 +320,14 @@ class eventController extends basisController {
 			
 			$names = $this->event->pastEvents();
 			
-			$location = $this->basis->all('location');
+			
 			$category = $this->basis->all('category');
 
 			//View
 			$view = new view('events/past');
 			$view->assign('events', $names);
 			$view->assign('eventLevels',$this->eventLevels);
-			$view->assign('locations', $location);
+			
 			$view->assign('categories', $category);
 		} else {
 			$view = new view('403');

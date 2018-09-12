@@ -35,7 +35,7 @@
           <li><strong>Start:</strong> <?= $event->start ?></li>
           <li><strong>Size:</strong> <?= $event->size ?></li>
           <li><strong>Level:</strong> <?= eventLevel($event->level) ?></li>
-          <li><strong>Location:</strong> <?= $event->location_idlocation ?></li>
+          <li><strong>Location:</strong> <?= $event->location ?></li>
           <li><strong>Organizer:</strong> <?= $event->first_name.' '.$event->last_name ?></li>
           <li><strong>Event created:</strong> <?= time_ago(strtotime($event->created)) ?></li>
       </ul>
