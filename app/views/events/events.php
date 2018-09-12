@@ -30,6 +30,10 @@
 </div>' : ''
 ?>
 
+<div class="container section-header">
+    <button class= "btn btn-fill" onClick="javascript: window.location='/sportbuddy/allevents'">Show Events on Map</button>
+</div>
+
 
 <!-- Search fields -->
 <div id="signup-form">

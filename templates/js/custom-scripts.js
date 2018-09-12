@@ -376,6 +376,7 @@ $('#locationForm').on('submit', function (e) {
         // fields in the form.
         autocomplete.addListener('place_changed', fillInAddress);
         initMap();
+        allEvents();
       }
 
        function fillInAddress() {
@@ -433,17 +434,19 @@ $('#locationForm').on('submit', function (e) {
       url: '/sportbuddy/gmaps',
       data: newdata,
         success: function (data,status,xhr) {
-          var result = JSON.parse(xhr.responseText);
-          var elat = parseFloat(result[0].lat);
-          var elng = parseFloat(result[0].lng);
+          if(xhr.responseText !== 'null') {
+            var result = JSON.parse(xhr.responseText);
+            var elat = parseFloat(result[0].lat);
+            var elng = parseFloat(result[0].lng);
 
-          // The location of Uluru
-          var uluru = {lat: elat, lng: elng};
-          // The map, centered at Uluru
-          var map = new google.maps.Map(
-              document.getElementById('map'), {zoom: 14, center: uluru});
-          // The marker, positioned at Uluru
-          var marker = new google.maps.Marker({position: uluru, map: map});
+            // The location of Uluru
+            var uluru = {lat: elat, lng: elng};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 14, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+          }
         }
       });
 
@@ -451,27 +454,62 @@ $('#locationForm').on('submit', function (e) {
     }
 
 
+    /************ Shows all events on a Google Map with infowindow **************/
+
     function allEvents() {
       var options = {
-        zoom:12,
-        center:{lat:42.3601,lng:-71.0589}
+        zoom:5,
+        center:{lat:48.0899549,lng:4.0922483}
       }
 
       // New map
-      var map = new google.maps.Map(document.getElementById('map'), options);
+      var map = new google.maps.Map(document.getElementById('allEvents'), options);
+      var markers = [];
 
+      // Get data from database
       $.ajax({
       type: 'get',
       url: '/sportbuddy/gmapsAll',
       data: JSON,
         success: function (response) {
           var array = JSON.parse(response);  
-          // The marker, positioned at Uluru
-          var marker = new google.maps.Marker({position: uluru, map: map});
+          //console.log(array);
+
+          for(i=0;i<array.length;i++) {
+
+            var uluru = {
+              lat: parseFloat(array[i].lat),
+              lng: parseFloat(array[i].lng)
+            }
+            
+            var locationInfowindow = new google.maps.InfoWindow({
+              content: array[i].name,
+            });
+
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map,
+              infowindow: locationInfowindow
+            });
+
+            markers.push(marker);
+
+            google.maps.event.addListener(marker, 'click', function() {
+              hideAllInfoWindows(map);
+              this.infowindow.open(map, this);
+            });
+
+          }
+
         }
+
       });
 
+      function hideAllInfoWindows(map) {
+        markers.forEach(function(marker) {
+          marker.infowindow.close(map, marker);
+        }); 
+      }
 
-
-
+      
     }

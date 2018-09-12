@@ -24,6 +24,10 @@ class eventController extends basisController {
 		
 	}
 
+	public function gmapsEvents() {
+		$view = new view('events/map');
+	}
+
 	public function gmaps() {
 		if($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$result = $this->event->gmaps();
@@ -32,6 +36,11 @@ class eventController extends basisController {
 			$view = new view(
 				'404');
 		}
+	}
+
+	public function gmapsAll() {
+		$result = $this->event->gmapsAll();
+		return json_encode($result);
 	}
 
 	public function index($search = null) {

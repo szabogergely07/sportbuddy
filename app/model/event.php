@@ -247,9 +247,16 @@ class event extends basis {
 	
 
 	public function gmaps() {
-		$data = $_POST['data'];
-		$result = $this->db->query("SELECT lat, lng FROM event WHERE eventId = '$data';")->fetch_all(MYSQLI_ASSOC);
-		return $result;
+		if(isset($_POST['data'])) {
+			$data = $_POST['data'];
+		
+			$result = $this->db->query("SELECT lat, lng FROM event WHERE eventId = '$data';")->fetch_all(MYSQLI_ASSOC);
+			return $result;
+		}
 	}
 
+	public function gmapsAll() {
+		$result = $this->db->query("SELECT name, lat, lng FROM event;")->fetch_all(MYSQLI_ASSOC);
+		return $result;
+	}
 }
